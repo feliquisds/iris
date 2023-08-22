@@ -1,6 +1,7 @@
 using Platformer.Mechanics;
 using Platformer.UI;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Platformer.UI
 {
@@ -66,6 +67,16 @@ namespace Platformer.UI
             if (Input.GetButtonDown("Menu"))
             {
                 ToggleMainMenu(show: !showMainCanvas);
+            }
+            if ((showMainCanvas == true) && Input.GetButton("Debug Next"))
+            {
+                if (SceneManager.GetActiveScene().buildIndex == 0)
+                {
+                   SceneManager.LoadScene(1);
+                }
+                else {
+                    SceneManager.LoadScene(0);
+                }
             }
         }
 
