@@ -13,6 +13,7 @@ public class Move : MonoBehaviour
     public GameObject player;
 
     private bool playerC;
+    private bool playerJump;
 
     float neg = -1f;
     float pos = 1f;
@@ -31,9 +32,10 @@ public class Move : MonoBehaviour
     void Update()
     {
         playerC = player.GetComponent<SpriteRenderer>().flipX;
-        if ((playerC == true))
+        playerJump = player.GetComponent<PlayerController>().playerGrounded;
+        if ((playerC == true) && (playerJump == true))
             transform.position = player.transform.position + new Vector3(neg, half, none);
-        else if ((playerC == false))
+        else if ((playerC == false) && (playerJump == true))
             transform.position = player.transform.position + new Vector3(pos, half, none);
         
         model.playercamerapoint = transform;

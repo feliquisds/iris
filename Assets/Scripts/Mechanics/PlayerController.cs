@@ -28,6 +28,7 @@ namespace Platformer.Mechanics
         public float jumpTakeOffSpeed = 7;
 
         public JumpState jumpState = JumpState.Grounded;
+        public bool playerGrounded;
         private bool stopJump;
         /*internal new*/ public Collider2D collider2d;
         /*internal new*/ public AudioSource audioSource;
@@ -72,7 +73,11 @@ namespace Platformer.Mechanics
 
         protected override void Update()
         {
-            if (controlEnabled)
+            if (!controlEnabled)
+            {
+                move.x = 0;
+            }
+            else
             {
                 move.x = Input.GetAxis("Horizontal");
                 if (jumpState == JumpState.Grounded && Input.GetButtonDown("Jump"))
@@ -82,10 +87,6 @@ namespace Platformer.Mechanics
                     stopJump = true;
                    Schedule<PlayerStopJump>().player = this;
                 }*/
-            }
-            else
-            {
-                move.x = 0;
             }
             UpdateJumpState();
             base.Update();
@@ -144,9 +145,9 @@ namespace Platformer.Mechanics
                     velocity.y = -10;
                 }
 
-            if ((move.x > 0.01f) && (IsGrounded == true))
+            if ((move.x > 0.01f))
                 spriteRenderer.flipX = false;
-            else if ((move.x < -0.01f) && (IsGrounded == true))
+            else if ((move.x < -0.01f))
                 spriteRenderer.flipX = true;
 
             animator.SetBool("grounded", IsGrounded);
@@ -157,6 +158,9 @@ namespace Platformer.Mechanics
             if (spriteRenderer.flipX == false)
                 lookRight = true;
             else lookRight = false;
+
+            if (IsGrounded) playerGrounded = true;
+            else playerGrounded = false;
 
             }
             else {
