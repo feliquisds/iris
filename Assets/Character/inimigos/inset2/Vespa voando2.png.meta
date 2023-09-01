@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: c037ccdf18ff7c44aa6ad2579d749f52
+guid: c41be664592360142aba98a50907c26d
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -101,38 +101,89 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: WebGL
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: inset3_0
+      name: Vespa voando2_0
       rect:
         serializedVersion: 2
-        x: 10
+        x: 22
         y: 0
-        width: 100
-        height: 100
-      alignment: 6
+        width: 106
+        height: 86
+      alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5ab2ce3d33e0e9940af74bff86db5c6c
-      internalID: -673719062
+      spriteID: 557134b3fffafab40abffb45c9946c3c
+      internalID: 1662101986
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vespa voando2_1
+      rect:
+        serializedVersion: 2
+        x: 162
+        y: 0
+        width: 106
+        height: 86
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a0ec84460a780ce4ba025c34fcc77138
+      internalID: 952028306
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vespa voando2_2
+      rect:
+        serializedVersion: 2
+        x: 302
+        y: 0
+        width: 106
+        height: 86
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5b0e2cccb07e853429fe78f2a9eaccd8
+      internalID: 517908986
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vespa voando2_3
+      rect:
+        serializedVersion: 2
+        x: 442
+        y: 0
+        width: 106
+        height: 86
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ab4c1090abbd1a14c99be21701075d4e
+      internalID: -1588336844
       vertices: []
       indices: 
       edges: []
@@ -148,7 +199,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      inset3_0: -673719062
+      Vespa voando2_0: 1662101986
+      Vespa voando2_1: 952028306
+      Vespa voando2_2: 517908986
+      Vespa voando2_3: -1588336844
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

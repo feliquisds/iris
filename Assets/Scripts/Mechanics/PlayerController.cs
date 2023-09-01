@@ -57,17 +57,19 @@ namespace Platformer.Mechanics
         public void GotHurt()
         {
             controlEnabled = false;
+            collider2d.enabled = false;
             hurting = true;
             if (lookRight == true) {
-                Bounce(3);
+                Teleport((transform.position - (new Vector3(3f,0f,0f))));
             }
                 
             else {
-                Bounce(3);
+                Teleport((transform.position - (new Vector3(-3f,0f,0f))));
             }
 
             health.currentHP = health.currentHP - 1;
-            Simulation.Schedule<EnablePlayerInput>(1f);
+            Simulation.Schedule<EnablePlayerInput>(0.5f);
+            collider2d.enabled = true;
             hurting = false;
         }
 

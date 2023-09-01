@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: c037ccdf18ff7c44aa6ad2579d749f52
+guid: de1f6ce3356c7b34bb11c344b62bf0e5
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -101,28 +101,16 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: WebGL
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: inset3_0
+      name: inset3_walk_0
       rect:
         serializedVersion: 2
-        x: 10
+        x: 5
         y: 0
-        width: 100
+        width: 90
         height: 100
       alignment: 6
       pivot: {x: 0, y: 0}
@@ -131,8 +119,71 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5ab2ce3d33e0e9940af74bff86db5c6c
-      internalID: -673719062
+      spriteID: f3b98be7778c6044fb8bc19c8365c43f
+      internalID: -1827667593
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: inset3_walk_1
+      rect:
+        serializedVersion: 2
+        x: 105
+        y: 0
+        width: 90
+        height: 100
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c2a7bff2e7c5c8248a4bb52f42abf913
+      internalID: -1868613266
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: inset3_walk_2
+      rect:
+        serializedVersion: 2
+        x: 205
+        y: 0
+        width: 90
+        height: 100
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1bca046ecdab0fc4c95a5c48be74c265
+      internalID: 1704207382
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: inset3_walk_3
+      rect:
+        serializedVersion: 2
+        x: 305
+        y: 0
+        width: 90
+        height: 100
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 58eeeddee6a562042b77a0c48ed4927a
+      internalID: -1177841803
       vertices: []
       indices: 
       edges: []
@@ -148,7 +199,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      inset3_0: -673719062
+      inset3_walk_0: -1827667593
+      inset3_walk_1: -1868613266
+      inset3_walk_2: 1704207382
+      inset3_walk_3: -1177841803
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

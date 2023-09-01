@@ -70,12 +70,13 @@ namespace Platformer.UI
             }
             if ((showMainCanvas == true) && Input.GetButton("Debug Next"))
             {
-                if (SceneManager.GetActiveScene().buildIndex == 0)
+                if (SceneManager.GetActiveScene().buildIndex == 2)
                 {
-                   SceneManager.LoadScene(1);
+                   SceneManager.LoadScene(0);
                 }
                 else {
-                    SceneManager.LoadScene(0);
+                    int nextScene = (SceneManager.GetActiveScene().buildIndex) + 1;
+                    SceneManager.LoadScene(nextScene);
                 }
             }
         }
