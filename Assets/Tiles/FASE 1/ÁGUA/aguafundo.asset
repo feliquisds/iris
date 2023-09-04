@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13b75c95f34a00d4e8c04f76b73312e6, type: 3}
+  m_Name: aguafundo
+  m_EditorClassIdentifier: 
+  m_AnimatedSprites:
+  - {fileID: -1441404238, guid: c46fb12d55f508e46b635a3d0c734f0e, type: 3}
+  - {fileID: -301929234, guid: c46fb12d55f508e46b635a3d0c734f0e, type: 3}
+  - {fileID: -2109041275, guid: c46fb12d55f508e46b635a3d0c734f0e, type: 3}
+  - {fileID: 550833921, guid: c46fb12d55f508e46b635a3d0c734f0e, type: 3}
+  - {fileID: -1502953124, guid: c46fb12d55f508e46b635a3d0c734f0e, type: 3}
+  - {fileID: -91391102, guid: c46fb12d55f508e46b635a3d0c734f0e, type: 3}
+  - {fileID: -1421915652, guid: c46fb12d55f508e46b635a3d0c734f0e, type: 3}
+  - {fileID: -1123714570, guid: c46fb12d55f508e46b635a3d0c734f0e, type: 3}
+  - {fileID: -1490474095, guid: c46fb12d55f508e46b635a3d0c734f0e, type: 3}
+  m_MinSpeed: 30
+  m_MaxSpeed: 30
+  m_AnimationStartTime: 0
+  m_AnimationStartFrame: 0
+  m_TileColliderType: 0
