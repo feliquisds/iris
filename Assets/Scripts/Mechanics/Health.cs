@@ -19,8 +19,10 @@ namespace Platformer.Mechanics
         /// Indicates if the entity should be considered 'alive'.
         /// </summary>
         public bool IsAlive => currentHP > 0;
+        public bool death;
 
         public int currentHP;
+        public int newHP;
 
         /// <summary>
         /// Increment the HP of the entity.
@@ -35,6 +37,7 @@ namespace Platformer.Mechanics
         /// </summary>
         public void IncrementThree()
         {
+            death = false;
             currentHP = Mathf.Clamp(currentHP + 3, 0, maxHP);
         }
 
@@ -57,12 +60,19 @@ namespace Platformer.Mechanics
         /// </summary>
         public void Die()
         {
+            death = true;
             while (currentHP > 0) Decrement();
         }
 
         void Awake()
         {
+            death = false;
             currentHP = maxHP;
+        }
+
+        void Update()
+        {
+            newHP = currentHP + 1;
         }
     }
 }

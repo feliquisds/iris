@@ -1,0 +1,45 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class enemyProjectile : MonoBehaviour
+{
+    public GameObject PrefabProjectile;
+    public Transform shootPoint;
+    public float shootForce;
+    public ShooterAnim ShooterAnim;
+    //Colocar o nome dos atiradores
+    public RangerColisor RangerColisor;
+    public float FireRate;
+    private float LastShoot;
+
+    private void Start()
+    {
+        lastShootTime = Time.time;
+    }
+    private void Update()
+    {
+        if (RangerColisor.RangeAlert)
+        {
+            if (ShooterAnim.isAttacking)
+            {
+                if(Time.time - LastShoot >= FireRate)
+                {
+                    Shoot();
+                    LastShoot = Time.time;
+                }
+            }
+        }
+    }
+
+    void Shoot()
+    {
+        GameObject projectile = Instantiate(projectilePrefab, shootPoint.position, Quaternion.identity);
+        Rigidbody2D rb = projectile.GetComponent<Rigidbody2D>();
+
+        if (rb != null)
+        {
+            rb.AddForce(transform.right * shootForce, ForceMode2D.Impulse);
+        }
+    }
+}

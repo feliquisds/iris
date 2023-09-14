@@ -17,6 +17,7 @@ namespace Platformer.Mechanics
         public AudioClip jumpAudio;
         public AudioClip respawnAudio;
         public AudioClip ouchAudio;
+        public AudioClip hurtAudio;
 
         /// <summary>
         /// Max horizontal speed of the player.
@@ -36,14 +37,18 @@ namespace Platformer.Mechanics
         public bool controlEnabled = true;
 
         bool jump;
+        public bool canAttack;
+        bool attacking;
+        bool crouching;
         public bool lookRight;
-        bool hurting = false;
+        public bool hurting = false;
         Vector2 move;
         SpriteRenderer spriteRenderer;
         internal Animator animator;
         readonly PlatformerModel model = Simulation.GetModel<PlatformerModel>();
 
         public Bounds Bounds => collider2d.bounds;
+        public bool onFallingPlat = false;
 
         void Awake()
         {
@@ -56,20 +61,22 @@ namespace Platformer.Mechanics
 
         public void GotHurt()
         {
-            controlEnabled = false;
             collider2d.enabled = false;
+            animator.SetBool("hurt", true);
+            animator.SetTrigger("hurting");
             hurting = true;
             if (lookRight == true) {
-                Teleport((transform.position - (new Vector3(3f,0f,0f))));
+                Teleport((transform.position - (new Vector3(1f,0f,0f))));
             }
                 
             else {
-                Teleport((transform.position - (new Vector3(-3f,0f,0f))));
+                Teleport((transform.position - (new Vector3(-1f,0f,0f))));
             }
 
             health.currentHP = health.currentHP - 1;
             Simulation.Schedule<EnablePlayerInput>(0.5f);
             collider2d.enabled = true;
+            animator.SetBool("hurt", false);
             hurting = false;
         }
 
@@ -81,8 +88,8 @@ namespace Platformer.Mechanics
             }
             else
             {
-                move.x = Input.GetAxis("Horizontal");
-                if (jumpState == JumpState.Grounded && Input.GetButtonDown("Jump"))
+                if (!attacking || !crouching) move.x = Input.GetAxis("Horizontal");
+                if (jumpState == JumpState.Grounded && Input.GetButton("Jump") && !attacking)
                     jumpState = JumpState.PrepareToJump;
                 /*else if (Input.GetButtonUp("Jump"))
                 {
@@ -127,11 +134,34 @@ namespace Platformer.Mechanics
 
         protected override void ComputeVelocity()
         {
-            if (hurting == false) {
-            if (jump && IsGrounded)
+            if ((canAttack == true) && (IsGrounded) && Input.GetButton("Attack"))
+            {
+                attacking = true;
+                move.x = 0;
+                animator.SetBool("attack", true);
+            }
+            else {
+                attacking = false;
+                animator.SetBool("attack", false);
+            }
+
+            if ((IsGrounded) && Input.GetButton("Crouch"))
+            {
+                crouching = true;
+                move.x = 0;
+                animator.SetBool("crouch", true);
+            }
+            else {
+                crouching = false;
+                animator.SetBool("crouch", false);
+            }
+
+
+            if (jump && IsGrounded || jump && onFallingPlat)
             {
                     velocity.y = jumpTakeOffSpeed;
                     jump = false;
+                    onFallingPlat = false;
             }
             else if (stopJump)
             {
@@ -154,6 +184,7 @@ namespace Platformer.Mechanics
 
             animator.SetBool("grounded", IsGrounded);
             animator.SetFloat("velocityX", Mathf.Abs(velocity.x) / maxSpeed);
+            animator.SetFloat("velocityY", velocity.y);
 
             targetVelocity = move * maxSpeed;
 
@@ -164,12 +195,8 @@ namespace Platformer.Mechanics
             if (IsGrounded) playerGrounded = true;
             else playerGrounded = false;
 
-            }
-            else {
-                Vector3 p = transform.position;
-                p.x = p.x - 1000f;
-                transform.position = p;
-            }
+            if (hurting) animator.SetBool("hurt", true);
+            else animator.SetBool("hurt", false);
         }
 
         public enum JumpState

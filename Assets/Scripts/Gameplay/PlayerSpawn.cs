@@ -1,6 +1,9 @@
 using Platformer.Core;
 using Platformer.Mechanics;
 using Platformer.Model;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 
 namespace Platformer.Gameplay
 {
@@ -15,7 +18,9 @@ namespace Platformer.Gameplay
         {
             var player = model.player;
             var playerC = model.playercamerapoint;
-            player.collider2d.enabled = true;
+            var rigid = player.GetComponent<Rigidbody2D>();
+            rigid.simulated = true;
+            player.hurting = false;
             player.controlEnabled = false;
             if (player.audioSource && player.respawnAudio)
                 player.audioSource.PlayOneShot(player.respawnAudio);
@@ -26,6 +31,8 @@ namespace Platformer.Gameplay
             model.virtualCamera.m_Follow = playerC;
             model.virtualCamera.m_LookAt = player.transform;
             Simulation.Schedule<EnablePlayerInput>(1f);
+            player.animator.SetBool("hurt", false);
+            player.collider2d.enabled = true;
         }
     }
 }

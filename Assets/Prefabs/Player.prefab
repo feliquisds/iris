@@ -32,9 +32,10 @@ Transform:
   m_GameObject: {fileID: 1208144871472054}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -4.14, y: 3.39, z: 1}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 233669690397117213}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -50,19 +51,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 709ee11994a2f44658e5fc9887c45081, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minGroundNormalY: 0.9
-  gravityModifier: 1
+  minGroundNormalY: 0
+  gravityModifier: 4
   velocity: {x: 0, y: 0}
-  jumpAudio: {fileID: 8300000, guid: 67975c08d56ceb147bad38572d805aa8, type: 3}
-  respawnAudio: {fileID: 8300000, guid: e18959d46b63f3c4c8cc020a433cf848, type: 3}
-  ouchAudio: {fileID: 8300000, guid: 6c05149e5a2fba64ba172e25a61074b7, type: 3}
-  maxSpeed: 3
-  jumpTakeOffSpeed: 7
+  jumpAudio: {fileID: 8300000, guid: 5771bbb94abe8154e838bda0b8bc9d48, type: 3}
+  respawnAudio: {fileID: 0}
+  ouchAudio: {fileID: 8300000, guid: f56014d1f28f2e84ca028d2aa1b81ba0, type: 3}
+  hurtAudio: {fileID: 0}
+  maxSpeed: 5
+  jumpTakeOffSpeed: 6
   jumpState: 0
+  playerGrounded: 0
   collider2d: {fileID: 0}
   audioSource: {fileID: 0}
   health: {fileID: 0}
   controlEnabled: 1
+  canAttack: 0
+  lookRight: 0
+  hurting: 0
+  onFallingPlat: 0
 --- !u!212 &212064061491315838
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -103,8 +110,8 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 5
-  m_Sprite: {fileID: 607203815, guid: 45dc9658801604043ad6256f1e93ed71, type: 3}
+  m_SortingOrder: 6
+  m_Sprite: {fileID: 2007006788, guid: 370a23edc892e6b4ca17317a02c9604d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -128,7 +135,7 @@ Animator:
   m_Controller: {fileID: 9100000, guid: b09e60546065cf9448b36ebb7f759a91, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
-  m_ApplyRootMotion: 0
+  m_ApplyRootMotion: 1
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
   m_WarningMessage: 
@@ -265,7 +272,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ffad43bb006db4856a9c527b89b48db9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHP: 1
+  maxHP: 2
+  death: 0
+  currentHP: 0
+  newHP: 0
 --- !u!61 &1824045667
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -279,7 +289,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.010194518, y: -0.08979161}
+  m_Offset: {x: 0.012286305, y: -0.1049149}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -290,5 +300,50 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.24931072, y: 0.56945944}
+  m_Size: {x: 0.23762631, y: 0.4647866}
   m_EdgeRadius: 0
+--- !u!1 &3810331656995984049
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 233669690397117213}
+  - component: {fileID: 6240617518810029737}
+  m_Layer: 0
+  m_Name: Camera
+  m_TagString: PlayerCameraPoint
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &233669690397117213
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3810331656995984049}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.25, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4520396350849616}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6240617518810029737
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3810331656995984049}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86453eb4bf1b8644e97e09b7d9c1c490, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 1208144871472054}

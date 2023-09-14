@@ -1,0 +1,96 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class RangeAnim : MonoBehaviour
+{
+    private Animator anim;
+    private bool Flip = false;
+    //Esse flip é pra girar o atirador, caso já tenha uma programação pra isso é só adaptar
+    public playerMove playerMove;
+    public bool isAttacking = false;
+    public RangerColisor RangeAlert;
+    public float timeCooling;
+    public float lasttimecooling;
+    private bool cooling = false;
+    private void Start()
+    {
+        anim = GetComponent<Animator>();
+        lasttimecooling = timeCooling;
+    }
+    void Update()
+    {
+        if(playerMove.transform.position.x <= transform.position.x)
+        {
+            Unflip();
+        }
+        if (playerMove.transform.position.x > transform.position.x)
+        {
+            Flip();
+        }
+        if (cooling)
+        {
+            CoolDown();
+            anim.SetBool("Attack", false);
+        }
+        if (RangeAlert.RangeAlert && !cooling)
+        {
+            Attack();
+        }
+        else
+        {
+            anim.SetBool("Attack", false);
+        }
+    }
+
+    void Attack()
+    {
+        timeCooling = lasttimecooling;
+
+        anim.SetBool("Attack", true);
+    }
+    void StopAttack()
+    {
+        cooling = true;
+        anim.SetBool("Attack", false);
+    }
+    void TriggerCooling()
+    {
+        cooling = true;
+    }
+    void CoolDown()
+    {
+        timeCooling -= Time.deltaTime;
+        if(timeCooling <= 0 && cooling)
+        {
+            cooling = false;
+            timeCooling = lasttimecooling;
+        }
+    }
+
+    void Flip()
+    {
+        if (!Flip)
+        {
+            transform.rotation = Quaternion.Euler(0f, 180f, 0f);
+            Flip = true;
+        }
+    }
+    void Unflip()
+    {
+        if (Flip)
+        {
+            transform.rotation = Quaternion.Euler(0f, 0f, 0f);
+            Flip = false;
+        }
+    }
+
+    void onAttack()
+    {
+        Attacking = true;
+    }
+    void notAttack()
+    {
+        Attacking = false;
+    }
+}
