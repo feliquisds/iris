@@ -8,6 +8,8 @@ TagManager:
   - PlayerCameraPoint
   - Enemy
   - Ground
+  - Projectile
+  - Path
   layers:
   - Default
   - TransparentFX

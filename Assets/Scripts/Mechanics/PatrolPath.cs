@@ -19,7 +19,7 @@ namespace Platformer.Mechanics
         /// <returns></returns>
         public Mover CreateMover(float speed = 1) => new Mover(this, speed);
 
-        void Reset()
+        public void Reset()
         {
             startPosition = Vector3.left;
             endPosition = Vector3.right;

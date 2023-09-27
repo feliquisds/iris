@@ -57,25 +57,25 @@ namespace Platformer.Mechanics
         {
             velocity.y = 0f;
 
-            if (player.transform.position.x > transform.position.x) {
-                if (spriteRenderer.flipX == false) {
-                    attack = true;
-                }
-                else if (spriteRenderer.flipX == true) {
-                    attack = false;
-                }
-            }
-            else if (player.transform.position.x < transform.position.x) {
-                if (spriteRenderer.flipX == false) {
-                    attack = false;
-                }
-                else if (spriteRenderer.flipX == true) {
-                    attack = true;
-                }
+            // if (player.transform.position.x > transform.position.x) {
+            //     if (spriteRenderer.flipX == false) {
+            //         attack = true;
+            //     }
+            //     else if (spriteRenderer.flipX == true) {
+            //         attack = false;
+            //     }
+            // }
+            // else if (player.transform.position.x < transform.position.x) {
+            //     if (spriteRenderer.flipX == false) {
+            //         attack = false;
+            //     }
+            //     else if (spriteRenderer.flipX == true) {
+            //         attack = true;
+            //     }
                 
-            }
+            // }
 
-            animator.SetBool("attack", attack);
+            // animator.SetBool("attack", attack);
         }
     }
 }

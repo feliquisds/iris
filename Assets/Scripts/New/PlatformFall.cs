@@ -29,10 +29,10 @@ public class PlatformFall : MonoBehaviour
     void OnTriggerEnter2D(Collider2D collider)
         {
             var player = model.player;
-            var p = collider.gameObject.GetComponent<PlayerController>();
-            if (p != null)
+            if (collider.gameObject.tag == "Player")
             {
                 player.onFallingPlat = true;
+                rigid.bodyType = RigidbodyType2D.Dynamic;
                 rigid.gravityScale = 0.3f;
                 StartCoroutine(GoBack());
             }
@@ -44,6 +44,7 @@ public class PlatformFall : MonoBehaviour
         this.transform.position = new Vector3(spawnX, spawnY, spawnZ);
         rigid.gravityScale = 0;
         rigid.velocity = new Vector2(0f, 0f);
+        rigid.bodyType = RigidbodyType2D.Static;
     }
 }
 }
