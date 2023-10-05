@@ -21,21 +21,14 @@ public class Move : MonoBehaviour
     float none = 0f;
 
     PlatformerModel model = Simulation.GetModel<PlatformerModel>();
-    
-    // Start is called before the first frame update
-    void Start()
-    {
 
-    }
-
-    // Update is called once per frame
     void Update()
     {
-        playerC = player.GetComponent<SpriteRenderer>().flipX;
+        playerC = player.GetComponent<PlayerController>().lookRight;
         playerJump = player.GetComponent<PlayerController>().playerGrounded;
-        if ((playerC == true) && (playerJump == true))
+        if ((!playerC) && (playerJump))
             transform.position = player.transform.position + new Vector3(neg, half, none);
-        else if ((playerC == false) && (playerJump == true))
+        else if ((playerC) && (playerJump))
             transform.position = player.transform.position + new Vector3(pos, half, none);
         
         model.playercamerapoint = transform;
