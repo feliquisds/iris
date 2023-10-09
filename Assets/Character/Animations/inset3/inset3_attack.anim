@@ -20,7 +20,7 @@ AnimationClip:
   m_PPtrCurves:
   - curve:
     - time: 0
-      value: {fileID: 410450329, guid: 1f317b95fc8f3db409bce27bae5b926c, type: 3}
+      value: {fileID: 1879542730, guid: 1f317b95fc8f3db409bce27bae5b926c, type: 3}
     - time: 0.083333336
       value: {fileID: 2078310258, guid: 1f317b95fc8f3db409bce27bae5b926c, type: 3}
     - time: 0.16666667
@@ -60,7 +60,7 @@ AnimationClip:
       customType: 23
       isPPtrCurve: 1
     pptrCurveMapping:
-    - {fileID: 410450329, guid: 1f317b95fc8f3db409bce27bae5b926c, type: 3}
+    - {fileID: 1879542730, guid: 1f317b95fc8f3db409bce27bae5b926c, type: 3}
     - {fileID: 2078310258, guid: 1f317b95fc8f3db409bce27bae5b926c, type: 3}
     - {fileID: 1751349980, guid: 1f317b95fc8f3db409bce27bae5b926c, type: 3}
     - {fileID: 930398910, guid: 1f317b95fc8f3db409bce27bae5b926c, type: 3}
@@ -95,4 +95,11 @@ AnimationClip:
   m_EulerEditorCurves: []
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
-  m_Events: []
+  m_Events:
+  - time: 0.5
+    functionName: ShootArrow
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0

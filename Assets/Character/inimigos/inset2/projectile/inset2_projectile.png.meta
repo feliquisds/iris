@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: f8382bbd4301fbb45b4d81383c2c7aef
+guid: c320970c8f69f0346af44ad077879b54
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -105,127 +105,148 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: indig1_walk_0
+      name: inset2_projectile_0
       rect:
         serializedVersion: 2
-        x: 26
+        x: 0
         y: 0
-        width: 100
-        height: 107
+        width: 50
+        height: 50
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2a7574ba28429824fba03febb38cfcb6
-      internalID: -1180469504
+      spriteID: 1e34eaf3d50074143bccdcfb391907b8
+      internalID: 867465076
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: indig1_walk_1
+      name: inset2_projectile_1
       rect:
         serializedVersion: 2
-        x: 176
+        x: 50
         y: 0
-        width: 100
-        height: 107
+        width: 50
+        height: 50
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 487b2e32b7624a04b9469162c07a4495
-      internalID: -1186833740
+      spriteID: 8b47c09201715fa4d96d735668ada211
+      internalID: 1332784055
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: indig1_walk_2
+      name: inset2_projectile_2
       rect:
         serializedVersion: 2
-        x: 326
+        x: 100
         y: 0
-        width: 100
-        height: 107
+        width: 50
+        height: 50
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5912bf5aaefb95147a57782768268d52
-      internalID: 679696958
+      spriteID: 63ab06b57b4e92e4a821c893e1723dc9
+      internalID: 409070573
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: indig1_walk_3
+      name: inset2_projectile_3
       rect:
         serializedVersion: 2
-        x: 476
+        x: 150
         y: 0
-        width: 100
-        height: 107
+        width: 50
+        height: 50
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c9b477daa7857404896b0a139b03b84c
-      internalID: 1180604407
+      spriteID: 18b15f84340bded4eb1d3fa6950900c7
+      internalID: 722741745
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: indig1_walk_4
+      name: inset2_projectile_4
       rect:
         serializedVersion: 2
-        x: 626
+        x: 200
         y: 0
-        width: 100
-        height: 107
+        width: 50
+        height: 50
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 89614733ca425d8459336a75241df7cf
-      internalID: 234270367
+      spriteID: 7d98d8c2ebd190141bee708b87cbeac6
+      internalID: -1379299816
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: indig1_walk_5
+      name: inset2_projectile_5
       rect:
         serializedVersion: 2
-        x: 776
+        x: 250
         y: 0
-        width: 100
-        height: 107
+        width: 50
+        height: 50
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f30d23d290df0b247a60222250b3649b
-      internalID: -524515500
+      spriteID: 842b0cf889afe4543a94dbf43db64848
+      internalID: -1921223452
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: inset2_projectile_6
+      rect:
+        serializedVersion: 2
+        x: 300
+        y: 0
+        width: 50
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 83256ad24ac477a408ade1c67519d0e3
+      internalID: -1180902645
       vertices: []
       indices: 
       edges: []
@@ -241,12 +262,13 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      indig1_walk_0: -1180469504
-      indig1_walk_1: -1186833740
-      indig1_walk_2: 679696958
-      indig1_walk_3: 1180604407
-      indig1_walk_4: 234270367
-      indig1_walk_5: -524515500
+      inset2_projectile_0: 867465076
+      inset2_projectile_1: 1332784055
+      inset2_projectile_2: 409070573
+      inset2_projectile_3: 722741745
+      inset2_projectile_4: -1379299816
+      inset2_projectile_5: -1921223452
+      inset2_projectile_6: -1180902645
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
