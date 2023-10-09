@@ -7,7 +7,7 @@ using static Platformer.Core.Simulation;
 
 namespace Platformer.Mechanics
 {
-public class PlatformFall : MonoBehaviour
+public class FallingPlatform : MonoBehaviour
 {
     internal Rigidbody2D rigid;
     internal CapsuleCollider2D trigger;

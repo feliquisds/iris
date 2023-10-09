@@ -105,7 +105,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: inset1_attack 1_0
+      name: inset1_attack_0
       rect:
         serializedVersion: 2
         x: 0
@@ -113,7 +113,7 @@ TextureImporter:
         width: 140
         height: 107
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -126,7 +126,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: inset1_attack 1_1
+      name: inset1_attack_1
       rect:
         serializedVersion: 2
         x: 140
@@ -134,7 +134,7 @@ TextureImporter:
         width: 140
         height: 107
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -147,7 +147,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: inset1_attack 1_2
+      name: inset1_attack_2
       rect:
         serializedVersion: 2
         x: 280
@@ -155,7 +155,7 @@ TextureImporter:
         width: 140
         height: 107
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -168,7 +168,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: inset1_attack 1_3
+      name: inset1_attack_3
       rect:
         serializedVersion: 2
         x: 420
@@ -176,7 +176,7 @@ TextureImporter:
         width: 140
         height: 107
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -189,7 +189,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: inset1_attack 1_4
+      name: inset1_attack_4
       rect:
         serializedVersion: 2
         x: 560
@@ -197,7 +197,7 @@ TextureImporter:
         width: 140
         height: 107
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -210,7 +210,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: inset1_attack 1_5
+      name: inset1_attack_5
       rect:
         serializedVersion: 2
         x: 700
@@ -218,7 +218,7 @@ TextureImporter:
         width: 140
         height: 107
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -231,7 +231,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: inset1_attack 1_6
+      name: inset1_attack_6
       rect:
         serializedVersion: 2
         x: 840
@@ -239,7 +239,7 @@ TextureImporter:
         width: 140
         height: 107
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -252,7 +252,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: inset1_attack 1_7
+      name: inset1_attack_7
       rect:
         serializedVersion: 2
         x: 980
@@ -260,7 +260,7 @@ TextureImporter:
         width: 140
         height: 107
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -273,7 +273,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: inset1_attack 1_8
+      name: inset1_attack_8
       rect:
         serializedVersion: 2
         x: 1120
@@ -281,7 +281,7 @@ TextureImporter:
         width: 140
         height: 107
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -294,7 +294,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: inset1_attack 1_9
+      name: inset1_attack_9
       rect:
         serializedVersion: 2
         x: 1260
@@ -302,7 +302,7 @@ TextureImporter:
         width: 140
         height: 107
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -325,16 +325,16 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      inset1_attack 1_0: -545916834
-      inset1_attack 1_1: -1029816712
-      inset1_attack 1_2: -1926859955
-      inset1_attack 1_3: -2055073882
-      inset1_attack 1_4: -2113363091
-      inset1_attack 1_5: -1829250790
-      inset1_attack 1_6: -1905066417
-      inset1_attack 1_7: 2013934319
-      inset1_attack 1_8: 1914786757
-      inset1_attack 1_9: -1572990684
+      inset1_attack_0: -545916834
+      inset1_attack_1: -1029816712
+      inset1_attack_2: -1926859955
+      inset1_attack_3: -2055073882
+      inset1_attack_4: -2113363091
+      inset1_attack_5: -1829250790
+      inset1_attack_6: -1905066417
+      inset1_attack_7: 2013934319
+      inset1_attack_8: 1914786757
+      inset1_attack_9: -1572990684
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
