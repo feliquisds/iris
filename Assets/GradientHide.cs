@@ -72,7 +72,6 @@ public class GradientHide : MonoBehaviour
         objColor = new Color(objColor.r, objColor.g, objColor.b, fadeAmount);
 
         if (objColor.a <= 0) objColor.a = 0;
-        //objColor = new Color(objColor.r, objColor.g, objColor.b, 0);
 
         obj.color = objColor;
     }
@@ -86,7 +85,6 @@ public class GradientHide : MonoBehaviour
         objColor = new Color(objColor.r, objColor.g, objColor.b, fadeAmount);
         
         if (objColor.a >= 1) objColor.a = 1;
-        //objColor = new Color(objColor.r, objColor.g, objColor.b, 1);
             
         obj.color = objColor;
     }
@@ -100,7 +98,6 @@ public class GradientHide : MonoBehaviour
         objColor = new Color(objColor.r, objColor.g, objColor.b, fadeAmount);
 
         if (objColor.a <= 0) objColor.a = 0;
-        //objColor = new Color(objColor.r, objColor.g, objColor.b, 0);
 
         obj.color = objColor;
     }
@@ -114,7 +111,6 @@ public class GradientHide : MonoBehaviour
         objColor = new Color(objColor.r, objColor.g, objColor.b, fadeAmount);
         
         if (objColor.a >= 1) objColor.a = 1;
-        //objColor = new Color(objColor.r, objColor.g, objColor.b, 1);
             
         obj.color = objColor;
     }
