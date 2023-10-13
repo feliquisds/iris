@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 5852065399482676879}
   - component: {fileID: 5823351556971778211}
   - component: {fileID: 5232945122874958001}
-  - component: {fileID: 5232945122874958000}
   - component: {fileID: 5232945124294601412}
   m_Layer: 0
   m_Name: inset3
@@ -157,19 +156,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 6.6216507, y: 4.3683743}
   m_EdgeRadius: 0
---- !u!114 &5232945122874958000
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4154497429269366469}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c8534e17a0f90604c9afd4f5c73d829f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Id: c3f4471c-91d5-4443-83c7-665ba6ff91bd
 --- !u!114 &5232945124294601412
 MonoBehaviour:
   m_ObjectHideFlags: 0
