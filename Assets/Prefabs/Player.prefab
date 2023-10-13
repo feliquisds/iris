@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 6082575806313374961}
   - component: {fileID: 1824045667}
   m_Layer: 13
-  m_Name: Player
+  m_Name: player
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -110,7 +110,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 6
+  m_SortingOrder: 0
   m_Sprite: {fileID: 2007006788, guid: 370a23edc892e6b4ca17317a02c9604d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -313,7 +313,7 @@ GameObject:
   - component: {fileID: 233669690397117213}
   - component: {fileID: 6240617518810029737}
   m_Layer: 0
-  m_Name: Camera
+  m_Name: player_camera
   m_TagString: PlayerCameraPoint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

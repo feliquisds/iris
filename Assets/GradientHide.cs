@@ -54,12 +54,12 @@ public class GradientHide : MonoBehaviour
         if (hidden)
         {
             if (usingSprite) FadeInSprite();
-            FadeInTile();
+            else FadeInTile();
         }
         else
         {
             if (usingSprite) FadeOutSprite();
-            FadeOutTile();
+            else FadeOutTile();
         }
     }
 
