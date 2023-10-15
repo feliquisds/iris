@@ -10,6 +10,7 @@ TagManager:
   - Ground
   - Projectile
   - Path
+  - Slope
   layers:
   - Default
   - TransparentFX
