@@ -43510,7 +43510,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 788854124}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &623314979
 BoxCollider2D:
@@ -45605,7 +45605,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1815426855}
-  - {fileID: 1094543054}
   - {fileID: 623314978}
   m_Father: {fileID: 1267246444}
   m_RootOrder: 3
