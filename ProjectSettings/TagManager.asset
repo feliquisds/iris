@@ -10,11 +10,12 @@ TagManager:
   - Ground
   - Projectile
   - Path
+  - Slope
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Level
   - Water
   - UI
   - 

@@ -1221,7 +1221,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "[Vers\xE3o DEV 0.4.1]\n\n- Setas esquerda e direita para se mover\n- Barra
+  m_text: "[Vers\xE3o DEV 0.5.0]\n\n- Setas esquerda e direita para se mover\n- Barra
     de espa\xE7o para pular\n- Seta para baixo para agachar\n- Tecla Z para atirar
     (quando dispon\xEDvel)\n- Tecla ESC para pausar/despausar\n- Debug: tecla Q para
     trocar de cena"

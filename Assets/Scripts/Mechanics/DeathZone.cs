@@ -1,23 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using Platformer.Gameplay;
 using UnityEngine;
-using static Platformer.Core.Simulation;
 
-namespace Platformer.Mechanics
+public class DeathZone : MonoBehaviour
 {
-    /// <summary>
-    /// DeathZone components mark a collider which will schedule a
-    /// PlayerEnteredDeathZone event when the player enters the trigger.
-    /// </summary>
-    public class DeathZone : MonoBehaviour
+    void OnTriggerEnter2D(Collider2D collider)
     {
-        void OnTriggerEnter2D(Collider2D collider)
-        {
-            if (collider.gameObject.tag == "Player")
-            {
-                Schedule<PlayerEnteredDeathZone>();
-            }
-        }
+        if (collider.gameObject.tag == "Player")
+        StartCoroutine(GameObject.FindWithTag("Player").GetComponent<PlayerControl>().Die());
     }
 }
