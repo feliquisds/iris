@@ -1,8 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Platformer.Model;
 using Platformer.Core;
+using Platformer.Model;
 
 public class MoveCamera : MonoBehaviour
 {

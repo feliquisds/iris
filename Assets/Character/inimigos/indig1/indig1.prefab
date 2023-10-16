@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 5931872508629246802}
   - component: {fileID: 6031511242580018558}
   - component: {fileID: 4905791017946448767}
-  - component: {fileID: 4905791017946448764}
   - component: {fileID: 4905791017946448754}
   m_Layer: 0
   m_Name: indig1
@@ -157,19 +156,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.66778564, y: 0.7014575}
   m_EdgeRadius: 0
---- !u!114 &4905791017946448764
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5868913245512574321}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c8534e17a0f90604c9afd4f5c73d829f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Id: 33db5abf-4e89-418c-a302-0c77000c82d1
 --- !u!114 &4905791017946448754
 MonoBehaviour:
   m_ObjectHideFlags: 0

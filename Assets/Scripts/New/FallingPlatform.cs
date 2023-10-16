@@ -1,50 +1,42 @@
-using Platformer.Core;
 using System.Collections;
-using Platformer.Mechanics;
-using Platformer.Model;
+using System.Collections.Generic;
 using UnityEngine;
-using static Platformer.Core.Simulation;
 
-namespace Platformer.Mechanics
-{
 public class FallingPlatform : MonoBehaviour
 {
     internal Rigidbody2D rigid;
-    internal CapsuleCollider2D trigger;
-    PlatformerModel model = Simulation.GetModel<PlatformerModel>();
-    internal float spawnX;
-    internal float spawnY;
-    internal float spawnZ;
+    internal Vector3 spawn;
+    public float fallDelay, actionDelay = 2.1f, gravity = 0.5f;
+    public bool goesBack;
 
-    // Start is called before the first frame update
     void Awake()
     {
-        rigid = this.GetComponent<Rigidbody2D>();
-        trigger = this.GetComponent<CapsuleCollider2D>();
-        spawnX = this.transform.position.x;
-        spawnY = this.transform.position.y;
-        spawnZ = this.transform.position.z;
+        rigid = GetComponent<Rigidbody2D>();
+        spawn = transform.position;
     }
 
-    void OnTriggerEnter2D(Collider2D collider)
-        {
-            var player = model.player;
-            if (collider.gameObject.tag == "Player")
-            {
-                player.onFallingPlat = true;
-                rigid.bodyType = RigidbodyType2D.Dynamic;
-                rigid.gravityScale = 0.3f;
-                StartCoroutine(GoBack());
-            }
-        }
-
-    IEnumerator GoBack()
+    void OnCollisionEnter2D(Collision2D collider)
     {
-        yield return new WaitForSeconds(2.1f);
-        this.transform.position = new Vector3(spawnX, spawnY, spawnZ);
-        rigid.gravityScale = 0;
-        rigid.velocity = new Vector2(0f, 0f);
+        if (collider.gameObject.tag == "Player")
+        {
+            StartCoroutine(Fall());
+        }
+    }
+
+    IEnumerator Fall()
+    {
+        yield return new WaitForSeconds(fallDelay);
+        rigid.bodyType = RigidbodyType2D.Dynamic;
+        rigid.gravityScale = gravity;
+        yield return new WaitForSeconds(actionDelay);
+
+        if (goesBack) GoBack();
+        else Destroy(gameObject);
+    }
+
+    void GoBack()
+    {
+        transform.position = spawn;
         rigid.bodyType = RigidbodyType2D.Static;
     }
-}
 }

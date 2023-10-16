@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Platformer.Core;
+using Platformer.Model;
 
 public class PlayerControl : MonoBehaviour
 {
@@ -9,17 +11,18 @@ public class PlayerControl : MonoBehaviour
     internal SpriteRenderer sprite;
     internal Animator anim;
 
-    public bool controlEnabled = true;
-    public float maxSpeed, acceleration = 5f;
-    public float jumpStrength = 8.5f;
+    public bool controlEnabled = true, canAttack;
+    public float maxSpeed = 5f, acceleration = 5f, jumpStrength = 8.5f;
+    public int health, maxHealth = 2;
     internal float move;
     internal Vector2 newVelocity;
+    public bool grounded => rb.IsTouching(contactFilter);
 
-    public bool canAttack;
     public GameObject projectile;
-    private bool attacking, crouching, canJump;
+    private bool attacking, crouching, canJump, canBeHurt = true, dead = false;
 
     public ContactFilter2D contactFilter;
+    public Bounds Bounds => colli.bounds;
 
     void Awake()
     {
@@ -27,6 +30,7 @@ public class PlayerControl : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         sprite = GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();
+        health = maxHealth;
     }
 
     void FixedUpdate()
@@ -47,39 +51,32 @@ public class PlayerControl : MonoBehaviour
     {
         if (controlEnabled)
         {
-            if (attacking || crouching) move = 0f;
-            else move = Input.GetAxis("Horizontal");
+            move = (attacking || crouching) ? 0f : Input.GetAxis("Horizontal");
 
             if (Input.GetButtonDown("Jump") && canJump)
             {
                 canJump = false;
-                rb.velocity += new Vector2(0, jumpStrength);
+                rb.velocity = new Vector2(rb.velocity.x, jumpStrength);
             }
             if (!grounded && canJump) StartCoroutine(JumpMercy());
         }
 
         if (move > 0f) sprite.flipX = false;
-        else if (move < 0f) sprite.flipX = true;
+        if (move < 0f) sprite.flipX = true;
 
         if (grounded)
         {
-            if (!attacking) canJump = true;
-
-            if (Input.GetButton("Crouch"))
-                crouching = true;
-            else crouching = false;
-
-            if (canAttack && Input.GetButton("Attack"))
-                attacking = true;
-            else attacking = false;
+            canJump = (!attacking) ? true : false;
+            crouching = (Input.GetButton("Crouch")) ? true : false;
+            attacking = (canAttack && Input.GetButton("Attack")) ? true : false;
         }
-        if (rb.velocity.y < -10f)
-            rb.velocity = new Vector2(rb.velocity.x, -10f);
+
+        if (rb.velocity.y < -10f) rb.velocity = new Vector2(rb.velocity.x, -10f);
+
+        if (dead && grounded) rb.simulated = false;
 
         UpdateAnimator();
     }
-
-    public bool grounded => rb.IsTouching(contactFilter);
 
     void OnCollisionStay2D(Collision2D _collider) { if (_collider.gameObject.tag == "Slope") EnterSlope(); }
     void EnterSlope() => rb.gravityScale = (move == 0f) ? 0 : 2;
@@ -91,17 +88,73 @@ public class PlayerControl : MonoBehaviour
         canJump = false;
     }
 
-    void AttackToggle() => canJump = controlEnabled = (canJump && controlEnabled) ? false : true;
+    public void Bounce() => rb.velocity = new Vector2(rb.velocity.x, 9f);
+
+    void AttackToggle() => canJump = controlEnabled = attacking ? false : true;
 
     void Shoot()
     {
         GameObject p = Instantiate(projectile, transform.position, transform.rotation);
-        var rigid = p.GetComponent<Rigidbody2D>();
-        rigid.velocity = new Vector2(5f, 0f);
+        p.GetComponent<Rigidbody2D>().velocity = new Vector2(5f, 0f);
+    }
+
+    public void Hurt()
+    {
+        if (canBeHurt)
+        {
+            if (health > 0)
+            {
+                controlEnabled = false;
+                health -= 1;
+                anim.SetTrigger("hurting");
+                rb.velocity = sprite.flipX ? new Vector2(3f, 3f) : new Vector2(-3f, 3f);
+                StartCoroutine(HurtRecover());
+            }
+            else StartCoroutine(Die());
+        }
+    }
+
+    IEnumerator HurtRecover()
+    {
+        yield return new WaitForSeconds(0.5f);
+        controlEnabled = true;
+        yield return new WaitForSeconds(0.5f);
+        canBeHurt = true;
+    }
+
+    public IEnumerator Die()
+    {
+        var model = Simulation.GetModel<PlatformerModel>();
+
+        if (grounded) anim.SetTrigger("dying");
+        else anim.SetTrigger("airdying");
+        health = -1;
+        rb.velocity = Vector2.zero;
+        dead = true;
+        controlEnabled = canBeHurt = false;
+        model.virtualCamera.m_Follow = model.virtualCamera.m_LookAt = null;
+        yield return new WaitForSeconds(2f);
+        StartCoroutine(Respawn());
+    }
+
+    IEnumerator Respawn()
+    {
+        var model = Simulation.GetModel<PlatformerModel>();
+
+        health = maxHealth;
+        transform.position = model.spawnPoint.transform.position;
+        rb.simulated = true;
+        dead = sprite.flipX = false;
+        rb.velocity = newVelocity = Vector2.zero;
+        move = 0f;
+        model.virtualCamera.m_Follow = model.virtualCamera.m_LookAt = model.playercamerapoint;
+        yield return new WaitForSeconds(1f);
+        controlEnabled = canBeHurt = true;
     }
 
     private void UpdateAnimator()
     {
+        anim.SetBool("dead", dead);
         anim.SetBool("attack", attacking);
         anim.SetBool("crouch", crouching);
         anim.SetBool("grounded", grounded);

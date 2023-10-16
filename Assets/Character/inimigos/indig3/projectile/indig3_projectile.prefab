@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 8483641602815844475}
   - component: {fileID: 4658138465589823408}
   - component: {fileID: 4755476184251889476}
-  - component: {fileID: -3951653251806637411}
   - component: {fileID: 3589537019268041984}
+  - component: {fileID: -3951653251806637411}
   m_Layer: 0
   m_Name: indig3_projectile
   m_TagString: Untagged
@@ -98,28 +98,16 @@ Rigidbody2D:
   m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 1
-  m_Mass: 0.042013973
+  m_UseAutoMass: 0
+  m_Mass: 1
   m_LinearDrag: 0
-  m_AngularDrag: 0.05
+  m_AngularDrag: 0
   m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 0
   m_CollisionDetection: 0
-  m_Constraints: 0
---- !u!114 &-3951653251806637411
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1573551821831009654}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1f5ba1839407b3945a8a493d372a82ee, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Constraints: 6
 --- !u!61 &3589537019268041984
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -146,3 +134,15 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.22840467, y: 0.045986332}
   m_EdgeRadius: 0
+--- !u!114 &-3951653251806637411
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1573551821831009654}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f5ba1839407b3945a8a493d372a82ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
