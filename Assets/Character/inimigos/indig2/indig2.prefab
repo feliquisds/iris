@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 1849169257765056205}
   - component: {fileID: 1751782324164954337}
   - component: {fileID: 37714163}
-  - component: {fileID: 37714162}
   - component: {fileID: 570150797}
   m_Layer: 0
   m_Name: indig2
@@ -157,19 +156,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 8.228242, y: 4.0663953}
   m_EdgeRadius: 0
---- !u!114 &37714162
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1801225686893918325}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c8534e17a0f90604c9afd4f5c73d829f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Id: c3f4471c-91d5-4443-83c7-665ba6ff91bd
 --- !u!114 &570150797
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -188,3 +174,5 @@ MonoBehaviour:
   secondSpeed: 4
   thirdSpeed: 5
   verticalSpeed: 9
+  spawnXOffset: 0.5
+  spawnYOffset: 0
