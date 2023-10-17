@@ -4,7 +4,7 @@ using UnityEngine;
 using Platformer.Core;
 using Platformer.Model;
 
-public class checkpoint : MonoBehaviour
+public class Checkpoint : MonoBehaviour
 {
     Animator animator;
     Collider2D colli;
@@ -23,6 +23,13 @@ public class checkpoint : MonoBehaviour
             model.spawnPoint.transform.position = transform.position;
             animator.SetBool("touched", true);
             colli.enabled = false;
+            IncreaseLife();
         }
+    }
+
+    void IncreaseLife()
+    {
+        var player = GameObject.FindWithTag("Player").GetComponent<PlayerControl>();
+        player.health = (player.health < 2) ? player.health += 1 : player.health;
     }
 }

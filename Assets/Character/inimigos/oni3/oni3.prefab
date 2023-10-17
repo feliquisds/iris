@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1538688256509343952}
   - component: {fileID: 1494211888283410172}
   - component: {fileID: 224164853828131069}
-  - component: {fileID: 5074320827779435271}
+  - component: {fileID: 5898212531555476743}
   m_Layer: 0
   m_Name: oni3
   m_TagString: Enemy
@@ -156,7 +156,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.66778564, y: 0.7014575}
   m_EdgeRadius: 0
---- !u!114 &5074320827779435271
+--- !u!114 &5898212531555476743
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -165,10 +165,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 16829183592397398}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9dd7d6065ad25ee409f0503698eeef26, type: 3}
+  m_Script: {fileID: 11500000, guid: b4613357bcc80e54686a2a7f29f7921e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   projectile: {fileID: 0}
-  speed: 15
-  spawnXOffset: 0.9
+  firstSpeed: 3
+  secondSpeed: 4
+  thirdSpeed: 5
+  verticalSpeed: 9
+  spawnXOffset: 0.5
   spawnYOffset: 0

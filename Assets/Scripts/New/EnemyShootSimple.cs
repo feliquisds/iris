@@ -12,6 +12,8 @@ public class EnemyShootSimple : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D _collider) { if (_collider.gameObject.tag == "Player") animator.SetBool("attack", true); }
     void OnTriggerExit2D(Collider2D _collider) { if (_collider.gameObject.tag == "Player") animator.SetBool("attack", false); }
+
+    void Update() => animator.SetBool("mute", !GetComponent<Renderer>().isVisible);
     
     void ShootProjectile()
     {

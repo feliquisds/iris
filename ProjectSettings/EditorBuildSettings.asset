@@ -5,12 +5,6 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: Assets/Scenes/SampleScene.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
-  - enabled: 0
-    path: Assets/iris.unity
-    guid: f6966c5c3c0f62844b214949a97003a4
   - enabled: 1
     path: Assets/Scenes/fase1.unity
     guid: 540de798b9b0cc040a6f18d8a3e8a932
@@ -19,5 +13,5 @@ EditorBuildSettings:
     guid: 5883b61e2799f514d88639b786663529
   - enabled: 1
     path: Assets/Scenes/fase3.unity
-    guid: e31e32d217b61c14ab8a6f05a3065d64
+    guid: a2275963de34ba14caaac2dbbd8c30e6
   m_configObjects: {}
