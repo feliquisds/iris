@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2879625499060235316}
   - component: {fileID: 2742825458732485144}
   - component: {fileID: 3580533556061146137}
-  - component: {fileID: 3580533556061146132}
+  - component: {fileID: 2559972416828911714}
   m_Layer: 0
   m_Name: oni2
   m_TagString: Enemy
@@ -76,10 +76,10 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1907945055
   m_SortingLayer: 0
-  m_SortingOrder: 5
+  m_SortingOrder: 1
   m_Sprite: {fileID: -1238643617, guid: 7d0ff42117725e84bbaa228d42c8e05e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
+  m_FlipX: 1
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 1.28, y: 1.26}
@@ -117,10 +117,10 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3577873885982513549}
-  m_BodyType: 0
-  m_Simulated: 0
+  m_BodyType: 2
+  m_Simulated: 1
   m_UseFullKinematicContacts: 1
-  m_UseAutoMass: 1
+  m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
@@ -129,7 +129,7 @@ Rigidbody2D:
   m_Interpolate: 1
   m_SleepingMode: 0
   m_CollisionDetection: 1
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!61 &3580533556061146137
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -137,13 +137,13 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3577873885982513549}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.026222229, y: -0.14687991}
+  m_Offset: {x: 0.5625324, y: -0.14687991}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.76666665, y: 0.5222222}
@@ -154,9 +154,9 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.66778564, y: 0.7014575}
+  m_Size: {x: 1.845295, y: 0.7014575}
   m_EdgeRadius: 0
---- !u!114 &3580533556061146132
+--- !u!114 &2559972416828911714
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -165,7 +165,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 3577873885982513549}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3fed6a0b517196b4f8fdee6c1c4e45a1, type: 3}
+  m_Script: {fileID: 11500000, guid: 9dd7d6065ad25ee409f0503698eeef26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0
+  projectile: {fileID: 0}
+  speed: 15
+  spawnXOffset: 0
+  spawnYOffset: 0

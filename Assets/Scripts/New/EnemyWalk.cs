@@ -9,14 +9,14 @@ public class EnemyWalk : MonoBehaviour
     internal bool mute, freeze = false, attack;
     internal Animator animator;
     internal SpriteRenderer spriteRenderer;
-    internal Rigidbody2D body;
+    internal Rigidbody2D rb;
     internal Collider2D _collider;
     public Bounds Bounds => _collider.bounds;
     internal PlayerControl player;
 
     protected virtual void Awake()
     {
-        body = GetComponent<Rigidbody2D>();
+        rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         _collider = GetComponent<Collider2D>();
@@ -25,7 +25,7 @@ public class EnemyWalk : MonoBehaviour
 
     void Update()
     {
-        body.velocity = freeze ? Vector2.zero : new Vector2(speed, 0);
+        rb.velocity = freeze ? Vector2.zero : new Vector2(speed, rb.velocity.y);
 
         if (speed > 0f) spriteRenderer.flipX = false;
         if (speed < 0f) spriteRenderer.flipX = true;

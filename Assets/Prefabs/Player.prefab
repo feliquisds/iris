@@ -127,7 +127,7 @@ Rigidbody2D:
   m_AngularDrag: 0
   m_GravityScale: 2
   m_Material: {fileID: 6200000, guid: 12a56f292a6326d4f88608da4da468a4, type: 2}
-  m_Interpolate: 0
+  m_Interpolate: 2
   m_SleepingMode: 0
   m_CollisionDetection: 1
   m_Constraints: 4
@@ -171,13 +171,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controlEnabled: 1
   canAttack: 1
+  health: 0
+  maxHealth: 2
   maxSpeed: 5
   acceleration: 5
   jumpStrength: 8.5
-  health: 0
-  maxHealth: 2
-  projectile: {fileID: 0}
-  contactFilter:
+  shootXOffset: 1
+  shootYOffset: -0.1
+  projectile: {fileID: 1573551821831009654, guid: ab0309a52e4d6cd45b8117a5af16f1d9,
+    type: 3}
+  groundFilter:
     useTriggers: 0
     useLayerMask: 1
     useDepth: 0
@@ -191,6 +194,34 @@ MonoBehaviour:
     maxDepth: 0
     minNormalAngle: 140
     maxNormalAngle: 30
+  slopeFilter:
+    useTriggers: 0
+    useLayerMask: 1
+    useDepth: 0
+    useOutsideDepth: 0
+    useNormalAngle: 1
+    useOutsideNormalAngle: 0
+    layerMask:
+      serializedVersion: 2
+      m_Bits: 8
+    minDepth: 0
+    maxDepth: 0
+    minNormalAngle: 150
+    maxNormalAngle: 130
+  invertedSlopeFilter:
+    useTriggers: 0
+    useLayerMask: 1
+    useDepth: 0
+    useOutsideDepth: 0
+    useNormalAngle: 1
+    useOutsideNormalAngle: 0
+    layerMask:
+      serializedVersion: 2
+      m_Bits: 8
+    minDepth: 0
+    maxDepth: 0
+    minNormalAngle: 60
+    maxNormalAngle: 40
 --- !u!1 &3810331656995984049
 GameObject:
   m_ObjectHideFlags: 0

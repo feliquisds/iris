@@ -4,13 +4,10 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - TutorialRequirement
   - PlayerCameraPoint
   - Enemy
   - Ground
-  - Projectile
   - Path
-  - Slope
   layers:
   - Default
   - TransparentFX

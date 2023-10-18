@@ -68,7 +68,7 @@ namespace Platformer.UI
             {
                 ToggleMainMenu(show: !showMainCanvas);
             }
-            if ((showMainCanvas == true) && Input.GetButton("Debug Next"))
+            if ((showMainCanvas) && Input.GetButton("Debug Next"))
             {
                 if (SceneManager.GetActiveScene().buildIndex == 2)
                 {
