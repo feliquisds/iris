@@ -168,7 +168,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9dd7d6065ad25ee409f0503698eeef26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectile: {fileID: 0}
-  speed: 15
+  projectile: {fileID: 1573551821831009654, guid: 03998aeaf8b06da428c3157b1836a2f8,
+    type: 3}
+  speed: -6
   spawnXOffset: 0
-  spawnYOffset: 0
+  spawnYOffset: -0.3

@@ -23,6 +23,10 @@ public class PlayerControl : MonoBehaviour
     public GameObject projectile;
     private bool attacking, crouching, canJump, canBeHurt = true, dead = false;
 
+    internal AudioSource audioSource;
+    public AudioClip jumpSound, hurtSound, deathSound;
+    public float audioVolume = 1f;
+
     public ContactFilter2D groundFilter, slopeFilter, invertedSlopeFilter;
     public Bounds Bounds => colli.bounds;
 
@@ -30,6 +34,7 @@ public class PlayerControl : MonoBehaviour
     {
         colli = GetComponent<Collider2D>();         rb = GetComponent<Rigidbody2D>();
         sprite = GetComponent<SpriteRenderer>();    anim = GetComponent<Animator>();
+        audioSource = GetComponent<AudioSource>();
         health = maxHealth;
     }
 
@@ -56,6 +61,7 @@ public class PlayerControl : MonoBehaviour
 
             if (Input.GetButtonDown("Jump") && canJump)
             {
+                audioSource.PlayOneShot(jumpSound, audioVolume);
                 canJump = false;
                 rb.velocity = new Vector2(rb.velocity.x, jumpStrength);
             }
@@ -99,6 +105,7 @@ public class PlayerControl : MonoBehaviour
             if (health > 0)
             {
                 controlEnabled = canBeHurt = false;
+                audioSource.PlayOneShot(hurtSound, audioVolume);
                 health -= 1;
                 anim.SetTrigger("hurting");
                 rb.velocity = new Vector2((sprite.flipX ? 3f : -3f), 3f);
@@ -121,6 +128,7 @@ public class PlayerControl : MonoBehaviour
     {
         var model = Simulation.GetModel<PlatformerModel>();
 
+        audioSource.PlayOneShot(deathSound, audioVolume);
         anim.SetTrigger(grounded ? "dying" : "airdying");
         health = -1;
         rb.velocity = Vector2.zero;
