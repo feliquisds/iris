@@ -7,7 +7,7 @@ public class ArmadilloUI : MonoBehaviour
     internal int armadilloCount = 0;
     internal Vector3 newTransform;
 
-    void Awake() => newTransform = transform.position;
+    void Awake() => newTransform = this.transform.position;
 
     public void AddCount()
     {
@@ -15,5 +15,5 @@ public class ArmadilloUI : MonoBehaviour
         newTransform = newTransform - new Vector3(200f, 0, 0);
     }
 
-    void Update() => transform.position = Vector3.MoveTowards(transform.position, newTransform, 700f * Time.deltaTime);
+    void Update() => this.transform.position = Vector3.MoveTowards(this.transform.position, newTransform, 700f * Time.deltaTime);
 }

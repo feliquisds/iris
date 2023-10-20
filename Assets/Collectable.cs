@@ -11,7 +11,7 @@ public class Collectable : MonoBehaviour
     {
         if (_collider.gameObject.tag == "Player")
         {
-            if (isArmadillo) armadilloUI.AddCount();
+            if (isArmadillo) { armadilloUI.AddCount(); }
             Destroy(gameObject);
         }
     }
