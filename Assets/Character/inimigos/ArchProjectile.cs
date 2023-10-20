@@ -4,17 +4,12 @@ using UnityEngine;
 
 public class ArchProjectile : MonoBehaviour
 {
-    private Rigidbody2D rb;
-    private Collider2D colli;
+    private Rigidbody2D rb => GetComponent<Rigidbody2D>();
+    private Collider2D colli => GetComponent<Collider2D>();
     private bool hasHitGround;
     public float fadeSpeed;
 
-    void Awake()
-    {
-        rb = GetComponent<Rigidbody2D>();
-        colli = GetComponent<Collider2D>();
-        StartCoroutine(ActivateHitbox());
-    }
+    void Awake() => StartCoroutine(ActivateHitbox());
 
     void Update()
     {
@@ -58,5 +53,7 @@ public class ArchProjectile : MonoBehaviour
     {
         yield return new WaitForSeconds(0.5f);
         colli.enabled = true;
+        yield return new WaitForSeconds(10f);
+        Destroy(gameObject);
     }
 }

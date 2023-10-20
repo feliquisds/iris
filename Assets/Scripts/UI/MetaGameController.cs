@@ -70,7 +70,7 @@ namespace Platformer.UI
             }
             if ((showMainCanvas) && Input.GetButton("Debug Next"))
             {
-                if (SceneManager.GetActiveScene().buildIndex == 2)
+                if (SceneManager.GetActiveScene().buildIndex == 3)
                 {
                    SceneManager.LoadScene(0);
                 }

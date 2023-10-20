@@ -8,6 +8,8 @@ TagManager:
   - Enemy
   - Ground
   - Path
+  - PlayerAttack
+  - ArmadilloUI
   layers:
   - Default
   - TransparentFX

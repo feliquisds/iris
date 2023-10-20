@@ -172,8 +172,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controlEnabled: 1
   canAttack: 1
-  health: 0
   maxHealth: 2
+  health: 2
   maxSpeed: 5
   acceleration: 5
   jumpStrength: 8.5
