@@ -4,16 +4,11 @@ using UnityEngine;
 
 public class SimpleProjectile : MonoBehaviour
 {
-    internal Rigidbody2D rb;
-    internal SpriteRenderer sprite;
+    internal Rigidbody2D rb => GetComponent<Rigidbody2D>();
+    internal SpriteRenderer sprite => GetComponent<SpriteRenderer>();
     public bool fromPlayer = false;
 
-    void Awake()
-    {
-        rb = GetComponent<Rigidbody2D>();
-        sprite = GetComponent<SpriteRenderer>();
-        StartCoroutine(AutoDestroy());
-    }
+    void Awake() => StartCoroutine(AutoDestroy());
 
     void Update() => sprite.flipX = (rb.velocity.x < 0) ? true : false;
 
@@ -22,15 +17,14 @@ public class SimpleProjectile : MonoBehaviour
         if (collision.gameObject.tag == "Player" && !fromPlayer)
         GameObject.FindWithTag("Player").GetComponent<PlayerControl>().Hurt();
 
-        if (collision.gameObject.tag == "Enemy" && fromPlayer)
-        Debug.Log("hit");
-
-        Destroy(gameObject);
+        if (collision.gameObject.tag != "Enemy") Destroy(gameObject);
+        if (collision.gameObject.tag == "Enemy" && fromPlayer) Destroy(gameObject);
+        if (collision.gameObject.tag == "Ground") Destroy(gameObject);
     }
 
     IEnumerator AutoDestroy()
     {
-        yield return new WaitForSeconds(fromPlayer ? 3f : 5f);
+        yield return new WaitForSeconds(3f);
         Destroy(gameObject);
     }
 }

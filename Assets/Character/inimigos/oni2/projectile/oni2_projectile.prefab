@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: -3951653251806637411}
   m_Layer: 0
   m_Name: oni2_projectile
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

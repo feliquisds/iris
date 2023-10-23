@@ -7,6 +7,11 @@ public class EnemyHealth : MonoBehaviour
     internal SpriteRenderer sprite => GetComponent<SpriteRenderer>();
     public int health;
     public Material defaultMaterial, whiteMaterial;
+    public GameObject explosion;
+    public bool isBlue, isPurple;
+    internal Collider2D _collider => GetComponent<Collider2D>();
+    public Bounds Bounds => _collider.bounds;
+    internal PlayerControl player => GameObject.FindWithTag("Player").GetComponent<PlayerControl>();
 
 
     void OnCollisionEnter2D(Collision2D _collider)
@@ -18,7 +23,12 @@ public class EnemyHealth : MonoBehaviour
                 health -= 1;
                 StartCoroutine(Flicker());
             }
-            else Destroy(gameObject);
+            else Explode();
+        }
+
+        if (_collider.gameObject.tag == "Player")
+        {
+            if (this.GetComponent<EnemyWalk>() == null) player.Hurt();
         }
     }
 
@@ -28,5 +38,14 @@ public class EnemyHealth : MonoBehaviour
         yield return new WaitForSeconds(0.1f);
         sprite.material = defaultMaterial;
         yield return new WaitForSeconds(0.1f);
+    }
+
+    void Explode()
+    {
+        GameObject smoke = Instantiate(explosion, transform.position, transform.rotation);
+        if (isBlue) smoke.GetComponent<Animator>().SetTrigger("blue");
+        if (isPurple) smoke.GetComponent<Animator>().SetTrigger("purple");
+
+        Destroy(gameObject);
     }
 }

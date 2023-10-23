@@ -41,7 +41,7 @@ Grid:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4550837615559291821}
   m_Enabled: 1
-  m_CellSize: {x: 0.64, y: 0.64, z: 0}
+  m_CellSize: {x: 0.64, y: 1, z: 0}
   m_CellGap: {x: 0, y: 0, z: 0}
   m_CellLayout: 0
   m_CellSwizzle: 0
@@ -207,6 +207,16 @@ Tilemap:
       m_TileObjectToInstantiateIndex: 65535
       dummyAlignment: 0
       m_AllTileFlags: 1073741825
+  - first: {x: -1, y: 0, z: 0}
+    second:
+      serializedVersion: 2
+      m_TileIndex: 16
+      m_TileSpriteIndex: 16
+      m_TileMatrixIndex: 0
+      m_TileColorIndex: 0
+      m_TileObjectToInstantiateIndex: 65535
+      dummyAlignment: 0
+      m_AllTileFlags: 1073741825
   - first: {x: -7, y: 2, z: 0}
     second:
       serializedVersion: 2
@@ -281,6 +291,8 @@ Tilemap:
     m_Data: {fileID: 11400000, guid: c619ea7295608ca47ae6fa25fde50c48, type: 2}
   - m_RefCount: 1
     m_Data: {fileID: 11400000, guid: 39e288b541433ac4a931c6e1989e0079, type: 2}
+  - m_RefCount: 1
+    m_Data: {fileID: 11400000, guid: 5dfe2a43b057c6246ae166dcc19f5a92, type: 2}
   m_TileSpriteArray:
   - m_RefCount: 1
     m_Data: {fileID: 21300000, guid: 9004e89987cc06e4a8fbc5c60b175f52, type: 3}
@@ -314,8 +326,10 @@ Tilemap:
     m_Data: {fileID: 21300000, guid: cd1a108c9fec63e46a726fc9f3b995f6, type: 3}
   - m_RefCount: 1
     m_Data: {fileID: 21300000, guid: 8d1d9500289b6824bb10ec5e03fa51d7, type: 3}
+  - m_RefCount: 1
+    m_Data: {fileID: 21300000, guid: 3f97ea9f9f5bcbf47bf3d70c352b159f, type: 3}
   m_TileMatrixArray:
-  - m_RefCount: 16
+  - m_RefCount: 17
     m_Data:
       e00: 1
       e01: 0
@@ -334,7 +348,7 @@ Tilemap:
       e32: 0
       e33: 1
   m_TileColorArray:
-  - m_RefCount: 16
+  - m_RefCount: 17
     m_Data: {r: 1, g: 1, b: 1, a: 1}
   m_TileObjectToInstantiateArray: []
   m_AnimationFrameRate: 1
@@ -409,7 +423,7 @@ TilemapRenderer:
   m_Mode: 0
   m_DetectChunkCullingBounds: 0
   m_MaskInteraction: 0
---- !u!114 &8983278682491077834
+--- !u!114 &7651396768945650587
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

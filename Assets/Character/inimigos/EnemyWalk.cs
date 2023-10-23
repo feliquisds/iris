@@ -54,6 +54,7 @@ public class EnemyWalk : MonoBehaviour
             else
             {
                 player.Hurt();
+                animator.SetTrigger("attacked");
                 Freeze();
             }
         }
