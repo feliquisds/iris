@@ -5,7 +5,10 @@ using UnityEngine;
 public class Collectable : MonoBehaviour
 {
     public bool isArmadillo;
+    public int level;
     internal ArmadilloUI armadilloUI => GameObject.FindWithTag("ArmadilloUI").GetComponent<ArmadilloUI>();
+
+    void Awake() { if (!isArmadillo) GetComponent<Animator>().SetTrigger(level == 1 ? "level1" : level == 2 ? "level2" : "level3"); }
 
     void OnTriggerEnter2D(Collider2D _collider)
     {

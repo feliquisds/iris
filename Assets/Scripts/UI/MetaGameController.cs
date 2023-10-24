@@ -70,9 +70,9 @@ namespace Platformer.UI
             }
             if ((showMainCanvas) && Input.GetButton("Debug Next"))
             {
-                if (SceneManager.GetActiveScene().buildIndex == 3)
+                if (SceneManager.GetActiveScene().buildIndex == 4)
                 {
-                   SceneManager.LoadScene(0);
+                   SceneManager.LoadScene(1);
                 }
                 else {
                     int nextScene = (SceneManager.GetActiveScene().buildIndex) + 1;

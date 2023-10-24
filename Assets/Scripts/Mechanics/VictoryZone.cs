@@ -4,18 +4,26 @@ using UnityEngine.SceneManagement;
 
 public class VictoryZone : MonoBehaviour
 {
+
+    public bool walk;
+    internal PlayerControl player => GameObject.FindWithTag("Player").GetComponent<PlayerControl>();
+
     void OnTriggerEnter2D(Collider2D collider)
     {
         var sprite = this.GetComponent<SpriteRenderer>();
-        var player = GameObject.FindWithTag("Player").GetComponent<PlayerControl>();
 
         if (collider.gameObject.tag == "Player")
         {
-            sprite.enabled = false;
             player.controlEnabled = false;
-            player.rb.velocity = Vector2.zero;
-            player.anim.SetTrigger("victory");
             StartCoroutine(WaitForSceneLoad());
+
+            if (!walk)
+            {
+                sprite.enabled = false;
+                player.rb.velocity = Vector2.zero;
+                player.anim.SetTrigger("victory");
+            }
+            else player.winning = true;
         }
     }
 

@@ -11,7 +11,7 @@ public class PlayerControl : MonoBehaviour
     internal SpriteRenderer sprite => GetComponent<SpriteRenderer>();
     internal Animator anim => GetComponent<Animator>();
 
-    public bool controlEnabled = true, canAttack;
+    public bool controlEnabled = true, canAttack, winning;
 
     public bool grounded => rb.IsTouching(groundFilter);
     public bool onSlope => rb.IsTouching(slopeFilter) || rb.IsTouching(invertedSlopeFilter);
@@ -45,6 +45,7 @@ public class PlayerControl : MonoBehaviour
             rb.velocity = newVelocity;
         }
         if (attacking) rb.velocity = Vector2.zero;
+        if (winning) rb.velocity = new Vector2(5f, 0f);
     }
 
     void Update()
