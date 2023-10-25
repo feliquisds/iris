@@ -5,10 +5,8 @@ using UnityEngine.UI;
 
 public class MenuFade : MonoBehaviour
 {
-    internal bool canFade;
+    internal bool canFade = false;
     internal Image image => GetComponent<Image>();
-
-    void Awake() => StartCoroutine(FadeOut());
 
     void Update()
     {
@@ -23,6 +21,7 @@ public class MenuFade : MonoBehaviour
 
             image.color = imgColor;
         }
+        else StartCoroutine(FadeOut());
     }
 
     IEnumerator FadeOut()

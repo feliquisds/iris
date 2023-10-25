@@ -10,6 +10,7 @@ TagManager:
   - Path
   - PlayerAttack
   - ArmadilloUI
+  - Fade
   layers:
   - Default
   - TransparentFX

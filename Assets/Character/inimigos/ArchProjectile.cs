@@ -37,7 +37,7 @@ public class ArchProjectile : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Ground" || collision.gameObject.tag == "Slope")
+        if (collision.gameObject.tag == "Ground")
         {
             hasHitGround = true;
             rb.simulated = false;
@@ -47,6 +47,7 @@ public class ArchProjectile : MonoBehaviour
             GameObject.FindWithTag("Player").GetComponent<PlayerControl>().Hurt();
             Destroy(gameObject);
         }
+        if (collision.gameObject.tag == "PlayerAttack") Destroy(gameObject);
     }
 
     IEnumerator ActivateHitbox()

@@ -173,6 +173,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controlEnabled: 1
   canAttack: 1
+  winning: 0
   maxHealth: 2
   health: 2
   maxSpeed: 5
@@ -337,7 +338,7 @@ EdgeCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.3365}
+  m_Offset: {x: 0, y: -0.34}
   m_EdgeRadius: 0
   m_Points:
   - {x: -0.125, y: 0}
