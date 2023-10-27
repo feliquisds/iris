@@ -767,7 +767,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: "Pressione [Espa\xE7o] para come\xE7ar                                 
-    DEV 0.7.2"
+    DEV 0.8.0"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 3c3515ea2c7ad85489c085768a3ad621, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 3c3515ea2c7ad85489c085768a3ad621, type: 2}

@@ -32,6 +32,24 @@ public class EnemyHealth : MonoBehaviour
         }
     }
 
+    void OnCollisionStay2D(Collision2D _collider)
+    {
+        if (_collider.gameObject.tag == "PlayerAttack")
+        {
+            if (health > 0)
+            {
+                health -= 1;
+                StartCoroutine(Flicker());
+            }
+            else Explode();
+        }
+
+        if (_collider.gameObject.tag == "Player")
+        {
+            if (this.GetComponent<EnemyWalk>() == null) player.Hurt();
+        }
+    }
+
     IEnumerator Flicker()
     {
         sprite.material = whiteMaterial;

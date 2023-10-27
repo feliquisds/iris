@@ -11,12 +11,12 @@ public class PlayerControl : MonoBehaviour
     internal SpriteRenderer sprite => GetComponent<SpriteRenderer>();
     internal Animator anim => GetComponent<Animator>();
 
-    public bool controlEnabled = true, canAttack, winning;
+    public bool controlEnabled = true, canAttack, winning, respawning;
 
     public bool grounded => rb.IsTouching(groundFilter);
     public bool onSlope => rb.IsTouching(slopeFilter) || rb.IsTouching(invertedSlopeFilter);
 
-    public int maxHealth = 2, health = 2;
+    public double maxHealth = 2, health = 2;
 
     internal float move;
     internal Vector2 newVelocity;
@@ -45,7 +45,11 @@ public class PlayerControl : MonoBehaviour
             rb.velocity = newVelocity;
         }
         if (attacking) rb.velocity = Vector2.zero;
-        if (winning) rb.velocity = new Vector2(5f, 0f);
+        if (winning)
+        {
+            rb.velocity = new Vector2(5f, 0f);
+            canBeHurt = false;
+        }
     }
 
     void Update()
@@ -121,23 +125,27 @@ public class PlayerControl : MonoBehaviour
 
     public IEnumerator Die()
     {
-        var model = Simulation.GetModel<PlatformerModel>();
+        if (canBeHurt)
+        {
+            var model = Simulation.GetModel<PlatformerModel>();
 
-        audioSource.PlayOneShot(deathSound, audioVolume);
-        anim.SetTrigger(grounded ? "dying" : "airdying");
-        health = -1;
-        rb.velocity = Vector2.zero;
-        dead = true;
-        controlEnabled = canBeHurt = false;
-        model.virtualCamera.m_Follow = model.virtualCamera.m_LookAt = null;
+            audioSource.PlayOneShot(deathSound, audioVolume);
+            anim.SetTrigger(grounded ? "dying" : "airdying");
+            health = -1;
+            rb.velocity = Vector2.zero;
+            dead = true;
+            controlEnabled = canBeHurt = false;
+            model.virtualCamera.m_Follow = model.virtualCamera.m_LookAt = null;
 
-        yield return new WaitForSeconds(2f);
-        StartCoroutine(Respawn());
+            yield return new WaitForSeconds(2f);
+            StartCoroutine(Respawn());
+        }
     }
 
     IEnumerator Respawn()
     {
         var model = Simulation.GetModel<PlatformerModel>();
+        respawning = true;
 
         health = maxHealth;
         transform.position = model.spawnPoint.transform.position;
@@ -147,9 +155,12 @@ public class PlayerControl : MonoBehaviour
         move = 0f;
         model.virtualCamera.m_Follow = model.virtualCamera.m_LookAt = model.playercamerapoint;
 
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.75f);
         controlEnabled = canBeHurt = true;
+        respawning = false;
     }
+
+    public void IncreaseLife() => health = health >= 2 ? health : health += 0.5;
 
     private void UpdateAnimator()
     {

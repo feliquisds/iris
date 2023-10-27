@@ -11,6 +11,10 @@ TagManager:
   - PlayerAttack
   - ArmadilloUI
   - Fade
+  - InsectWave
+  - CameraHandler
+  - CustomCamera
+  - InsectWave_Insect
   layers:
   - Default
   - TransparentFX

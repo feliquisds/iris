@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class LifeUI : MonoBehaviour
 {
-    internal Animator animator;
+    internal Animator animator => GetComponent<Animator>();
 
-    void Awake() => animator = GetComponent<Animator>();
-    void Update() => animator.SetInteger("vida", GameObject.FindWithTag("Player").GetComponent<PlayerControl>().health);
+    void Update() => animator.SetInteger("vida", (int)GameObject.FindWithTag("Player").GetComponent<PlayerControl>().health);
 }

@@ -6,18 +6,16 @@ using Platformer.Model;
 
 public class MoveCamera : MonoBehaviour
 {
-    public GameObject player;
-    private bool playerFacing, playerGrounded;
+    internal GameObject player => GameObject.FindWithTag("Player");
+    internal bool playerFacingLeft => player.GetComponent<SpriteRenderer>().flipX;
+    internal bool playerGrounded => player.GetComponent<PlayerControl>().grounded;
     PlatformerModel model = Simulation.GetModel<PlatformerModel>();
 
     void Update()
     {
-        playerFacing = player.GetComponent<SpriteRenderer>().flipX;
-        playerGrounded = player.GetComponent<PlayerControl>().grounded;
-
-        if ((playerFacing) && (playerGrounded))
+        if ((playerFacingLeft) && (playerGrounded))
             transform.position = player.transform.position + new Vector3(-1f, 0.5f, 0f);
-        else if ((!playerFacing) && (playerGrounded))
+        else if ((!playerFacingLeft) && (playerGrounded))
             transform.position = player.transform.position + new Vector3(1f, 0.5f, 0f);
         
         model.playercamerapoint = transform;
