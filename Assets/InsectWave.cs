@@ -32,22 +32,19 @@ public class InsectWave : MonoBehaviour
     void OnTriggerEnter2D(Collider2D _collider)
     {
         if (_collider.gameObject.tag == "Player" && !activated && !isDeathZone) StartChase();
-    }
-
-    void OnTriggerExit2D(Collider2D _collider)
-    {
         if (_collider.gameObject.tag == "Player" && isDeathZone) StartCoroutine(StartDeathZone());
     }
 
     IEnumerator StartDeathZone()
     {
-        yield return new WaitForSeconds(0.93f);
+        yield return new WaitForSeconds(2f);
         GetComponent<DeathZone>().active = true;
         newDeathTransform = transform.position + new Vector3(74f, 0, 0);
     }
 
     void StartChase()
     {
+        cameraPoint.GetComponent<AudioSource>().mute = false;
         newTransform = wave.transform.position + new Vector3(800f * movement, 0, 0);
         newCameraTransform = cameraPoint.transform.position + new Vector3(85f, 0, 0);
         vcam.m_Follow = cameraPoint.transform;
@@ -60,18 +57,14 @@ public class InsectWave : MonoBehaviour
     IEnumerator StartInsectSpawn()
     {
         yield return new WaitForSeconds(1f);
-        stopSpawnInsect = false;
-        canSpawnInsect = true;
-        stopSpawnDebris = false;
-        canSpawnDebris = true;
+        stopSpawnInsect = stopSpawnDebris = false;
+        canSpawnInsect = canSpawnDebris = true;
     }
 
     void StopInsectSpawn()
     {
-        stopSpawnInsect = true;
-        canSpawnInsect = false;
-        stopSpawnDebris = true;
-        canSpawnDebris = false;
+        stopSpawnInsect = stopSpawnDebris = true;
+        canSpawnInsect = canSpawnDebris = false;
         GameObject[] insects = GameObject.FindGameObjectsWithTag("InsectWave_Insect");
         foreach (GameObject insect in insects) Destroy(insect);
     }
@@ -80,7 +73,9 @@ public class InsectWave : MonoBehaviour
     {
         canSpawnInsect = false;
         yield return new WaitForSeconds(Random.value);
+
         GameObject insect = Instantiate(Random.value > 0.49f ? insect1 : insect2, transform.position, transform.rotation);
+
         canSpawnInsect = true;
     }
 
@@ -110,6 +105,7 @@ public class InsectWave : MonoBehaviour
             cameraPoint.transform.position = newCameraTransform = initialCameraTransform;
 
             vcam.m_Lens.OrthographicSize = goalCam = 3.5f;
+            cameraPoint.GetComponent<AudioSource>().mute = true;
             chasing = false;
             StopInsectSpawn();
         }

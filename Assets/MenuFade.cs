@@ -8,23 +8,22 @@ public class MenuFade : MonoBehaviour
     internal bool canFade = false;
     internal Image image => GetComponent<Image>();
 
-    void Update()
+    void Awake() { Time.timeScale = 1; StartCoroutine(FadeAllow()); }
+
+    void Update() { if (canFade) FadeOut(); }
+
+    void FadeOut()
     {
-        if (canFade)
-        {
-            var imgColor = image.color;
-            float fadeAmount = imgColor.a - (3f * Time.deltaTime);
+        var imgColor = image.color;
+        float fadeAmount = imgColor.a - (3f * Time.deltaTime);
 
-            imgColor = new Color(imgColor.r, imgColor.g, imgColor.b, fadeAmount);
+        imgColor = new Color(imgColor.r, imgColor.g, imgColor.b, fadeAmount);
 
-            if (imgColor.a <= 0) imgColor.a = 0;
+        if (imgColor.a <= 0) imgColor.a = 0;
 
-            image.color = imgColor;
-        }
-        else StartCoroutine(FadeOut());
+        image.color = imgColor;
     }
-
-    IEnumerator FadeOut()
+    IEnumerator FadeAllow()
     {
         yield return new WaitForSeconds(0.5f);
         canFade = true;

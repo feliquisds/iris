@@ -52,12 +52,14 @@ namespace Platformer.UI
                 Time.timeScale = 0;
                 mainMenu.gameObject.SetActive(true);
                 foreach (var i in gamePlayCanvasii) i.gameObject.SetActive(false);
+                GameObject.FindWithTag("Player").GetComponent<PlayerControl>().controlEnabled = false;
             }
             else
             {
                 Time.timeScale = 1;
                 mainMenu.gameObject.SetActive(false);
                 foreach (var i in gamePlayCanvasii) i.gameObject.SetActive(true);
+                GameObject.FindWithTag("Player").GetComponent<PlayerControl>().controlEnabled = true;
             }
             this.showMainCanvas = show;
         }

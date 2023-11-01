@@ -174,6 +174,7 @@ MonoBehaviour:
   controlEnabled: 1
   canAttack: 1
   winning: 0
+  respawning: 0
   maxHealth: 2
   health: 2
   maxSpeed: 5
@@ -341,8 +342,8 @@ EdgeCollider2D:
   m_Offset: {x: 0, y: -0.34}
   m_EdgeRadius: 0
   m_Points:
-  - {x: -0.125, y: 0}
-  - {x: 0.125, y: 0}
+  - {x: -0.10572147, y: 0}
+  - {x: 0.12973595, y: 0}
   m_AdjacentStartPoint: {x: 0, y: 0}
   m_AdjacentEndPoint: {x: 0, y: 0}
   m_UseAdjacentStartPoint: 0
@@ -391,4 +392,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86453eb4bf1b8644e97e09b7d9c1c490, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 1208144871472054}

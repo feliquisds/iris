@@ -64,6 +64,6 @@ public class EnemyHealth : MonoBehaviour
         if (isBlue) smoke.GetComponent<Animator>().SetTrigger("blue");
         if (isPurple) smoke.GetComponent<Animator>().SetTrigger("purple");
 
-        Destroy(gameObject);
+        gameObject.SetActive(false);
     }
 }

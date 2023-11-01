@@ -22,13 +22,14 @@ public class PlayAudioClip : StateMachineBehaviour
     /// </summary>
     public AudioClip clip;
     float last_t = -1f;
+    public float volume = 1f;
 
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         var nt = stateInfo.normalizedTime;
         if (modulus > 0f) nt %= modulus;
         if (nt >= t && last_t < t)
-            AudioSource.PlayClipAtPoint(clip, animator.transform.position);
+            AudioSource.PlayClipAtPoint(clip, animator.transform.position, volume);
         last_t = nt;
     }
 }

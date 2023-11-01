@@ -7,7 +7,8 @@ public class ArchProjectile : MonoBehaviour
     private Rigidbody2D rb => GetComponent<Rigidbody2D>();
     private Collider2D colli => GetComponent<Collider2D>();
     private bool hasHitGround;
-    public float fadeSpeed;
+    public float fadeSpeed, audioVolume = 1f;
+    public AudioClip hitGround;
 
     void Awake() => StartCoroutine(ActivateHitbox());
 
@@ -41,6 +42,9 @@ public class ArchProjectile : MonoBehaviour
         {
             hasHitGround = true;
             rb.simulated = false;
+
+            if (TryGetComponent<AudioSource>(out AudioSource audioSource) && GetComponent<Renderer>().isVisible)
+            GetComponent<AudioSource>().PlayOneShot(hitGround, audioVolume);
         }
         if (collision.gameObject.tag == "Player")
         {

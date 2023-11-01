@@ -7,15 +7,11 @@ using UnityEngine.UI;
 public class Menu : MonoBehaviour
 {
     internal bool canFade = false;
-    internal Image image => GameObject.FindWithTag("Fade").GetComponent<Image>();
+    internal Image image => GetComponent<Image>();
 
-    void Update()
-    {
-        if (Input.GetButton("Jump")) SceneManager.LoadScene(1);
-        
-        if (canFade) FadeOut();
-        else StartCoroutine(FadeAllow());
-    }
+    void Awake() { Time.timeScale = 1; StartCoroutine(FadeAllow()); }
+
+    void Update() { if (canFade) FadeOut(); }
 
     void FadeOut()
     {

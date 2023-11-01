@@ -169,3 +169,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fadeSpeed: 100
+  audioVolume: 1
+  hitGround: {fileID: 0}

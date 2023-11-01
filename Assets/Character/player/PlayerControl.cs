@@ -65,17 +65,17 @@ public class PlayerControl : MonoBehaviour
                 rb.velocity = new Vector2(rb.velocity.x, jumpStrength);
             }
             if (!grounded && canJump) StartCoroutine(JumpMercy());
+
+            if (grounded)
+            {
+                canJump = (!attacking) ? true : false;
+                crouching = (Input.GetButton("Crouch")) ? true : false;
+                attacking = (canAttack && Input.GetButton("Attack")) ? true : false;
+            }
         }
 
         if (move > 0f) sprite.flipX = false;
         if (move < 0f) sprite.flipX = true;
-
-        if (grounded)
-        {
-            canJump = (!attacking) ? true : false;
-            crouching = (Input.GetButton("Crouch")) ? true : false;
-            attacking = (canAttack && Input.GetButton("Attack")) ? true : false;
-        }
 
         if (rb.velocity.y < -10f) rb.velocity = new Vector2(rb.velocity.x, -10f);
 
@@ -118,7 +118,7 @@ public class PlayerControl : MonoBehaviour
     {
         yield return new WaitForSeconds(0.5f);
         controlEnabled = true;
-        
+
         yield return new WaitForSeconds(0.5f);
         canBeHurt = true;
     }
@@ -146,6 +146,7 @@ public class PlayerControl : MonoBehaviour
     {
         var model = Simulation.GetModel<PlatformerModel>();
         respawning = true;
+        EnemyRespawn();
 
         health = maxHealth;
         transform.position = model.spawnPoint.transform.position;
@@ -162,9 +163,16 @@ public class PlayerControl : MonoBehaviour
 
     public void IncreaseLife() => health = health >= 2 ? health : health += 0.5;
 
+    void EnemyRespawn()
+    {
+        EnemyRespawner enemy = GameObject.FindWithTag("EnemyRespawner").GetComponent<EnemyRespawner>();
+        enemy.Respawn();
+    }
+
     private void UpdateAnimator()
     {
         anim.SetBool("dead", dead);
+        anim.SetBool("canjump", canJump);
         anim.SetBool("attack", attacking);
         anim.SetBool("crouch", crouching);
         anim.SetBool("grounded", grounded);

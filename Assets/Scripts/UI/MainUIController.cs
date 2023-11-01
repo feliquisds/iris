@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Platformer.UI
 {
@@ -21,9 +22,21 @@ namespace Platformer.UI
             }
         }
 
+        public void Unpause()
+        {
+            var menu = GameObject.FindWithTag("GameCore").GetComponent<MetaGameController>();
+            menu.ToggleMainMenu(false);
+        }
+
+        public void MainMenu() => SceneManager.LoadScene(0);
+
+        public void ToggleFullScreen() => Screen.fullScreen = !Screen.fullScreen;
+
+        public void StartGame() => SceneManager.LoadScene(1);
+
         void OnEnable()
         {
-            SetActivePanel(0);
+            SetActivePanel(1);
         }
     }
 }
