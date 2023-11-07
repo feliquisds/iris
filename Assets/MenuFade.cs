@@ -25,7 +25,7 @@ public class MenuFade : MonoBehaviour
     }
     IEnumerator FadeAllow()
     {
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.25f);
         canFade = true;
     }
 }

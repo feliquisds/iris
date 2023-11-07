@@ -44700,7 +44700,7 @@ GameObject:
   - component: {fileID: 1754240611}
   m_Layer: 0
   m_Name: game_core
-  m_TagString: Untagged
+  m_TagString: GameCore
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

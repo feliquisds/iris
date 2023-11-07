@@ -65,13 +65,13 @@ public class PlayerControl : MonoBehaviour
                 rb.velocity = new Vector2(rb.velocity.x, jumpStrength);
             }
             if (!grounded && canJump) StartCoroutine(JumpMercy());
+        }
 
-            if (grounded)
-            {
-                canJump = (!attacking) ? true : false;
-                crouching = (Input.GetButton("Crouch")) ? true : false;
-                attacking = (canAttack && Input.GetButton("Attack")) ? true : false;
-            }
+        if (grounded && Time.timeScale == 1)
+        {
+            canJump = (!attacking) ? true : false;
+            crouching = (Input.GetButton("Crouch")) ? true : false;
+            attacking = (canAttack && Input.GetButton("Attack")) ? true : false;
         }
 
         if (move > 0f) sprite.flipX = false;

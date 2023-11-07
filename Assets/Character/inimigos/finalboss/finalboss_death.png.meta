@@ -1,0 +1,1179 @@
+fileFormatVersion: 2
+guid: fe046fd51049daf4790b56a5380c0a9a
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 16384
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: finalboss_death_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 255
+        height: 190
+      alignment: 9
+      pivot: {x: 0.5137255, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ca808c5b7d6de174cacb0aef28b00b4c
+      internalID: 1227121509
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: finalboss_death_1
+      rect:
+        serializedVersion: 2
+        x: 255
+        y: 0
+        width: 255
+        height: 190
+      alignment: 9
+      pivot: {x: 0.5137255, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 66931b77b45f1d44ba0c64c0ce19bd63
+      internalID: -1665224594
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: finalboss_death_2
+      rect:
+        serializedVersion: 2
+        x: 510
+        y: 0
+        width: 255
+        height: 190
+      alignment: 9
+      pivot: {x: 0.5137255, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 92b444238548b394dbfb56710f5321cb
+      internalID: -1230456908
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: finalboss_death_3
+      rect:
+        serializedVersion: 2
+        x: 765
+        y: 0
+        width: 255
+        height: 190
+      alignment: 9
+      pivot: {x: 0.5137255, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1e37983c8ba6d66499b976c691057317
+      internalID: -333302095
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: finalboss_death_4
+      rect:
+        serializedVersion: 2
+        x: 1020
+        y: 0
+        width: 255
+        height: 190
+      alignment: 9
+      pivot: {x: 0.5137255, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3bfe1fa75d45da243bc48f3655332544
+      internalID: 1946782720
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: finalboss_death_5
+      rect:
+        serializedVersion: 2
+        x: 1275
+        y: 0
+        width: 255
+        height: 190
+      alignment: 9
+      pivot: {x: 0.5137255, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 380acf0ba2d250b41986f7eda4b0868d
+      internalID: -510733294
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: finalboss_death_6
+      rect:
+        serializedVersion: 2
+        x: 1530
+        y: 0
+        width: 255
+        height: 190
+      alignment: 9
+      pivot: {x: 0.5137255, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f15365026bce2e547ac601fcc8c30e7c
+      internalID: 1126259714
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: finalboss_death_7
+      rect:
+        serializedVersion: 2
+        x: 1785
+        y: 0
+        width: 255
+        height: 190
+      alignment: 9
+      pivot: {x: 0.5137255, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d922553dc6de54642a1fe1b95ef2a57b
+      internalID: -1568734222
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: finalboss_death_8
+      rect:
+        serializedVersion: 2
+        x: 2040
+        y: 0
+        width: 255
+        height: 190
+      alignment: 9
+      pivot: {x: 0.5137255, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 05f45e934412c714d9f11fd0352d346e
+      internalID: 1342925270
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: finalboss_death_9
+      rect:
+        serializedVersion: 2
+        x: 2295
+        y: 0
+        width: 255
+        height: 190
+      alignment: 9
+      pivot: {x: 0.5137255, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 85c28f38cee48f04eb5eec8321847f37
+      internalID: -1713357856
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: finalboss_death_10
+      rect:
+        serializedVersion: 2
+        x: 2550
+        y: 0
+        width: 255
+        height: 190
+      alignment: 9
+      pivot: {x: 0.5137255, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 54bf4056b38a1c64383ef6ce450aa90b
+      internalID: 1884905321
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: finalboss_death_11
+      rect:
+        serializedVersion: 2
+        x: 2805
+        y: 0
+        width: 255
+        height: 190
+      alignment: 9
+      pivot: {x: 0.5137255, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d2d47dc35a5a9c24f950355336f4fba7
+      internalID: -1817003932
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: finalboss_death_12
+      rect:
+        serializedVersion: 2
+        x: 3060
+        y: 0
+        width: 255
+        height: 190
+      alignment: 9
+      pivot: {x: 0.5137255, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fb6aa9b34d9ad3c4d8867af58b9df848
+      internalID: -129200506
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: finalboss_death_13
+      rect:
+        serializedVersion: 2
+        x: 3315
+        y: 0
+        width: 255
+        height: 190
+      alignment: 9
+      pivot: {x: 0.5137255, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 553c94d38620cb7468a4a0973f81c071
+      internalID: 1409568116
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: finalboss_death_14
+      rect:
+        serializedVersion: 2
+        x: 3570
+        y: 0
+        width: 255
+        height: 190
+      alignment: 9
+      pivot: {x: 0.5137255, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4054bdcf4adf620479362c2ada8d5fd3
+      internalID: 1650959926
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: finalboss_death_15
+      rect:
+        serializedVersion: 2
+        x: 3825
+        y: 0
+        width: 255
+        height: 190
+      alignment: 9
+      pivot: {x: 0.5137255, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0c2104c53261e684f8ca50fdaf2cf9ed
+      internalID: 899922194
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: finalboss_death_16
+      rect:
+        serializedVersion: 2
+        x: 4080
+        y: 0
+        width: 255
+        height: 190
+      alignment: 9
+      pivot: {x: 0.5137255, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d3ecd049572a5b44dbc3f31e820c5726
+      internalID: 1409847269
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: finalboss_death_17
+      rect:
+        serializedVersion: 2
+        x: 4335
+        y: 0
+        width: 255
+        height: 190
+      alignment: 9
+      pivot: {x: 0.5137255, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7ac0560d150b4bf43b665bdfd50e5c57
+      internalID: -814647040
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: finalboss_death_18
+      rect:
+        serializedVersion: 2
+        x: 4590
+        y: 0
+        width: 255
+        height: 190
+      alignment: 9
+      pivot: {x: 0.5137255, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4ce7e084c0472d04e8fd7c4ac7a9629f
+      internalID: 1315419746
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: finalboss_death_19
+      rect:
+        serializedVersion: 2
+        x: 4845
+        y: 0
+        width: 255
+        height: 190
+      alignment: 9
+      pivot: {x: 0.5137255, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dff77d0f3bc99494690091359ea29051
+      internalID: 1697103373
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: finalboss_death_20
+      rect:
+        serializedVersion: 2
+        x: 5100
+        y: 0
+        width: 255
+        height: 190
+      alignment: 9
+      pivot: {x: 0.5137255, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1bccff6ab1c43844aad83d11677d4f45
+      internalID: -550843710
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: finalboss_death_21
+      rect:
+        serializedVersion: 2
+        x: 5355
+        y: 0
+        width: 255
+        height: 190
+      alignment: 9
+      pivot: {x: 0.5137255, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 542d591eb69ffb748b6f3416f617e11d
+      internalID: 1860813181
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: finalboss_death_22
+      rect:
+        serializedVersion: 2
+        x: 5610
+        y: 0
+        width: 255
+        height: 190
+      alignment: 9
+      pivot: {x: 0.5137255, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4665a835bff677e4b8e0ce1a801e0d7d
+      internalID: -2122570496
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: finalboss_death_23
+      rect:
+        serializedVersion: 2
+        x: 5865
+        y: 0
+        width: 255
+        height: 190
+      alignment: 9
+      pivot: {x: 0.5137255, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dec40c023bb71ca42ac6b4a50aefa1e0
+      internalID: -918707280
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: finalboss_death_24
+      rect:
+        serializedVersion: 2
+        x: 6120
+        y: 0
+        width: 255
+        height: 190
+      alignment: 9
+      pivot: {x: 0.5137255, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: abcdb62888bd3c440942e3e8f57e77c8
+      internalID: 1766248933
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: finalboss_death_25
+      rect:
+        serializedVersion: 2
+        x: 6375
+        y: 0
+        width: 255
+        height: 190
+      alignment: 9
+      pivot: {x: 0.5137255, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 22dc0df1565e52748a8549d8f7e74bca
+      internalID: 464432576
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: finalboss_death_26
+      rect:
+        serializedVersion: 2
+        x: 6630
+        y: 0
+        width: 255
+        height: 190
+      alignment: 9
+      pivot: {x: 0.5137255, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ae1cf19e3fffa614faef1e0bf942e3e9
+      internalID: -1019893803
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: finalboss_death_27
+      rect:
+        serializedVersion: 2
+        x: 6885
+        y: 0
+        width: 255
+        height: 190
+      alignment: 9
+      pivot: {x: 0.5137255, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9924fa786b0848f48b4df3308836fdb3
+      internalID: 762520747
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: finalboss_death_28
+      rect:
+        serializedVersion: 2
+        x: 7140
+        y: 0
+        width: 255
+        height: 190
+      alignment: 9
+      pivot: {x: 0.5137255, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6f36fcafaa05b7743840de81d18a7b5f
+      internalID: -255853050
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: finalboss_death_29
+      rect:
+        serializedVersion: 2
+        x: 7395
+        y: 0
+        width: 255
+        height: 190
+      alignment: 9
+      pivot: {x: 0.5137255, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6978bf6c3e3309543bace61688346ed7
+      internalID: -2104106774
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: finalboss_death_30
+      rect:
+        serializedVersion: 2
+        x: 7650
+        y: 0
+        width: 255
+        height: 190
+      alignment: 9
+      pivot: {x: 0.5137255, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d5d3a336626280a4d87a9b8e1acb9348
+      internalID: 437454247
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: finalboss_death_31
+      rect:
+        serializedVersion: 2
+        x: 7905
+        y: 0
+        width: 255
+        height: 190
+      alignment: 9
+      pivot: {x: 0.5137255, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9fe2e8e2e11e5df49b12a700abe18ca7
+      internalID: 2038382260
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: finalboss_death_32
+      rect:
+        serializedVersion: 2
+        x: 8160
+        y: 0
+        width: 255
+        height: 190
+      alignment: 9
+      pivot: {x: 0.5137255, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3d626178801cb75448b5ba4049343b3c
+      internalID: -1205724961
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: finalboss_death_33
+      rect:
+        serializedVersion: 2
+        x: 8415
+        y: 0
+        width: 255
+        height: 190
+      alignment: 9
+      pivot: {x: 0.5137255, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 42ad03d2c55728042a26f6453258d208
+      internalID: -817857567
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: finalboss_death_34
+      rect:
+        serializedVersion: 2
+        x: 8670
+        y: 0
+        width: 255
+        height: 190
+      alignment: 9
+      pivot: {x: 0.5137255, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e59c8773f29752d408e275c55e8b7f9b
+      internalID: -92115788
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: finalboss_death_35
+      rect:
+        serializedVersion: 2
+        x: 8925
+        y: 0
+        width: 255
+        height: 190
+      alignment: 9
+      pivot: {x: 0.5137255, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 48441479664998f4c9a3bc004c06c979
+      internalID: -1705899398
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: finalboss_death_36
+      rect:
+        serializedVersion: 2
+        x: 9180
+        y: 0
+        width: 255
+        height: 190
+      alignment: 9
+      pivot: {x: 0.5137255, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 90e06081df04a9f46b1ced4a6f740341
+      internalID: 553575856
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: finalboss_death_37
+      rect:
+        serializedVersion: 2
+        x: 9435
+        y: 0
+        width: 255
+        height: 190
+      alignment: 9
+      pivot: {x: 0.5137255, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e205d84315561ee4fb3a579723af6a9f
+      internalID: 1834949670
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: finalboss_death_38
+      rect:
+        serializedVersion: 2
+        x: 9690
+        y: 0
+        width: 255
+        height: 190
+      alignment: 9
+      pivot: {x: 0.5137255, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3fa763f011c4a1e4bbd6633d2e468170
+      internalID: 212029523
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: finalboss_death_39
+      rect:
+        serializedVersion: 2
+        x: 9945
+        y: 0
+        width: 255
+        height: 190
+      alignment: 9
+      pivot: {x: 0.5137255, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b5b2dc0d19fac0f4d8d651a5a0ac7a37
+      internalID: -257749515
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: finalboss_death_40
+      rect:
+        serializedVersion: 2
+        x: 10200
+        y: 0
+        width: 255
+        height: 190
+      alignment: 9
+      pivot: {x: 0.5137255, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8a0ed5ae932787544aed526afc97f9c5
+      internalID: 947396426
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: finalboss_death_41
+      rect:
+        serializedVersion: 2
+        x: 10455
+        y: 0
+        width: 255
+        height: 190
+      alignment: 9
+      pivot: {x: 0.5137255, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 14d54409af633ce43a66e212409a02b9
+      internalID: -1270789940
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: finalboss_death_42
+      rect:
+        serializedVersion: 2
+        x: 10710
+        y: 0
+        width: 255
+        height: 190
+      alignment: 9
+      pivot: {x: 0.5137255, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 672dd87464088d249b57c1442ee244cb
+      internalID: -196548081
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: finalboss_death_43
+      rect:
+        serializedVersion: 2
+        x: 10965
+        y: 0
+        width: 255
+        height: 190
+      alignment: 9
+      pivot: {x: 0.5137255, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fe970a7a4399de94bbb6c3636f64ea89
+      internalID: -1508087642
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: finalboss_death_44
+      rect:
+        serializedVersion: 2
+        x: 11220
+        y: 0
+        width: 255
+        height: 190
+      alignment: 9
+      pivot: {x: 0.5137255, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fe328f692c4052d4bafeddfe7da802d0
+      internalID: -1554581031
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: finalboss_death_45
+      rect:
+        serializedVersion: 2
+        x: 11475
+        y: 0
+        width: 255
+        height: 190
+      alignment: 9
+      pivot: {x: 0.5137255, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 63593ffcf95587642a15f6fead336b6d
+      internalID: 1115584793
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: finalboss_death_46
+      rect:
+        serializedVersion: 2
+        x: 11730
+        y: 0
+        width: 255
+        height: 190
+      alignment: 9
+      pivot: {x: 0.5137255, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 21e18b0ca0301b54bb8e435e131f75ee
+      internalID: -867312210
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: finalboss_death_47
+      rect:
+        serializedVersion: 2
+        x: 11985
+        y: 0
+        width: 255
+        height: 190
+      alignment: 9
+      pivot: {x: 0.5137255, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f1e0513ce09e73d47a49cfb62a342184
+      internalID: 184521572
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      finalboss_death_0: 1227121509
+      finalboss_death_1: -1665224594
+      finalboss_death_10: 1884905321
+      finalboss_death_11: -1817003932
+      finalboss_death_12: -129200506
+      finalboss_death_13: 1409568116
+      finalboss_death_14: 1650959926
+      finalboss_death_15: 899922194
+      finalboss_death_16: 1409847269
+      finalboss_death_17: -814647040
+      finalboss_death_18: 1315419746
+      finalboss_death_19: 1697103373
+      finalboss_death_2: -1230456908
+      finalboss_death_20: -550843710
+      finalboss_death_21: 1860813181
+      finalboss_death_22: -2122570496
+      finalboss_death_23: -918707280
+      finalboss_death_24: 1766248933
+      finalboss_death_25: 464432576
+      finalboss_death_26: -1019893803
+      finalboss_death_27: 762520747
+      finalboss_death_28: -255853050
+      finalboss_death_29: -2104106774
+      finalboss_death_3: -333302095
+      finalboss_death_30: 437454247
+      finalboss_death_31: 2038382260
+      finalboss_death_32: -1205724961
+      finalboss_death_33: -817857567
+      finalboss_death_34: -92115788
+      finalboss_death_35: -1705899398
+      finalboss_death_36: 553575856
+      finalboss_death_37: 1834949670
+      finalboss_death_38: 212029523
+      finalboss_death_39: -257749515
+      finalboss_death_4: 1946782720
+      finalboss_death_40: 947396426
+      finalboss_death_41: -1270789940
+      finalboss_death_42: -196548081
+      finalboss_death_43: -1508087642
+      finalboss_death_44: -1554581031
+      finalboss_death_45: 1115584793
+      finalboss_death_46: -867312210
+      finalboss_death_47: 184521572
+      finalboss_death_5: -510733294
+      finalboss_death_6: 1126259714
+      finalboss_death_7: -1568734222
+      finalboss_death_8: 1342925270
+      finalboss_death_9: -1713357856
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -10,6 +10,7 @@ namespace Platformer.UI
     /// </summary>
     public class MainUIController : MonoBehaviour
     {
+        public bool isMainMenu = false;
         public GameObject[] panels;
 
         public void SetActivePanel(int index)
@@ -28,15 +29,17 @@ namespace Platformer.UI
             menu.ToggleMainMenu(false);
         }
 
-        public void MainMenu() => SceneManager.LoadScene(0);
+        public void LoadScene(int scene) => SceneManager.LoadScene(scene);
 
         public void ToggleFullScreen() => Screen.fullScreen = !Screen.fullScreen;
 
-        public void StartGame() => SceneManager.LoadScene(1);
+        public void Quit() => Application.Quit();
+
+        public void Github() => Application.OpenURL("https://github.com/feliquisds/iris");
 
         void OnEnable()
         {
-            SetActivePanel(1);
+            if (!isMainMenu) SetActivePanel(0);
         }
     }
 }
