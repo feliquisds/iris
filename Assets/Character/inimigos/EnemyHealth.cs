@@ -6,6 +6,7 @@ public class EnemyHealth : MonoBehaviour
 {
     internal SpriteRenderer sprite => GetComponent<SpriteRenderer>();
     public int health;
+    internal int initialHealth;
     public Material defaultMaterial, whiteMaterial;
     public GameObject explosion;
     public bool isBlue, isPurple;
@@ -13,7 +14,8 @@ public class EnemyHealth : MonoBehaviour
     public Bounds Bounds => _collider.bounds;
     internal PlayerControl player => GameObject.FindWithTag("Player").GetComponent<PlayerControl>();
 
-
+    void Awake() => initialHealth = health;
+    
     void OnCollisionEnter2D(Collision2D _collider)
     {
         if (_collider.gameObject.tag == "PlayerAttack")

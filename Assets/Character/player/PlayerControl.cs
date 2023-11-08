@@ -11,7 +11,7 @@ public class PlayerControl : MonoBehaviour
     internal SpriteRenderer sprite => GetComponent<SpriteRenderer>();
     internal Animator anim => GetComponent<Animator>();
 
-    public bool controlEnabled = true, canAttack, winning, respawning;
+    public bool controlEnabled = true, canAttack, canCrouch = true, winning, respawning;
 
     public bool grounded => rb.IsTouching(groundFilter);
     public bool onSlope => rb.IsTouching(slopeFilter) || rb.IsTouching(invertedSlopeFilter);
@@ -67,7 +67,7 @@ public class PlayerControl : MonoBehaviour
             if (!grounded && canJump) StartCoroutine(JumpMercy());
         }
 
-        if (grounded && Time.timeScale == 1)
+        if (grounded && canCrouch && Time.timeScale == 1)
         {
             canJump = (!attacking) ? true : false;
             crouching = (Input.GetButton("Crouch")) ? true : false;

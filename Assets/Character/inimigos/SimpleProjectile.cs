@@ -24,7 +24,7 @@ public class SimpleProjectile : MonoBehaviour
 
     IEnumerator AutoDestroy()
     {
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(!fromPlayer? 3f : 1.5f);
         Destroy(gameObject);
     }
 }

@@ -7,21 +7,15 @@ public class EnemyWalk : MonoBehaviour
     public float speed = 5;
     internal float lastSpeed;
     internal bool mute, freeze = false, attack;
-    internal Animator animator;
-    internal SpriteRenderer spriteRenderer;
-    internal Rigidbody2D rb;
-    internal Collider2D _collider;
+    internal Transform initialTransform;
+    internal Animator animator => GetComponent<Animator>();
+    internal SpriteRenderer spriteRenderer => GetComponent<SpriteRenderer>();
+    internal Rigidbody2D rb => GetComponent<Rigidbody2D>();
+    internal Collider2D _collider => GetComponent<Collider2D>();
     public Bounds Bounds => _collider.bounds;
-    internal PlayerControl player;
+    internal PlayerControl player => GameObject.FindWithTag("Player").GetComponent<PlayerControl>();
 
-    protected virtual void Awake()
-    {
-        rb = GetComponent<Rigidbody2D>();
-        animator = GetComponent<Animator>();
-        spriteRenderer = GetComponent<SpriteRenderer>();
-        _collider = GetComponent<Collider2D>();
-        player = GameObject.FindWithTag("Player").GetComponent<PlayerControl>();
-    }
+    void Awake() => initialTransform = transform;
 
     void Update()
     {
