@@ -44,7 +44,6 @@ public class PlayerControl : MonoBehaviour
 
             rb.velocity = newVelocity;
         }
-        if (attacking) rb.velocity = Vector2.zero;
         if (winning)
         {
             rb.velocity = new Vector2(5f, 0f);
@@ -61,8 +60,8 @@ public class PlayerControl : MonoBehaviour
             if (Input.GetButtonDown("Jump") && canJump)
             {
                 audioSource.PlayOneShot(jumpSound, audioVolume);
-                canJump = false;
                 rb.velocity = new Vector2(rb.velocity.x, jumpStrength);
+                canJump = false;
             }
             if (!grounded && canJump) StartCoroutine(JumpMercy());
         }
@@ -90,7 +89,8 @@ public class PlayerControl : MonoBehaviour
 
     public void Bounce() => rb.velocity = new Vector2(rb.velocity.x, 9f);
 
-    void AttackToggle() => canJump = controlEnabled = attacking ? false : true;
+    void AttackToggle() { canJump = controlEnabled = attacking ? false : true; rb.velocity = Vector2.zero;}
+    void AttackFallDisable() { controlEnabled = true; attacking = false; }
     void Shoot()
     {
         GameObject p = Instantiate(projectile, transform.position + new Vector3((sprite.flipX ? (shootXOffset * -1) : shootXOffset), shootYOffset, transform.position.z), transform.rotation);
@@ -151,7 +151,7 @@ public class PlayerControl : MonoBehaviour
         health = maxHealth;
         transform.position = model.spawnPoint.transform.position;
         rb.simulated = true;
-        dead = sprite.flipX = false;
+        dead = sprite.flipX = attacking = false;
         rb.velocity = newVelocity = Vector2.zero;
         move = 0f;
         model.virtualCamera.m_Follow = model.virtualCamera.m_LookAt = model.playercamerapoint;
@@ -165,8 +165,8 @@ public class PlayerControl : MonoBehaviour
 
     void EnemyRespawn()
     {
-        EnemyRespawner enemy = GameObject.FindWithTag("EnemyRespawner").GetComponent<EnemyRespawner>();
-        enemy.Respawn();
+        GameObject enemy = GameObject.FindWithTag("EnemyRespawner");
+        if (enemy != null) enemy.GetComponent<EnemyRespawner>().Respawn();
     }
 
     private void UpdateAnimator()
