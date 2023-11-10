@@ -17,6 +17,8 @@ TagManager:
   - InsectWave_Insect
   - EnemyRespawner
   - GameCore
+  - LimitL
+  - LimitR
   layers:
   - Default
   - TransparentFX

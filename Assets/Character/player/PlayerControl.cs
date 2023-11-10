@@ -23,7 +23,8 @@ public class PlayerControl : MonoBehaviour
     public float maxSpeed = 5f, acceleration = 5f, jumpStrength = 8.5f, shootXOffset, shootYOffset;
 
     public GameObject projectile;
-    private bool attacking, crouching, canJump, canBeHurt = true, dead = false;
+    private bool canJump, canBeHurt = true;
+    public bool attacking, crouching, dead = false;
 
     internal AudioSource audioSource => GetComponent<AudioSource>();
     public AudioClip jumpSound, hurtSound, deathSound;
@@ -157,8 +158,11 @@ public class PlayerControl : MonoBehaviour
         model.virtualCamera.m_Follow = model.virtualCamera.m_LookAt = model.playercamerapoint;
 
         yield return new WaitForSeconds(0.75f);
-        controlEnabled = canBeHurt = true;
+        controlEnabled = true;
         respawning = false;
+
+        yield return new WaitForSeconds(0.75f);
+        canBeHurt = true;
     }
 
     public void IncreaseLife() => health = health >= 2 ? health : health += 0.5;

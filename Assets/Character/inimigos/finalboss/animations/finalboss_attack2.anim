@@ -21,37 +21,37 @@ AnimationClip:
   - curve:
     - time: 0
       value: {fileID: -669575059, guid: 761621cd647ef8b4aa992d8225e615ff, type: 3}
-    - time: 0.06666667
+    - time: 0.1
       value: {fileID: -685918678, guid: 761621cd647ef8b4aa992d8225e615ff, type: 3}
-    - time: 0.15
+    - time: 0.18333334
       value: {fileID: 236656809, guid: 761621cd647ef8b4aa992d8225e615ff, type: 3}
-    - time: 0.21666667
+    - time: 0.26666668
       value: {fileID: -784269646, guid: 761621cd647ef8b4aa992d8225e615ff, type: 3}
-    - time: 0.28333333
+    - time: 0.36666667
       value: {fileID: -1619175496, guid: 761621cd647ef8b4aa992d8225e615ff, type: 3}
-    - time: 0.33333334
-      value: {fileID: -1622670377, guid: 761621cd647ef8b4aa992d8225e615ff, type: 3}
-    - time: 0.41666666
-      value: {fileID: -1746923409, guid: 761621cd647ef8b4aa992d8225e615ff, type: 3}
     - time: 0.48333332
+      value: {fileID: -1622670377, guid: 761621cd647ef8b4aa992d8225e615ff, type: 3}
+    - time: 0.56666666
+      value: {fileID: -1746923409, guid: 761621cd647ef8b4aa992d8225e615ff, type: 3}
+    - time: 0.6666667
       value: {fileID: -960259484, guid: 761621cd647ef8b4aa992d8225e615ff, type: 3}
-    - time: 0.55
+    - time: 0.73333335
       value: {fileID: 992684861, guid: 761621cd647ef8b4aa992d8225e615ff, type: 3}
-    - time: 0.6333333
+    - time: 0.81666666
       value: {fileID: 527642110, guid: 761621cd647ef8b4aa992d8225e615ff, type: 3}
-    - time: 0.7
+    - time: 0.9166667
       value: {fileID: 1539876853, guid: 761621cd647ef8b4aa992d8225e615ff, type: 3}
-    - time: 0.78333336
+    - time: 1
       value: {fileID: 1617690201, guid: 761621cd647ef8b4aa992d8225e615ff, type: 3}
-    - time: 0.8333333
-      value: {fileID: -1727520963, guid: 761621cd647ef8b4aa992d8225e615ff, type: 3}
-    - time: 0.9
-      value: {fileID: -2115382490, guid: 761621cd647ef8b4aa992d8225e615ff, type: 3}
-    - time: 0.96666664
-      value: {fileID: -1972025830, guid: 761621cd647ef8b4aa992d8225e615ff, type: 3}
     - time: 1.05
+      value: {fileID: -1727520963, guid: 761621cd647ef8b4aa992d8225e615ff, type: 3}
+    - time: 1.15
+      value: {fileID: -2115382490, guid: 761621cd647ef8b4aa992d8225e615ff, type: 3}
+    - time: 1.2166667
+      value: {fileID: -1972025830, guid: 761621cd647ef8b4aa992d8225e615ff, type: 3}
+    - time: 1.3333334
       value: {fileID: 44549053, guid: 761621cd647ef8b4aa992d8225e615ff, type: 3}
-    - time: 1.1166667
+    - time: 1.4
       value: {fileID: 138461629, guid: 761621cd647ef8b4aa992d8225e615ff, type: 3}
     attribute: m_Sprite
     path: 
@@ -94,7 +94,7 @@ AnimationClip:
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 1.1333333
+    m_StopTime: 1.4166666
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -113,4 +113,11 @@ AnimationClip:
   m_EulerEditorCurves: []
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
-  m_Events: []
+  m_Events:
+  - time: 1.4
+    functionName: UpdateAttackCondition
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
