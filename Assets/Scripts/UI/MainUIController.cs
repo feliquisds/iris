@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.EventSystems;
 
 namespace Platformer.UI
 {
@@ -12,6 +13,7 @@ namespace Platformer.UI
     {
         public bool isMainMenu = false;
         public GameObject[] panels;
+        internal EventSystem events => GameObject.FindWithTag("GameEvents").GetComponent<EventSystem>();
 
         public void SetActivePanel(int index)
         {
@@ -21,6 +23,7 @@ namespace Platformer.UI
                 var g = panels[i];
                 if (g.activeSelf != active) g.SetActive(active);
             }
+            events.SetSelectedGameObject(null);
         }
 
         public void Unpause()

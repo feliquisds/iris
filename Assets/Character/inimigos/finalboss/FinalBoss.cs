@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using Cinemachine;
+using UnityEngine.UI;
 
 public class FinalBoss : MonoBehaviour
 {
@@ -22,10 +23,12 @@ public class FinalBoss : MonoBehaviour
     internal Transform playerPosition => GameObject.FindWithTag("Player").transform;
     public CinemachineVirtualCamera vcam => GameObject.FindWithTag("CameraHandler").GetComponent<CinemachineVirtualCamera>();
     public Bounds Bounds => colli.bounds;
+    public GameObject playerHealth;
 
     void Awake() => StartCoroutine(StartFight());
     IEnumerator StartFight()
     {
+        playerHealth.GetComponent<Image>().color = new Color(1f, 1f, 1f, 0f);
         player.controlEnabled = player.canCrouch = false;
         vcam.m_Follow = startPos;
         vcam.m_LookAt = startPos;
@@ -39,6 +42,7 @@ public class FinalBoss : MonoBehaviour
         vcam.m_LookAt = fightCamera;
         player.controlEnabled = player.canCrouch = true;
         entering = false;
+        playerHealth.GetComponent<Image>().color = new Color(1f, 1f, 1f, 1f);
     }
 
 

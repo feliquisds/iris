@@ -1,3 +1,5 @@
+using System.Collections;
+using System.Collections.Generic;
 using Platformer.Mechanics;
 using Platformer.UI;
 using UnityEngine;
@@ -59,7 +61,7 @@ namespace Platformer.UI
                 Time.timeScale = 1;
                 mainMenu.gameObject.SetActive(false);
                 foreach (var i in gamePlayCanvasii) i.gameObject.SetActive(true);
-                GameObject.FindWithTag("Player").GetComponent<PlayerControl>().controlEnabled = true;
+                StartCoroutine(UnlockPlayer());
             }
             this.showMainCanvas = show;
         }
@@ -81,6 +83,12 @@ namespace Platformer.UI
                     SceneManager.LoadScene(nextScene);
                 }
             }
+        }
+
+        IEnumerator UnlockPlayer()
+        {
+            yield return new WaitForSeconds(0.01f);
+            GameObject.FindWithTag("Player").GetComponent<PlayerControl>().controlEnabled = true;
         }
 
     }

@@ -5502,6 +5502,12 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 318776226}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &318776228 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4009130065698333721, guid: 9a1bd12ebb35d4dc997aa0c5494eda9b,
+    type: 3}
+  m_PrefabInstance: {fileID: 318776226}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &324730515
 GameObject:
   m_ObjectHideFlags: 0
@@ -49512,9 +49518,10 @@ GameObject:
   - component: {fileID: 2054992037}
   - component: {fileID: 2054992036}
   - component: {fileID: 2054992038}
+  - component: {fileID: 2054992039}
   m_Layer: 0
   m_Name: game_events
-  m_TagString: Untagged
+  m_TagString: GameEvents
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -49591,6 +49598,21 @@ MonoBehaviour:
   minHeightPixel: 480
   maxWidthPixel: 3840
   maxHeightPixel: 2160
+--- !u!114 &2054992039
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2054992033}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f6d050632dbc0b4ea3b86ca0d3a13c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fallbackButton: {fileID: 0}
+  UIControllerObject: {fileID: 318776228}
+  mainMenu: 0
 --- !u!1 &2055676174
 GameObject:
   m_ObjectHideFlags: 0
@@ -49956,7 +49978,7 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 318776226}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 318776228}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 75fa2f9ea4cb54f34aaac731aabe3733, type: 3}
