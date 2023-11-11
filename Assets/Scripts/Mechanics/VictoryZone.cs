@@ -13,7 +13,7 @@ public class VictoryZone : MonoBehaviour
     {
         if (collider.gameObject.tag == "Player")
         {
-            player.controlEnabled = false;
+            player.controlEnabled = player.canBeHurt = false;
             StartCoroutine(WaitForSceneLoad());
             if (hasSprite) GetComponent<SpriteRenderer>().enabled = false;
 

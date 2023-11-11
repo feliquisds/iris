@@ -12,6 +12,7 @@ public class MoveCamera : MonoBehaviour
     internal bool playerGrounded => player.GetComponent<PlayerControl>().grounded;
     PlatformerModel model = Simulation.GetModel<PlatformerModel>();
     public bool finalBoss = false;
+    internal float bossCamera => (player.transform.position.x + boss.transform.position.x) / 2;
 
     void Update()
     {
@@ -22,11 +23,7 @@ public class MoveCamera : MonoBehaviour
             else if ((!playerFacingLeft) && (playerGrounded))
                 transform.position = player.transform.position + new Vector3(1f, 0.5f, 0f);
         }
-        else
-        {
-            var cameraPoint = (player.transform.position.x + boss.transform.position.x) / 2;
-            transform.position = new Vector3(cameraPoint, transform.position.y, transform.position.z);
-        }
+        else transform.position = new Vector3(bossCamera, transform.position.y, transform.position.z);
 
         model.playercamerapoint = transform;
     }

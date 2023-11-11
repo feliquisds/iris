@@ -9,7 +9,6 @@ public class SimpleProjectile : MonoBehaviour
     public bool fromPlayer = false;
 
     void Awake() => StartCoroutine(AutoDestroy());
-
     void Update() => sprite.flipX = (rb.velocity.x < 0) ? true : false;
 
     void OnCollisionEnter2D(Collision2D collision)
@@ -24,7 +23,7 @@ public class SimpleProjectile : MonoBehaviour
 
     IEnumerator AutoDestroy()
     {
-        yield return new WaitForSeconds(!fromPlayer? 3f : 1.5f);
+        yield return new WaitForSeconds(!fromPlayer ? 3 : 1.5f);
         Destroy(gameObject);
     }
 }

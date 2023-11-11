@@ -29,23 +29,15 @@ namespace Platformer.UI
         public GameController gameController;
 
         bool showMainCanvas = false;
+        internal PlayerControl player => GameObject.FindWithTag("Player").GetComponent<PlayerControl>();
 
-        void OnEnable()
-        {
-            _ToggleMainMenu(showMainCanvas);
-        }
+        void OnEnable() => _ToggleMainMenu(showMainCanvas);
 
         /// <summary>
         /// Turn the main menu on or off.
         /// </summary>
         /// <param name="show"></param>
-        public void ToggleMainMenu(bool show)
-        {
-            if (this.showMainCanvas != show)
-            {
-                _ToggleMainMenu(show);
-            }
-        }
+        public void ToggleMainMenu(bool show) { if (this.showMainCanvas != show) _ToggleMainMenu(show); }
 
         void _ToggleMainMenu(bool show)
         {
@@ -54,7 +46,7 @@ namespace Platformer.UI
                 Time.timeScale = 0;
                 mainMenu.gameObject.SetActive(true);
                 foreach (var i in gamePlayCanvasii) i.gameObject.SetActive(false);
-                GameObject.FindWithTag("Player").GetComponent<PlayerControl>().controlEnabled = false;
+                player.controlEnabled = false;
             }
             else
             {
@@ -66,29 +58,12 @@ namespace Platformer.UI
             this.showMainCanvas = show;
         }
 
-        void Update()
-        {
-            if (Input.GetButtonDown("Menu"))
-            {
-                ToggleMainMenu(show: !showMainCanvas);
-            }
-            if ((showMainCanvas) && Input.GetButton("Debug Next"))
-            {
-                if (SceneManager.GetActiveScene().buildIndex == 4)
-                {
-                   SceneManager.LoadScene(1);
-                }
-                else {
-                    int nextScene = (SceneManager.GetActiveScene().buildIndex) + 1;
-                    SceneManager.LoadScene(nextScene);
-                }
-            }
-        }
+        void Update() { if (Input.GetButtonDown("Menu")) ToggleMainMenu(show: !showMainCanvas); }
 
         IEnumerator UnlockPlayer()
         {
             yield return new WaitForSeconds(0.01f);
-            GameObject.FindWithTag("Player").GetComponent<PlayerControl>().controlEnabled = true;
+            player.controlEnabled = true;
         }
 
     }

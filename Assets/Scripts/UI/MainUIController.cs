@@ -14,6 +14,7 @@ namespace Platformer.UI
         public bool isMainMenu = false;
         public GameObject[] panels;
         internal EventSystem events => GameObject.FindWithTag("GameEvents").GetComponent<EventSystem>();
+        internal MetaGameController gameCore => GameObject.FindWithTag("GameCore").GetComponent<MetaGameController>();
 
         public void SetActivePanel(int index)
         {
@@ -25,24 +26,12 @@ namespace Platformer.UI
             }
             events.SetSelectedGameObject(null);
         }
-
-        public void Unpause()
-        {
-            var menu = GameObject.FindWithTag("GameCore").GetComponent<MetaGameController>();
-            menu.ToggleMainMenu(false);
-        }
+        void OnEnable() { if (!isMainMenu) SetActivePanel(0); }
+        public void Unpause() => gameCore.ToggleMainMenu(false);
 
         public void LoadScene(int scene) => SceneManager.LoadScene(scene);
-
         public void ToggleFullScreen() => Screen.fullScreen = !Screen.fullScreen;
-
-        public void Quit() => Application.Quit();
-
         public void Github() => Application.OpenURL("https://github.com/feliquisds/iris");
-
-        void OnEnable()
-        {
-            if (!isMainMenu) SetActivePanel(0);
-        }
+        public void Quit() => Application.Quit();
     }
 }

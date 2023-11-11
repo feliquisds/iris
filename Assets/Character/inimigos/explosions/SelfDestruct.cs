@@ -7,5 +7,5 @@ public class SelfDestruct : MonoBehaviour
     public AudioClip sound;
     public float volume;
     void Destroy() => Destroy(gameObject);
-    void Awake() {if (TryGetComponent<AudioSource>(out AudioSource audioSource)) GetComponent<AudioSource>().PlayOneShot(sound, volume);}
+    void Awake() {if (TryGetComponent<AudioSource>(out AudioSource audioSource)) audioSource.PlayOneShot(sound, volume);}
 }

@@ -13,6 +13,7 @@ public class EnemyHealth : MonoBehaviour
     internal Collider2D _collider => GetComponent<Collider2D>();
     public Bounds Bounds => _collider.bounds;
     internal PlayerControl player => GameObject.FindWithTag("Player").GetComponent<PlayerControl>();
+    internal bool hasEnemyWalk => TryGetComponent<EnemyWalk>(out EnemyWalk enemy);
 
     void Awake() => initialHealth = health;
     
@@ -28,10 +29,7 @@ public class EnemyHealth : MonoBehaviour
             else Explode();
         }
 
-        if (_collider.gameObject.tag == "Player")
-        {
-            if (this.GetComponent<EnemyWalk>() == null) player.Hurt();
-        }
+        if (_collider.gameObject.tag == "Player" && !hasEnemyWalk) player.Hurt();
     }
 
     void OnCollisionStay2D(Collision2D _collider)
@@ -46,10 +44,7 @@ public class EnemyHealth : MonoBehaviour
             else Explode();
         }
 
-        if (_collider.gameObject.tag == "Player")
-        {
-            if (this.GetComponent<EnemyWalk>() == null) player.Hurt();
-        }
+        if (_collider.gameObject.tag == "Player" && !hasEnemyWalk) player.Hurt();
     }
 
     IEnumerator Flicker()

@@ -13,18 +13,17 @@ public class PlayerControl : MonoBehaviour
 
     public bool controlEnabled = true, canAttack, canCrouch = true, winning, respawning;
 
-    public bool grounded => rb.IsTouching(groundFilter);
+    public bool grounded => rb.IsTouching(groundFilter) || onSlope;
     public bool onSlope => rb.IsTouching(slopeFilter) || rb.IsTouching(invertedSlopeFilter);
 
     public double maxHealth = 2, health = 2;
 
-    internal float move;
-    internal Vector2 newVelocity;
+    internal float move, targetVelocity;
     public float maxSpeed = 5f, acceleration = 5f, jumpStrength = 8.5f, shootXOffset, shootYOffset;
 
     public GameObject projectile;
-    private bool canJump, canBeHurt = true;
-    public bool attacking, crouching, dead = false;
+    private bool canJump;
+    public bool attacking, crouching, dead = false, canBeHurt = true;
 
     internal AudioSource audioSource => GetComponent<AudioSource>();
     public AudioClip jumpSound, hurtSound, deathSound;
@@ -37,19 +36,10 @@ public class PlayerControl : MonoBehaviour
     {
         if (controlEnabled)
         {
-            newVelocity = rb.velocity;
-
-            var desiredVelocity = new Vector2(move, 0f) * Mathf.Max(maxSpeed, 0f);
-            var velocity = Mathf.MoveTowards(move, desiredVelocity.x, (acceleration * 100) * Time.deltaTime);
-            newVelocity = new Vector2(velocity, newVelocity.y);
-
-            rb.velocity = newVelocity;
+            targetVelocity = Mathf.MoveTowards(move, move * maxSpeed, (acceleration * 100) * Time.deltaTime);
+            rb.velocity = new Vector2(targetVelocity, rb.velocity.y);
         }
-        if (winning)
-        {
-            rb.velocity = new Vector2(5f, 0f);
-            canBeHurt = false;
-        }
+        if (winning) rb.velocity = new Vector2(5f, 0f);
     }
 
     void Update()
@@ -74,14 +64,16 @@ public class PlayerControl : MonoBehaviour
             attacking = (canAttack && Input.GetButton("Attack")) ? true : false;
         }
 
-        if (move > 0f) sprite.flipX = false;
-        if (move < 0f) sprite.flipX = true;
+        if (move > 0) sprite.flipX = false;
+        if (move < 0) sprite.flipX = true;
 
         if (rb.velocity.y < -10f) rb.velocity = new Vector2(rb.velocity.x, -10f);
 
         if (dead && grounded) rb.simulated = false;
 
         rb.gravityScale = (onSlope && move == 0f) ? 0 : 2;
+
+        if (attacking && onSlope) rb.velocity = Vector2.zero;
 
         UpdateAnimator();
     }
@@ -138,7 +130,7 @@ public class PlayerControl : MonoBehaviour
             controlEnabled = canBeHurt = false;
             model.virtualCamera.m_Follow = model.virtualCamera.m_LookAt = null;
 
-            yield return new WaitForSeconds(2f);
+            yield return new WaitForSeconds(2);
             StartCoroutine(Respawn());
         }
     }
@@ -153,7 +145,7 @@ public class PlayerControl : MonoBehaviour
         transform.position = model.spawnPoint.transform.position;
         rb.simulated = true;
         dead = sprite.flipX = attacking = false;
-        rb.velocity = newVelocity = Vector2.zero;
+        rb.velocity = Vector2.zero;
         move = 0f;
         model.virtualCamera.m_Follow = model.virtualCamera.m_LookAt = model.playercamerapoint;
 
@@ -180,7 +172,7 @@ public class PlayerControl : MonoBehaviour
         anim.SetBool("attack", attacking);
         anim.SetBool("crouch", crouching);
         anim.SetBool("grounded", grounded);
-        anim.SetFloat("velocityX", Mathf.Abs(newVelocity.x));
+        anim.SetFloat("velocityX", Mathf.Abs(rb.velocity.x));
         anim.SetFloat("velocityY", rb.velocity.y);
     }
 }

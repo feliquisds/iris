@@ -12,13 +12,13 @@ public class EnemyRespawner : MonoBehaviour
             {
                 enemy.SetActive(true);
 
-                if (enemy.GetComponent<EnemyHealth>() != null)
-                enemy.GetComponent<EnemyHealth>().health = enemy.GetComponent<EnemyHealth>().initialHealth;
+                if (enemy.TryGetComponent<EnemyHealth>(out EnemyHealth enemyHealth))
+                enemyHealth.health = enemyHealth.initialHealth;
 
-                if (enemy.GetComponent<EnemyWalk>() != null)
+                if (enemy.TryGetComponent<EnemyWalk>(out EnemyWalk enemyWalk))
                 {
-                    enemy.GetComponent<EnemyWalk>().freeze = false;
-                    enemy.transform.position = enemy.GetComponent<EnemyWalk>().initialTransform.position;
+                    enemyWalk.freeze = false;
+                    enemy.transform.position = enemyWalk.initialTransform;
                 }
             }
         }

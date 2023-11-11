@@ -11,7 +11,7 @@ public class InsectWave_Insect : MonoBehaviour
     {
         if (!isCanvas)
         {
-            GetComponent<Animator>().SetTrigger(color);
+            if (TryGetComponent<Animator>(out Animator anim) && color != "") anim.SetTrigger(color);
             GetComponent<Rigidbody2D>().velocity = new Vector2(325f, 300f);
             transform.position = new Vector3(0f, Random.Range(200f, 650f), 0f);
         }

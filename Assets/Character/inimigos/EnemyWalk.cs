@@ -6,31 +6,27 @@ public class EnemyWalk : MonoBehaviour
 {
     public float speed = 5;
     internal float lastSpeed;
-    internal bool mute, freeze = false, attack;
-    internal Transform initialTransform;
+    internal bool freeze = false, attack;
+    internal Vector3 initialTransform;
     internal Animator animator => GetComponent<Animator>();
-    internal SpriteRenderer spriteRenderer => GetComponent<SpriteRenderer>();
+    internal SpriteRenderer sprite => GetComponent<SpriteRenderer>();
     internal Rigidbody2D rb => GetComponent<Rigidbody2D>();
     internal Collider2D _collider => GetComponent<Collider2D>();
     public Bounds Bounds => _collider.bounds;
     internal PlayerControl player => GameObject.FindWithTag("Player").GetComponent<PlayerControl>();
+    internal bool rendering => GetComponent<Renderer>().isVisible;
 
-    void Awake() => initialTransform = transform;
+    void Awake() => initialTransform = transform.position;
 
     void Update()
     {
         rb.velocity = freeze ? Vector2.zero : new Vector2(speed, rb.velocity.y);
 
-        if (speed > 0f) spriteRenderer.flipX = false;
-        if (speed < 0f) spriteRenderer.flipX = true;
-
-        mute = GetComponent<Renderer>().isVisible ? false : true;
-
-        if (player.transform.position.x > transform.position.x) attack = !spriteRenderer.flipX;
-        if (player.transform.position.x < transform.position.x) attack = spriteRenderer.flipX;
+        sprite.flipX = speed > 0 ? false : true;
+        attack = player.transform.position.x > transform.position.x ? !sprite.flipX : sprite.flipX;
 
         animator.SetBool("attack", attack);
-        animator.SetBool("mute", mute);
+        animator.SetBool("mute", !rendering);
         animator.SetFloat("velocityX", speed);
     }
 

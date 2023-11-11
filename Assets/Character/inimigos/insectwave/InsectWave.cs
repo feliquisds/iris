@@ -10,7 +10,7 @@ public class InsectWave : MonoBehaviour
     internal float goalCam = 3.5f;
     internal GameObject wave => GameObject.FindWithTag("InsectWave");
     internal PlayerControl playerScript => GameObject.FindWithTag("Player").GetComponent<PlayerControl>();
-    internal GameObject player => GameObject.FindWithTag("Player");
+    internal bool playerRendering => GameObject.FindWithTag("Player").GetComponent<Renderer>().isVisible;
     public bool activated => wave.transform.position != initialTransform;
     public bool isDeathZone;
     internal bool chasing, canSpawnInsect, canSpawnDebris, stopSpawnInsect = false, stopSpawnDebris = false;
@@ -47,8 +47,7 @@ public class InsectWave : MonoBehaviour
         cameraPoint.GetComponent<AudioSource>().mute = false;
         newTransform = wave.transform.position + new Vector3(800f * movement, 0, 0);
         newCameraTransform = cameraPoint.transform.position + new Vector3(85f, 0, 0);
-        vcam.m_Follow = cameraPoint.transform;
-        vcam.m_LookAt = cameraPoint.transform;
+        vcam.m_Follow = vcam.m_LookAt = cameraPoint.transform;
         goalCam = 5f;
         chasing = true;
         StartCoroutine(StartInsectSpawn());
@@ -99,8 +98,7 @@ public class InsectWave : MonoBehaviour
         }
         else
         {
-            vcam.m_Follow = GameObject.FindWithTag("PlayerCameraPoint").transform;
-            vcam.m_LookAt = GameObject.FindWithTag("PlayerCameraPoint").transform;
+            vcam.m_Follow = vcam.m_LookAt = GameObject.FindWithTag("PlayerCameraPoint").transform;
             wave.transform.position = newTransform = initialTransform;
             cameraPoint.transform.position = newCameraTransform = initialCameraTransform;
 
@@ -121,7 +119,7 @@ public class InsectWave : MonoBehaviour
 
             if (vcam.m_Lens.OrthographicSize < goalCam) vcam.m_Lens.OrthographicSize += 0.1f;
 
-            if (!player.GetComponent<Renderer>().isVisible && chasing) StartCoroutine(playerScript.Die());
+            if (!playerRendering && chasing) StartCoroutine(playerScript.Die());
 
             if (canSpawnInsect && !stopSpawnInsect) StartCoroutine(InsectSpawn());
             if (canSpawnDebris && !stopSpawnDebris) StartCoroutine(DebrisSpawn());

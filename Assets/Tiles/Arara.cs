@@ -4,16 +4,9 @@ using UnityEngine;
 
 public class Arara : MonoBehaviour
 {
-    internal Rigidbody2D rigid;
-    internal Collider2D _collider;
+    internal Rigidbody2D rigid => GetComponent<Rigidbody2D>();
     public float horizontalSpeed;
     public float verticalSpeed;
-
-    void Start()
-    {
-        rigid = GetComponent<Rigidbody2D>();
-        _collider = GetComponent<Collider2D>();
-    }
 
     void OnTriggerEnter2D(Collider2D _collider)
     {

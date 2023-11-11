@@ -30,49 +30,33 @@ public class FinalBoss : MonoBehaviour
     {
         playerHealth.GetComponent<Image>().color = new Color(1f, 1f, 1f, 0f);
         player.controlEnabled = player.canCrouch = false;
-        vcam.m_Follow = startPos;
-        vcam.m_LookAt = startPos;
+        vcam.m_Follow = vcam.m_LookAt = startPos;
 
         yield return new WaitForSeconds(0.01f);
         player.controlEnabled = player.canCrouch = false;
 
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(5);
         var fightCamera = GameObject.FindWithTag("CustomCamera").transform;
-        vcam.m_Follow = fightCamera;
-        vcam.m_LookAt = fightCamera;
+        vcam.m_Follow = vcam.m_LookAt = fightCamera;
         player.controlEnabled = player.canCrouch = true;
         entering = false;
         playerHealth.GetComponent<Image>().color = new Color(1f, 1f, 1f, 1f);
     }
 
 
-    void FixedUpdate()
-    {
-        rb.velocity = new Vector2(velocity, 0f);
-    }
+    void FixedUpdate() => rb.velocity = new Vector2(velocity, 0f);
     void Update()
     {
-        rb.velocity = new Vector2(velocity, 0f);
-
         if (entering)
         {
-            if (transform.position.x > startPos.position.x) velocity = -3f;
-            else velocity = 0f;
+            velocity = transform.position.x > startPos.position.x ? -3f : 0f;
             if (vcam.m_Lens.OrthographicSize > 3.5f) vcam.m_Lens.OrthographicSize -= 0.05f;
         }
 
         if (!attacking && !entering && !dying && !hurtPlayer && !player.dead)
         {
-            if (playerPosition.position.x < transform.position.x)
-            {
-                transform.localScale = new Vector3(-2.25f, 2.25f, 1f);
-                velocity = -3f;
-            }
-            if (playerPosition.position.x > transform.position.x)
-            {
-                transform.localScale = new Vector3(2.25f, 2.25f, 1f);
-                velocity = 3f;
-            }
+            transform.localScale = new Vector3(playerPosition.position.x < transform.position.x ? -2.25f : 2.25f, 2.25f, 1f);
+            velocity = playerPosition.position.x < transform.position.x ? -3f : 3f;
         }
         if (hurtPlayer || player.dead || attacking || player.Bounds.center.y >= Bounds.max.y) velocity = 0f;
 
@@ -82,6 +66,7 @@ public class FinalBoss : MonoBehaviour
         }
 
         if (!entering && !dying && vcam.m_Lens.OrthographicSize < 5f) vcam.m_Lens.OrthographicSize += 0.05f;
+
         anim.SetFloat("velocityX", Mathf.Abs(velocity));
     }
 
@@ -180,14 +165,13 @@ public class FinalBoss : MonoBehaviour
     IEnumerator Die()
     {
         dying = true;
-        velocity = 0f;
+        velocity = 0;
         colli.enabled = false;
         player.controlEnabled = player.canCrouch = player.attacking = player.crouching = false;
         anim.SetTrigger("death");
-        vcam.m_Follow = transform;
-        vcam.m_LookAt = transform;
+        vcam.m_Follow = vcam.m_LookAt = transform;
 
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(5);
         SceneManager.LoadScene(0);
     }
 }

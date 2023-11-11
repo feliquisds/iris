@@ -12,64 +12,58 @@ namespace Platformer.UI
         public MainUIController UIController => UIControllerObject.GetComponent<MainUIController>();
         public bool mainMenu;
         internal EventSystem events => GetComponent<EventSystem>();
+        internal GameObject activePanel;
 
-        void Update() { if (mainMenu) MenuUpdate(); else PauseUpdate(); }
-
-        void MenuUpdate()
+        void Update()
         {
             if (events.currentSelectedGameObject == null)
             {
-                if (UIController.panels[2].activeSelf)
-                {
-                    if (Input.GetAxis("Horizontal") != 0f || Input.GetAxis("Vertical") != 0f)
-                        events.SetSelectedGameObject(fallbackButton);
-                }
+                if (mainMenu) MenuUpdate();
+                else PauseUpdate();
+            }
+        }
 
+        void MenuUpdate()
+        {
+            if (Input.GetAxis("Horizontal") != 0f || Input.GetAxis("Vertical") != 0f)
+            {
+                if (UIController.panels[2].activeSelf) events.SetSelectedGameObject(fallbackButton);
                 else
                 {
-                    var activePanel = 0;
-                    for (var i = 0; i < UIController.panels.Length; i++)
+                    foreach (GameObject panel in UIController.panels)
                     {
-                        var g = UIController.panels[i];
-                        if (g.activeSelf) activePanel = i;
+                        activePanel = panel.activeSelf ? panel : activePanel;
                     }
-
-                    if (Input.GetAxis("Horizontal") != 0f || Input.GetAxis("Vertical") != 0f)
-                        events.SetSelectedGameObject(FindChildWithTag(UIController.panels[activePanel], "FallbackButton"));
+                    events.SetSelectedGameObject(FindChildWithTag(activePanel, "FallbackButton"));
                 }
             }
         }
 
         void PauseUpdate()
         {
-            if (events.currentSelectedGameObject == null && Time.timeScale != 1)
+            if (Time.timeScale != 1)
             {
-                var activePanel = 0;
-                for (var i = 0; i < UIController.panels.Length; i++)
-                {
-                    var g = UIController.panels[i];
-                    if (g.activeSelf) activePanel = i;
-                }
-
                 if (Input.GetButtonDown("Horizontal") != false || Input.GetButtonDown("Vertical") != false)
-                    events.SetSelectedGameObject(FindChildWithTag(UIController.panels[activePanel], "FallbackButton"));
+                {
+                    foreach (GameObject panel in UIController.panels)
+                    {
+                        activePanel = panel.activeSelf ? panel : activePanel;
+                    }
+                    events.SetSelectedGameObject(FindChildWithTag(activePanel, "FallbackButton"));
+                }
             }
         }
 
         GameObject FindChildWithTag(GameObject parent, string tag)
         {
-            GameObject child = null;
-
             foreach (Transform transform in parent.transform)
             {
                 if (transform.CompareTag(tag))
                 {
-                    child = transform.gameObject;
-                    break;
+                    return transform.gameObject;
                 }
             }
-
-            return child;
+            return null;
         }
     }
 }

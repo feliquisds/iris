@@ -18,7 +18,10 @@ public class ArmadilloUI : MonoBehaviour
 
     void Update()
     {
-        if (move) transform.position = Vector3.MoveTowards(transform.position, newTransform, 700f * Time.deltaTime);
-        if (transform.position == newTransform) move = false;
+        if (move) 
+        {
+            transform.position = Vector3.MoveTowards(transform.position, newTransform, 700f * Time.deltaTime);
+            if (transform.position == newTransform) move = false;
+        }
     }
 }

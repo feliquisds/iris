@@ -207,7 +207,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa0792106c838f44e9908d31cc6ecb4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  color: green
+  color: 
   isCanvas: 0
 --- !u!50 &7077871184837150196
 Rigidbody2D:

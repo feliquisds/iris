@@ -5,11 +5,13 @@ using UnityEngine.Tilemaps;
 
 public class GradientHide : MonoBehaviour
 {
-    internal Collider2D _collider;
     internal bool hidden;
+    internal float fadeAmount;
     public bool startsVisible = true;
     public float fadeSpeed = 5;
-    internal bool usingSprite;
+    internal bool usingSprite => TryGetComponent(out SpriteRenderer sprite);
+    internal Color objColor => usingSprite ? GetComponent<SpriteRenderer>().color : GetComponent<Tilemap>().color;
+    internal Color newColor;
 
     private void Awake()
     {
@@ -17,95 +19,45 @@ public class GradientHide : MonoBehaviour
         else
         {
             hidden = false;
-            var obj = GetComponent<SpriteRenderer>();
-            var objColor = obj.color;
-            obj.color = new Color(objColor.r, objColor.g, objColor.b, 0);
+            if (usingSprite) GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 0);
+            else GetComponent<Tilemap>().color = new Color(1, 1, 1, 0);
         }
-
-        usingSprite = TryGetComponent(out SpriteRenderer sprite);
     }
 
     private void OnTriggerEnter2D(Collider2D _collider)
     {
-        if (_collider.gameObject.tag == "Player")
-        {
-            if (startsVisible) hidden = false;
-            else hidden = true;
-        }
+        if (_collider.gameObject.tag == "Player") hidden = startsVisible ? false : true;
     }
-
     private void OnTriggerExit2D(Collider2D _collider)
     {
-        if (_collider.gameObject.tag == "Player")
-        {
-            if (startsVisible) hidden = true;
-            else hidden = false;
-        }
+        if (_collider.gameObject.tag == "Player") hidden = startsVisible ? true : false;
     }
 
     void Update()
     {
-        if (hidden)
+        if (hidden) FadeIn();
+        else FadeOut();
+    }
+    void FadeIn()
+    {
+        if (objColor.a < 1)
         {
-            if (usingSprite) FadeInSprite();
-            else FadeInTile();
+            fadeAmount = objColor.a + (fadeSpeed * Time.deltaTime);
+            newColor = new Color(objColor.r, objColor.g, objColor.b, fadeAmount);
+
+            if (usingSprite) GetComponent<SpriteRenderer>().color = newColor;
+            else GetComponent<Tilemap>().color = newColor;
         }
-        else
+    }
+    void FadeOut()
+    {
+        if (objColor.a > 0)
         {
-            if (usingSprite) FadeOutSprite();
-            else FadeOutTile();
+            fadeAmount = objColor.a - (fadeSpeed * Time.deltaTime);
+            newColor = new Color(objColor.r, objColor.g, objColor.b, fadeAmount);
+
+            if (usingSprite) GetComponent<SpriteRenderer>().color = newColor;
+            else GetComponent<Tilemap>().color = newColor;
         }
-    }
-
-    void FadeOutSprite()
-    {
-        var obj = GetComponent<SpriteRenderer>();
-        var objColor = obj.color;
-        float fadeAmount = objColor.a - (fadeSpeed * Time.deltaTime);
-
-        objColor = new Color(objColor.r, objColor.g, objColor.b, fadeAmount);
-
-        if (objColor.a <= 0) objColor.a = 0;
-
-        obj.color = objColor;
-    }
-
-    void FadeInSprite()
-    {
-        var obj = GetComponent<SpriteRenderer>();
-        var objColor = obj.color;
-        float fadeAmount = objColor.a + (fadeSpeed * Time.deltaTime);
-
-        objColor = new Color(objColor.r, objColor.g, objColor.b, fadeAmount);
-        
-        if (objColor.a >= 1) objColor.a = 1;
-            
-        obj.color = objColor;
-    }
-
-    void FadeOutTile()
-    {
-        var obj = GetComponent<Tilemap>();
-        var objColor = obj.color;
-        float fadeAmount = objColor.a - (fadeSpeed * Time.deltaTime);
-
-        objColor = new Color(objColor.r, objColor.g, objColor.b, fadeAmount);
-
-        if (objColor.a <= 0) objColor.a = 0;
-
-        obj.color = objColor;
-    }
-
-    void FadeInTile()
-    {
-        var obj = GetComponent<Tilemap>();
-        var objColor = obj.color;
-        float fadeAmount = objColor.a + (fadeSpeed * Time.deltaTime);
-
-        objColor = new Color(objColor.r, objColor.g, objColor.b, fadeAmount);
-        
-        if (objColor.a >= 1) objColor.a = 1;
-            
-        obj.color = objColor;
     }
 }
