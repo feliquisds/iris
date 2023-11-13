@@ -44860,7 +44860,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 7a70c37013bae804d80103bf7f334a56, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.4
+  m_Volume: 0.75
   m_Pitch: 1
   Loop: 1
   Mute: 1
@@ -45119,6 +45119,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1046281675}
     m_Modifications:
+    - target: {fileID: 1062158247953174826, guid: 2266d3762a71d5c43b76282c54213283,
+        type: 3}
+      propertyPath: m_Mass
+      value: 2.0164263
+      objectReference: {fileID: 0}
     - target: {fileID: 3637841027550636835, guid: 2266d3762a71d5c43b76282c54213283,
         type: 3}
       propertyPath: m_RootOrder
@@ -71856,6 +71861,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 841719045648234125, guid: 374f2ad62646b764787b06e6e88114f0,
         type: 3}
+      propertyPath: m_Size.y
+      value: 2.7954311
+      objectReference: {fileID: 0}
+    - target: {fileID: 841719045648234125, guid: 374f2ad62646b764787b06e6e88114f0,
+        type: 3}
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
@@ -71863,6 +71873,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Offset.x
       value: 2.3446617
+      objectReference: {fileID: 0}
+    - target: {fileID: 841719045648234125, guid: 374f2ad62646b764787b06e6e88114f0,
+        type: 3}
+      propertyPath: m_Offset.y
+      value: 0.5716036
       objectReference: {fileID: 0}
     - target: {fileID: 2182840777468136671, guid: 374f2ad62646b764787b06e6e88114f0,
         type: 3}
@@ -71944,6 +71959,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1729608016, guid: 9911ae8a8b8ad13438e62a6a6487493d,
         type: 3}
+    - target: {fileID: 1809723812326004523, guid: 2266d3762a71d5c43b76282c54213283,
+        type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 1.2
+      objectReference: {fileID: 0}
     - target: {fileID: 3637841027550636835, guid: 2266d3762a71d5c43b76282c54213283,
         type: 3}
       propertyPath: m_RootOrder

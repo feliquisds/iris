@@ -50,19 +50,19 @@ public class PlayerControl : MonoBehaviour
 
             if (Input.GetButtonDown("Jump") && canJump)
             {
+                canJump = false;
                 audioSource.PlayOneShot(jumpSound, audioVolume);
                 rb.velocity = new Vector2(rb.velocity.x, jumpStrength);
-                canJump = false;
             }
-            if (!grounded && canJump) StartCoroutine(JumpMercy());
         }
 
         if (grounded && canCrouch && Time.timeScale == 1)
         {
-            canJump = (!attacking) ? true : false;
             crouching = (Input.GetButton("Crouch")) ? true : false;
             attacking = (canAttack && Input.GetButton("Attack")) ? true : false;
         }
+
+        canJump = grounded ? (attacking ? false : true) : false;
 
         if (move > 0) sprite.flipX = false;
         if (move < 0) sprite.flipX = true;
@@ -71,18 +71,16 @@ public class PlayerControl : MonoBehaviour
 
         if (dead && grounded) rb.simulated = false;
 
-        rb.gravityScale = (onSlope && move == 0f) ? 0 : 2;
+        rb.gravityScale = (onSlope && move == 0) ? 0 : 2;
 
         if (attacking && onSlope) rb.velocity = Vector2.zero;
 
         UpdateAnimator();
     }
 
-    IEnumerator JumpMercy() { yield return new WaitForSeconds(0.1f); canJump = false; }
-
     public void Bounce() => rb.velocity = new Vector2(rb.velocity.x, 9f);
 
-    void AttackToggle() { canJump = controlEnabled = attacking ? false : true; rb.velocity = Vector2.zero;}
+    void AttackToggle() { canJump = controlEnabled = attacking ? false : true; rb.velocity = Vector2.zero; }
     void AttackFallDisable() { controlEnabled = true; attacking = false; }
     void Shoot()
     {
