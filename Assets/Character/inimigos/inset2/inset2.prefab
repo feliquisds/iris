@@ -173,7 +173,7 @@ MonoBehaviour:
   projectile: {fileID: 1573551821831009654, guid: b31ce0392ef1aa648b881a64d0d1f8ef,
     type: 3}
   speed: -15
-  spawnXOffset: -0.5
+  spawnXOffset: -1
   spawnYOffset: -0.26
 --- !u!114 &4314184503988341380
 MonoBehaviour:

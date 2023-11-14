@@ -16,29 +16,28 @@ public class FinalBoss : MonoBehaviour
     internal Rigidbody2D rb => GetComponent<Rigidbody2D>();
     internal Animator anim => GetComponent<Animator>();
     internal SpriteRenderer sprite => GetComponent<SpriteRenderer>();
+    internal AudioSource audioSource => GetComponent<AudioSource>();
     internal PlayerControl player => GameObject.FindWithTag("Player").GetComponent<PlayerControl>();
     internal Transform startPos => GameObject.FindWithTag("Path").transform;
     internal Transform limitL => GameObject.FindWithTag("LimitL").transform;
     internal Transform limitR => GameObject.FindWithTag("LimitR").transform;
     internal Transform playerPosition => GameObject.FindWithTag("Player").transform;
+    internal float distance => Vector3.Distance(playerPosition.position, transform.position);
     public CinemachineVirtualCamera vcam => GameObject.FindWithTag("CameraHandler").GetComponent<CinemachineVirtualCamera>();
     public Bounds Bounds => colli.bounds;
-    public GameObject playerHealth;
+    public GameObject playerHealth, wave, meteor;
+    public float spawnXOffset, spawnYOffset, waveSpeed;
+    public AudioClip step, death, attack1, attack2;
 
     void Awake() => StartCoroutine(StartFight());
     IEnumerator StartFight()
     {
         playerHealth.GetComponent<Image>().color = new Color(1f, 1f, 1f, 0f);
-        player.controlEnabled = player.canCrouch = false;
         vcam.m_Follow = vcam.m_LookAt = startPos;
-
-        yield return new WaitForSeconds(0.01f);
-        player.controlEnabled = player.canCrouch = false;
 
         yield return new WaitForSeconds(5);
         var fightCamera = GameObject.FindWithTag("CustomCamera").transform;
         vcam.m_Follow = vcam.m_LookAt = fightCamera;
-        player.controlEnabled = player.canCrouch = true;
         entering = false;
         playerHealth.GetComponent<Image>().color = new Color(1f, 1f, 1f, 1f);
     }
@@ -65,7 +64,21 @@ public class FinalBoss : MonoBehaviour
             if (vcam.m_Lens.OrthographicSize > 3.5f) vcam.m_Lens.OrthographicSize -= 0.05f;
         }
 
-        if (!entering && !dying && vcam.m_Lens.OrthographicSize < 5f) vcam.m_Lens.OrthographicSize += 0.05f;
+        if (!entering && !dying)
+        {
+            if (distance < 15)
+            {
+                if (vcam.m_Lens.OrthographicSize < 5) vcam.m_Lens.OrthographicSize += 0.01f;
+                if (vcam.m_Lens.OrthographicSize > 5) vcam.m_Lens.OrthographicSize -= 0.01f;
+            }
+            else
+            {
+                if (vcam.m_Lens.OrthographicSize < 6.5f) vcam.m_Lens.OrthographicSize += 0.01f;
+                if (vcam.m_Lens.OrthographicSize > 6.5f) vcam.m_Lens.OrthographicSize -= 0.01f;
+            }
+        }
+        
+        player.controlEnabled = player.canCrouch = entering || dying ? false : true;
 
         anim.SetFloat("velocityX", Mathf.Abs(velocity));
     }
@@ -79,25 +92,33 @@ public class FinalBoss : MonoBehaviour
     void OnTriggerEnter2D(Collider2D collider)
     {
         if (collider.gameObject.tag == "Player" && !attacking && canAttack && !player.dead)
-        StartCoroutine(Attack());
+        Attack();
     }
 
     IEnumerator AttackDelay(float time)
     {
         yield return new WaitForSeconds(time);
-        if (!attacking && canAttack) StartCoroutine(Attack());
+        if (!attacking && canAttack) Attack();
     }
 
-    IEnumerator Attack()
+    void Attack()
     {
-        yield return new WaitForSeconds(0f);
         if (!attacking && canAttack)
         {
             attacking = true;
             canAttack = false;
             anim.SetTrigger(Random.value > 0.49f ? "attack1" : "attack2");
         }
+    }
 
+    void WaveAttack()
+    {
+        var facingLeft = transform.localScale.x == -2.25f;
+        GameObject attack = Instantiate(wave, new Vector3(
+            (transform.position.x + (facingLeft ? spawnXOffset : (spawnXOffset * -1))),
+            (transform.position.y + spawnYOffset), transform.position.z), transform.rotation);
+        var rigid = attack.GetComponent<Rigidbody2D>();
+        rigid.velocity = new Vector2((facingLeft ? waveSpeed : (waveSpeed * -1)), 0f);
     }
 
     IEnumerator UpdateAttackCondition()
@@ -162,13 +183,20 @@ public class FinalBoss : MonoBehaviour
         yield return new WaitForSeconds(0.1f);
     }
 
+    IEnumerator PlaySoundEffect(string sfx)
+    {
+        yield return new WaitForSeconds(0);
+        var sound = sfx == "step" ? step : sfx == "death" ? death : sfx == "attack1" ? attack1 : attack2;
+        audioSource.PlayOneShot(sound, 1);
+    }
+
     IEnumerator Die()
     {
         dying = true;
         velocity = 0;
         colli.enabled = false;
-        player.controlEnabled = player.canCrouch = player.attacking = player.crouching = false;
         anim.SetTrigger("death");
+        player.attacking = player.crouching = false;
         vcam.m_Follow = vcam.m_LookAt = transform;
 
         yield return new WaitForSeconds(5);
