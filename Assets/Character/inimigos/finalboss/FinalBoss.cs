@@ -10,7 +10,7 @@ public class FinalBoss : MonoBehaviour
     public int health = 20;
     public Material defaultMaterial, whiteMaterial;
     internal float velocity = 0;
-    internal bool dying = false, entering = true, hurtPlayer;
+    internal bool dying = false, entering = true, hurtPlayer, locked = true;
     public bool attacking = false, canAttack = true;
     internal Collider2D colli => GetComponent<Collider2D>();
     internal Rigidbody2D rb => GetComponent<Rigidbody2D>();
@@ -40,6 +40,10 @@ public class FinalBoss : MonoBehaviour
         vcam.m_Follow = vcam.m_LookAt = fightCamera;
         entering = false;
         playerHealth.GetComponent<Image>().color = new Color(1f, 1f, 1f, 1f);
+        locked = false;
+
+        yield return new WaitForSeconds(0.05f);
+        player.controlEnabled = player.canCrouch = true;
     }
 
 
@@ -77,8 +81,8 @@ public class FinalBoss : MonoBehaviour
                 if (vcam.m_Lens.OrthographicSize > 6.5f) vcam.m_Lens.OrthographicSize -= 0.01f;
             }
         }
-        
-        player.controlEnabled = player.canCrouch = entering || dying ? false : true;
+
+        if (locked) player.controlEnabled = player.canCrouch = entering || dying ? false : true;
 
         anim.SetFloat("velocityX", Mathf.Abs(velocity));
     }
@@ -86,13 +90,13 @@ public class FinalBoss : MonoBehaviour
     void OnTriggerStay2D(Collider2D collider)
     {
         if (collider.gameObject.tag == "Player" && !attacking && canAttack && !player.dead)
-        StartCoroutine(AttackDelay(Random.Range(3.5f, 4.5f)));
+            StartCoroutine(AttackDelay(Random.Range(3.5f, 4.5f)));
     }
 
     void OnTriggerEnter2D(Collider2D collider)
     {
         if (collider.gameObject.tag == "Player" && !attacking && canAttack && !player.dead)
-        Attack();
+            Attack();
     }
 
     IEnumerator AttackDelay(float time)
@@ -117,8 +121,19 @@ public class FinalBoss : MonoBehaviour
         GameObject attack = Instantiate(wave, new Vector3(
             (transform.position.x + (facingLeft ? spawnXOffset : (spawnXOffset * -1))),
             (transform.position.y + spawnYOffset), transform.position.z), transform.rotation);
-        var rigid = attack.GetComponent<Rigidbody2D>();
-        rigid.velocity = new Vector2((facingLeft ? waveSpeed : (waveSpeed * -1)), 0f);
+        attack.GetComponent<Rigidbody2D>().velocity = new Vector2((facingLeft ? waveSpeed : (waveSpeed * -1)), 0f);
+    }
+
+    IEnumerator MeteorAttack()
+    {
+        var facingLeft = transform.localScale.x == -2.25f;
+        for (int i = 3; i < 13; i = i + 3)
+        {
+            GameObject attack = Instantiate(meteor, new Vector3(
+                (transform.position.x + (facingLeft ? (i * -1) : i)),
+                (transform.position.y + 15), transform.position.z), transform.rotation);
+            yield return new WaitForSeconds(0.5f);
+        }
     }
 
     IEnumerator UpdateAttackCondition()

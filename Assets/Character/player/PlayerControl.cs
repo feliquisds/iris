@@ -47,10 +47,8 @@ public class PlayerControl : MonoBehaviour
         if (controlEnabled)
         {
             move = (attacking || crouching) ? 0f : Input.GetAxis("Horizontal");
-
             if (Input.GetButtonDown("Jump") && canJump)
             {
-                canJump = false;
                 audioSource.PlayOneShot(jumpSound, audioVolume);
                 rb.velocity = new Vector2(rb.velocity.x, jumpStrength);
             }
@@ -64,8 +62,7 @@ public class PlayerControl : MonoBehaviour
 
         canJump = grounded ? (attacking ? false : true) : false;
 
-        if (move > 0) sprite.flipX = false;
-        if (move < 0) sprite.flipX = true;
+        sprite.flipX = move > 0 ? false : move < 0 ? true : sprite.flipX;
 
         if (rb.velocity.y < -10f) rb.velocity = new Vector2(rb.velocity.x, -10f);
 
@@ -84,7 +81,8 @@ public class PlayerControl : MonoBehaviour
     void AttackFallDisable() { controlEnabled = true; attacking = false; }
     void Shoot()
     {
-        GameObject p = Instantiate(projectile, transform.position + new Vector3((sprite.flipX ? (shootXOffset * -1) : shootXOffset), shootYOffset, transform.position.z), transform.rotation);
+        GameObject p = Instantiate(projectile, transform.position + new Vector3(
+            (sprite.flipX ? (shootXOffset * -1) : shootXOffset), shootYOffset, transform.position.z), transform.rotation);
         p.GetComponent<Rigidbody2D>().velocity = new Vector2((sprite.flipX ? -5f : 5f), 0f);
     }
 

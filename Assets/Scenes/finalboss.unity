@@ -1163,7 +1163,7 @@ GameObject:
   - component: {fileID: 702407817}
   m_Layer: 3
   m_Name: wall2
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2507,14 +2507,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e6e793c8839c7f4183d2b3227411519, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 2
+  health: 20
   defaultMaterial: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   whiteMaterial: {fileID: 2100000, guid: f95147a9bab9fe649b8070170fa7ebd2, type: 3}
   attacking: 0
   canAttack: 1
   playerHealth: {fileID: 587083875}
   wave: {fileID: 1573551821831009654, guid: 36164c9b00fe65d48a0c88c5a4a1ea06, type: 3}
-  meteor: {fileID: 0}
+  meteor: {fileID: 1573551821831009654, guid: 8a8e403757a736c4c86caededbf637cc, type: 3}
   spawnXOffset: -3.5
   spawnYOffset: -1.4
   waveSpeed: -7
@@ -5258,7 +5258,7 @@ GameObject:
   - component: {fileID: 2059401867}
   m_Layer: 3
   m_Name: wall1
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

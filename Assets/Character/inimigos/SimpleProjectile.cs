@@ -6,10 +6,14 @@ public class SimpleProjectile : MonoBehaviour
 {
     internal Rigidbody2D rb => GetComponent<Rigidbody2D>();
     internal SpriteRenderer sprite => GetComponent<SpriteRenderer>();
-    public bool fromPlayer = false, fromFinalBoss = false;
+    public bool fromPlayer = false, fromFinalBoss = false, meteor = false;
 
     void Awake() => StartCoroutine(AutoDestroy());
-    void Update() => sprite.flipX = (rb.velocity.x < 0) ? true : false;
+    void Update()
+    {
+        sprite.flipX = (rb.velocity.x < 0) ? true : false;
+        if (meteor) rb.velocity = new Vector2(0, -10);
+    }
 
     void OnCollisionEnter2D(Collision2D collision)
     {
@@ -20,6 +24,7 @@ public class SimpleProjectile : MonoBehaviour
         }
 
         if ((fromFinalBoss && (collision.gameObject.tag == "LimitL" || collision.gameObject.tag == "LimitR")) ||
+            (fromFinalBoss && meteor && collision.gameObject.tag == "Ground") ||
             (!fromFinalBoss && (collision.gameObject.tag == "PlayerAttack" || collision.gameObject.tag == "Ground")) ||
             (fromPlayer && collision.gameObject.tag == "Enemy"))
             Destroy(gameObject);
@@ -27,6 +32,7 @@ public class SimpleProjectile : MonoBehaviour
 
     IEnumerator AutoDestroy()
     {
+        if (meteor) transform.Rotate(0, 0, 45, Space.Self);
         yield return new WaitForSeconds(!fromPlayer ? 3 : 1.5f);
         Destroy(gameObject);
     }
