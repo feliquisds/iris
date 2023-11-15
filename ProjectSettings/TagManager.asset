@@ -21,6 +21,8 @@ TagManager:
   - LimitR
   - GameEvents
   - FallbackButton
+  - CollectableUI
+  - Collectables
   layers:
   - Default
   - TransparentFX
