@@ -173,6 +173,10 @@ MonoBehaviour:
   firstSpeed: 3
   secondSpeed: 4
   thirdSpeed: 5
+  speeds:
+  - 0
+  - 0
+  - 0
   verticalSpeed: 9
   spawnXOffset: 0.5
   spawnYOffset: 0

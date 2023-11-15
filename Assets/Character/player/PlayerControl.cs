@@ -16,7 +16,7 @@ public class PlayerControl : MonoBehaviour
     public bool grounded => rb.IsTouching(groundFilter) || onSlope;
     public bool onSlope => rb.IsTouching(slopeFilter) || rb.IsTouching(invertedSlopeFilter);
 
-    public double maxHealth = 2, health = 2;
+    public int maxHealth = 2, health = 2;
 
     internal float move, targetVelocity;
     public float maxSpeed = 5f, acceleration = 5f, jumpStrength = 8.5f, shootXOffset, shootYOffset;
@@ -40,6 +40,7 @@ public class PlayerControl : MonoBehaviour
             rb.velocity = new Vector2(targetVelocity, rb.velocity.y);
         }
         if (winning) rb.velocity = new Vector2(5f, 0f);
+        if (rb.velocity.y < -10f) rb.velocity = new Vector2(rb.velocity.x, -10f);
     }
 
     void Update()
@@ -63,8 +64,6 @@ public class PlayerControl : MonoBehaviour
         canJump = grounded ? (attacking ? false : true) : false;
 
         sprite.flipX = move > 0 ? false : move < 0 ? true : sprite.flipX;
-
-        if (rb.velocity.y < -10f) rb.velocity = new Vector2(rb.velocity.x, -10f);
 
         if (dead && grounded) rb.simulated = false;
 
@@ -153,7 +152,7 @@ public class PlayerControl : MonoBehaviour
         canBeHurt = true;
     }
 
-    public void IncreaseLife() => health = health >= 2 ? health : health += 0.5;
+    public void IncreaseLife() => health = health >= 2 ? health : health += 1;
 
     void EnemyRespawn()
     {

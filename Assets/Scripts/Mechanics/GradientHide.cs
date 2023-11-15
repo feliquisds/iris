@@ -2,15 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
+using UnityEngine.UI;
 
 public class GradientHide : MonoBehaviour
 {
-    internal bool hidden;
+    public bool hidden;
     internal float fadeAmount;
     public bool startsVisible = true;
     public float fadeSpeed = 5;
     internal bool usingSprite => TryGetComponent(out SpriteRenderer sprite);
-    internal Color objColor => usingSprite ? GetComponent<SpriteRenderer>().color : GetComponent<Tilemap>().color;
+    internal bool usingImage => TryGetComponent(out Image img);
+    internal Color objColor => usingSprite ? GetComponent<SpriteRenderer>().color : usingImage ? GetComponent<Image>().color : GetComponent<Tilemap>().color;
     internal Color newColor;
 
     private void Awake()
@@ -20,6 +22,7 @@ public class GradientHide : MonoBehaviour
         {
             hidden = false;
             if (usingSprite) GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 0);
+            else if (usingImage) GetComponent<Image>().color = new Color(1, 1, 1, 0);
             else GetComponent<Tilemap>().color = new Color(1, 1, 1, 0);
         }
     }
@@ -42,10 +45,11 @@ public class GradientHide : MonoBehaviour
     {
         if (objColor.a < 1)
         {
-            fadeAmount = objColor.a + (fadeSpeed * Time.deltaTime);
+            fadeAmount = objColor.a + (fadeSpeed * Time.unscaledDeltaTime);
             newColor = new Color(objColor.r, objColor.g, objColor.b, fadeAmount);
 
             if (usingSprite) GetComponent<SpriteRenderer>().color = newColor;
+            else if (usingImage) GetComponent<Image>().color = newColor;
             else GetComponent<Tilemap>().color = newColor;
         }
     }
@@ -53,10 +57,11 @@ public class GradientHide : MonoBehaviour
     {
         if (objColor.a > 0)
         {
-            fadeAmount = objColor.a - (fadeSpeed * Time.deltaTime);
+            fadeAmount = objColor.a - (fadeSpeed * Time.unscaledDeltaTime);
             newColor = new Color(objColor.r, objColor.g, objColor.b, fadeAmount);
 
             if (usingSprite) GetComponent<SpriteRenderer>().color = newColor;
+            else if (usingImage) GetComponent<Image>().color = newColor;
             else GetComponent<Tilemap>().color = newColor;
         }
     }

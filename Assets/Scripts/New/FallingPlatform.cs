@@ -13,7 +13,7 @@ public class FallingPlatform : MonoBehaviour
 
     void Awake() => spawn = transform.position;
 
-    void Update() { if (isDynamic && limitSpeed && rb.velocity.y < -10f) rb.velocity = new Vector2(0f, -10f); }
+    void FixedUpdate() { if (isDynamic && limitSpeed && rb.velocity.y < -10f) rb.velocity = new Vector2(0f, -10f); }
 
     void OnCollisionEnter2D(Collision2D collider)
     {

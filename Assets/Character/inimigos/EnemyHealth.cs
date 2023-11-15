@@ -16,6 +16,7 @@ public class EnemyHealth : MonoBehaviour
     internal bool hasEnemyWalk => TryGetComponent<EnemyWalk>(out EnemyWalk enemy);
 
     void Awake() => initialHealth = health;
+    void OnEnable() => health = initialHealth;
     
     void OnCollisionEnter2D(Collision2D _collider)
     {

@@ -23,6 +23,7 @@ TagManager:
   - FallbackButton
   - CollectableUI
   - Collectables
+  - Limits
   layers:
   - Default
   - TransparentFX

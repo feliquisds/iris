@@ -23,10 +23,10 @@ public class SimpleProjectile : MonoBehaviour
             Destroy(gameObject);
         }
 
-        if ((fromFinalBoss && (collision.gameObject.tag == "LimitL" || collision.gameObject.tag == "LimitR")) ||
-            (fromFinalBoss && meteor && collision.gameObject.tag == "Ground") ||
+        if ((fromFinalBoss && meteor && collision.gameObject.tag == "Ground") ||
             (!fromFinalBoss && (collision.gameObject.tag == "PlayerAttack" || collision.gameObject.tag == "Ground")) ||
-            (fromPlayer && collision.gameObject.tag == "Enemy"))
+            (fromPlayer && collision.gameObject.tag == "Enemy") ||
+            (collision.gameObject.tag == "Limits"))
             Destroy(gameObject);
     }
 

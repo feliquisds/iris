@@ -6,13 +6,32 @@ using UnityEngine.EventSystems;
 
 namespace Platformer.UI
 {
-    public class SelectButton : MonoBehaviour
+    public class SubUIController : MonoBehaviour
     {
         public GameObject fallbackButton, UIControllerObject;
         public MainUIController UIController => UIControllerObject.GetComponent<MainUIController>();
-        public bool mainMenu;
         internal EventSystem events => GetComponent<EventSystem>();
+        internal GameObject playerObject => GameObject.FindWithTag("Player");
+        internal PlayerControl player => playerObject.GetComponent<PlayerControl>();
+        public bool mainMenu => playerObject == null;
+        internal GradientHide fade => GameObject.FindWithTag("Fade").GetComponent<GradientHide>();
         internal GameObject activePanel;
+        internal bool locked;
+
+        void Awake() => StartCoroutine(FadeStart());
+        IEnumerator FadeStart()
+        {
+            locked = true;
+            Time.timeScale = 1;
+            fade.hidden = true;
+            yield return new WaitForSeconds(0.5f);
+
+            fade.hidden = false;
+            yield return new WaitForSeconds(0.3f);
+
+            locked = false;
+            if (!mainMenu) player.controlEnabled = player.canCrouch = true;
+        }
 
         void Update()
         {
@@ -21,6 +40,7 @@ namespace Platformer.UI
                 if (mainMenu) MenuUpdate();
                 else PauseUpdate();
             }
+            if (!mainMenu && locked) player.controlEnabled = player.canCrouch = false;
         }
 
         void MenuUpdate()
@@ -58,10 +78,7 @@ namespace Platformer.UI
         {
             foreach (Transform transform in parent.transform)
             {
-                if (transform.CompareTag(tag))
-                {
-                    return transform.gameObject;
-                }
+                if (transform.CompareTag(tag)) return transform.gameObject;
             }
             return null;
         }

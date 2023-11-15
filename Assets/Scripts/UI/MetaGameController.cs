@@ -30,7 +30,9 @@ namespace Platformer.UI
 
         bool showMainCanvas = false;
         internal PlayerControl player => GameObject.FindWithTag("Player").GetComponent<PlayerControl>();
-
+        internal GameObject gameCore => GameObject.FindWithTag("GameCore");
+        internal AudioLowPassFilter filter => gameCore.GetComponent<AudioLowPassFilter>();
+        
         void OnEnable() => _ToggleMainMenu(showMainCanvas);
 
         /// <summary>
@@ -43,6 +45,7 @@ namespace Platformer.UI
         {
             if (show)
             {
+                filter.enabled = true;
                 Time.timeScale = 0;
                 mainMenu.gameObject.SetActive(true);
                 foreach (var i in gamePlayCanvasii) i.gameObject.SetActive(false);
@@ -50,6 +53,7 @@ namespace Platformer.UI
             }
             else
             {
+                filter.enabled = false;
                 Time.timeScale = 1;
                 mainMenu.gameObject.SetActive(false);
                 foreach (var i in gamePlayCanvasii) i.gameObject.SetActive(true);
