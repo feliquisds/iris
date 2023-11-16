@@ -170,3 +170,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fromPlayer: 0
   fromFinalBoss: 0
+  meteor: 0

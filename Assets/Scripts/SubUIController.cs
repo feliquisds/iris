@@ -16,12 +16,11 @@ namespace Platformer.UI
         public bool mainMenu => playerObject == null;
         internal GradientHide fade => GameObject.FindWithTag("Fade").GetComponent<GradientHide>();
         internal GameObject activePanel;
-        internal bool locked;
+        internal bool locked = true;
 
         void Awake() => StartCoroutine(FadeStart());
         IEnumerator FadeStart()
         {
-            locked = true;
             Time.timeScale = 1;
             fade.hidden = true;
             yield return new WaitForSeconds(0.5f);
@@ -35,35 +34,17 @@ namespace Platformer.UI
 
         void Update()
         {
-            if (events.currentSelectedGameObject == null)
-            {
-                if (mainMenu) MenuUpdate();
-                else PauseUpdate();
-            }
+            if (events.currentSelectedGameObject == null) UpdateSelection();
             if (!mainMenu && locked) player.controlEnabled = player.canCrouch = false;
         }
 
-        void MenuUpdate()
+        void UpdateSelection()
         {
-            if (Input.GetAxis("Horizontal") != 0f || Input.GetAxis("Vertical") != 0f)
+            if (((Time.timeScale != 1 && !mainMenu) || (mainMenu)) &&
+                (Input.GetButtonDown("Horizontal") || Input.GetButtonDown("Vertical")))
             {
-                if (UIController.panels[2].activeSelf) events.SetSelectedGameObject(fallbackButton);
+                if (UIController.panels[0].activeSelf) events.SetSelectedGameObject(fallbackButton);
                 else
-                {
-                    foreach (GameObject panel in UIController.panels)
-                    {
-                        activePanel = panel.activeSelf ? panel : activePanel;
-                    }
-                    events.SetSelectedGameObject(FindChildWithTag(activePanel, "FallbackButton"));
-                }
-            }
-        }
-
-        void PauseUpdate()
-        {
-            if (Time.timeScale != 1)
-            {
-                if (Input.GetButtonDown("Horizontal") != false || Input.GetButtonDown("Vertical") != false)
                 {
                     foreach (GameObject panel in UIController.panels)
                     {
