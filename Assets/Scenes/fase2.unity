@@ -41233,6 +41233,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: ui_pause
       objectReference: {fileID: 0}
+    - target: {fileID: 4009130065698333721, guid: 9a1bd12ebb35d4dc997aa0c5494eda9b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4009130065698333723, guid: 9a1bd12ebb35d4dc997aa0c5494eda9b,
         type: 3}
       propertyPath: m_PresetInfoIsWorld
@@ -46511,10 +46516,9 @@ GameObject:
   - component: {fileID: 644291957}
   - component: {fileID: 644291956}
   - component: {fileID: 644291954}
-  - component: {fileID: 644291955}
   m_Layer: 5
   m_Name: hearts
-  m_TagString: Untagged
+  m_TagString: LifeUI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -46560,18 +46564,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &644291955
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 644291952}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: db3f74650d812ed41baa709830def989, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &644291956
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -64749,7 +64741,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 323a628fef2fd814293fe6cf9e3f5d49, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 0.35
   m_Pitch: 1
   Loop: 1

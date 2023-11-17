@@ -29,7 +29,7 @@ public class VictoryZone : MonoBehaviour
 
     private IEnumerator WaitForSceneLoad()
     {
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(1.7f);
         fade.hidden = true;
 
         yield return new WaitForSeconds(0.3f);

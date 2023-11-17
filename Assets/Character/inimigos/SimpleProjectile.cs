@@ -4,15 +4,26 @@ using UnityEngine;
 
 public class SimpleProjectile : MonoBehaviour
 {
+    internal Collider2D colli => GetComponent<Collider2D>();
     internal Rigidbody2D rb => GetComponent<Rigidbody2D>();
     internal SpriteRenderer sprite => GetComponent<SpriteRenderer>();
-    public bool fromPlayer = false, fromFinalBoss = false, meteor = false;
+    private Color spriteColor => sprite.color;
+    private float fadeAmount;
+    private bool fadeOut = false;
+    public bool fromPlayer = false, fromFinalBoss = false, meteor = false, ignoreCollision = false;
+    internal Collider2D collisionToIgnore => GameObject.FindWithTag("Enemy").GetComponent<FinalBoss>().attackCollider;
 
-    void Awake() => StartCoroutine(AutoDestroy());
+    void Awake()
+    {
+        if (ignoreCollision) Physics2D.IgnoreCollision(colli, collisionToIgnore, true);
+        if (meteor) transform.Rotate(0, 0, 45, Space.Self);
+        StartCoroutine(Initiate());
+    }
     void Update()
     {
         sprite.flipX = (rb.velocity.x < 0) ? true : false;
         if (meteor) rb.velocity = new Vector2(0, -10);
+        if (fadeOut) FadeOut();
     }
 
     void OnCollisionEnter2D(Collision2D collision)
@@ -30,10 +41,21 @@ public class SimpleProjectile : MonoBehaviour
             Destroy(gameObject);
     }
 
-    IEnumerator AutoDestroy()
+    IEnumerator Initiate()
     {
-        if (meteor) transform.Rotate(0, 0, 45, Space.Self);
-        yield return new WaitForSeconds(!fromPlayer ? 3 : 1.5f);
-        Destroy(gameObject);
+        if (TryGetComponent(out AudioSource audioSource))
+        {
+            yield return new WaitForSeconds(0.3f);
+            audioSource.Play();
+        }
+        yield return new WaitForSeconds(!fromPlayer ? 2.7f : 1.2f);
+        fadeOut = true;
+    }
+    void FadeOut()
+    {
+        fadeAmount = spriteColor.a - (3.5f * Time.deltaTime);
+        sprite.color = new Color(spriteColor.r, spriteColor.g, spriteColor.b, fadeAmount);
+
+        if (spriteColor.a <= 0) Destroy(gameObject);
     }
 }

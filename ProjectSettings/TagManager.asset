@@ -17,13 +17,12 @@ TagManager:
   - InsectWave_Insect
   - EnemyRespawner
   - GameCore
-  - LimitL
-  - LimitR
   - GameEvents
   - FallbackButton
   - CollectableUI
   - Collectables
   - Limits
+  - LifeUI
   layers:
   - Default
   - TransparentFX

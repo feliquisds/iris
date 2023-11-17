@@ -444,6 +444,8 @@ MonoBehaviour:
   hidden: 0
   startsVisible: 1
   fadeSpeed: 5
+  fadeInGoal: 1
+  fadeOutGoal: 0
 --- !u!1 &325573546
 GameObject:
   m_ObjectHideFlags: 0
@@ -2258,7 +2260,7 @@ GameObject:
   - component: {fileID: 829001819}
   m_Layer: 5
   m_Name: mainmenu
-  m_TagString: Untagged
+  m_TagString: GameCore
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2365,7 +2367,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 3b49c7970cb4dd84ba136190fb7c0ae9, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 0.5
   m_Pitch: 1
   Loop: 1
@@ -5972,7 +5974,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Preview 1.1b
+  m_text: Preview 1.2a
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 3c3515ea2c7ad85489c085768a3ad621, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 3c3515ea2c7ad85489c085768a3ad621, type: 2}

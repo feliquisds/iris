@@ -18,9 +18,11 @@ public class EnemyHealth : MonoBehaviour
     void Awake() => initialHealth = health;
     void OnEnable() => health = initialHealth;
     
-    void OnCollisionEnter2D(Collision2D _collider)
+    void OnCollisionEnter2D(Collision2D collider) => Collided(collider);
+    void OnCollisionStay2D(Collision2D collider) => Collided(collider);
+    void Collided(Collision2D collider)
     {
-        if (_collider.gameObject.tag == "PlayerAttack")
+        if (collider.gameObject.tag == "PlayerAttack")
         {
             if (health > 0)
             {
@@ -29,23 +31,7 @@ public class EnemyHealth : MonoBehaviour
             }
             else Explode();
         }
-
-        if (_collider.gameObject.tag == "Player" && !hasEnemyWalk) player.Hurt();
-    }
-
-    void OnCollisionStay2D(Collision2D _collider)
-    {
-        if (_collider.gameObject.tag == "PlayerAttack")
-        {
-            if (health > 0)
-            {
-                health -= 1;
-                StartCoroutine(Flicker());
-            }
-            else Explode();
-        }
-
-        if (_collider.gameObject.tag == "Player" && !hasEnemyWalk) player.Hurt();
+        if (collider.gameObject.tag == "Player" && !hasEnemyWalk) player.Hurt();
     }
 
     IEnumerator Flicker()

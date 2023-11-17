@@ -150,6 +150,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fromPlayer: 0
   fromFinalBoss: 1
+  meteor: 0
+  ignoreCollision: 1
+  collisionToIgnore: {fileID: 0}
 --- !u!95 &7733836375453255967
 Animator:
   serializedVersion: 5

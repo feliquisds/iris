@@ -11,6 +11,7 @@ public class FinalBoss : MonoBehaviour
     public Material defaultMaterial, whiteMaterial;
     internal float velocity = 0;
     internal bool dying = false, entering = true, hurtPlayer, locked = true;
+    internal bool facingLeft => transform.localScale.x == -2.25f;
     public bool attacking = false, canAttack = true;
     internal Collider2D colli => GetComponent<Collider2D>();
     internal Rigidbody2D rb => GetComponent<Rigidbody2D>();
@@ -19,13 +20,13 @@ public class FinalBoss : MonoBehaviour
     internal AudioSource audioSource => GetComponent<AudioSource>();
     internal PlayerControl player => GameObject.FindWithTag("Player").GetComponent<PlayerControl>();
     internal Transform startPos => GameObject.FindWithTag("Path").transform;
-    internal Transform limitL => GameObject.FindWithTag("LimitL").transform;
-    internal Transform limitR => GameObject.FindWithTag("LimitR").transform;
     internal Transform playerPosition => GameObject.FindWithTag("Player").transform;
     internal float distance => Vector3.Distance(playerPosition.position, transform.position);
     public CinemachineVirtualCamera vcam => GameObject.FindWithTag("CameraHandler").GetComponent<CinemachineVirtualCamera>();
+    internal GradientHide fade => GameObject.FindWithTag("Fade").GetComponent<GradientHide>();
     public Bounds Bounds => colli.bounds;
     public GameObject playerHealth, wave, meteor;
+    public Collider2D attackCollider;
     public float spawnXOffset, spawnYOffset, waveSpeed;
     public AudioClip step, death, attack1, attack2;
 
@@ -45,7 +46,6 @@ public class FinalBoss : MonoBehaviour
         yield return new WaitForSeconds(0.05f);
         player.controlEnabled = player.canCrouch = true;
     }
-
 
     void FixedUpdate() => rb.velocity = new Vector2(velocity, 0f);
     void Update()
@@ -82,21 +82,20 @@ public class FinalBoss : MonoBehaviour
             }
         }
 
-        if (locked) player.controlEnabled = player.canCrouch = entering || dying ? false : true;
+        if (locked) player.controlEnabled = player.canCrouch = player.attacking = player.crouching = entering || dying ? false : true;
 
         anim.SetFloat("velocityX", Mathf.Abs(velocity));
     }
 
-    void OnTriggerStay2D(Collider2D collider)
+    void OnTriggerStay2D(Collider2D collider) => Triggered(collider, true);
+    void OnTriggerEnter2D(Collider2D collider) => Triggered(collider, false);
+    void Triggered(Collider2D collider, bool stay)
     {
         if (collider.gameObject.tag == "Player" && !attacking && canAttack && !player.dead)
-            StartCoroutine(AttackDelay(Random.Range(3.5f, 4.5f)));
-    }
-
-    void OnTriggerEnter2D(Collider2D collider)
-    {
-        if (collider.gameObject.tag == "Player" && !attacking && canAttack && !player.dead)
-            Attack();
+        {
+            if (stay) StartCoroutine(AttackDelay(Random.Range(3.5f, 4.5f)));
+            else Attack();
+        }
     }
 
     IEnumerator AttackDelay(float time)
@@ -104,33 +103,30 @@ public class FinalBoss : MonoBehaviour
         yield return new WaitForSeconds(time);
         if (!attacking && canAttack) Attack();
     }
-
     void Attack()
     {
         if (!attacking && canAttack)
         {
             attacking = true;
             canAttack = false;
-            anim.SetTrigger(Random.value > 0.49f ? "attack1" : "attack2");
+            anim.SetTrigger(player.Bounds.center.y >= Bounds.max.y ? "attack2" : Random.value > 0.49f ? "attack1" : "attack2");
         }
     }
 
     void WaveAttack()
     {
-        var facingLeft = transform.localScale.x == -2.25f;
         GameObject attack = Instantiate(wave, new Vector3(
             (transform.position.x + (facingLeft ? spawnXOffset : (spawnXOffset * -1))),
             (transform.position.y + spawnYOffset), transform.position.z), transform.rotation);
         attack.GetComponent<Rigidbody2D>().velocity = new Vector2((facingLeft ? waveSpeed : (waveSpeed * -1)), 0f);
     }
-
     IEnumerator MeteorAttack()
     {
-        var facingLeft = transform.localScale.x == -2.25f;
+        var local_facingLeft = facingLeft;
         for (int i = 3; i < 13; i = i + 3)
         {
             GameObject attack = Instantiate(meteor, new Vector3(
-                (transform.position.x + (facingLeft ? (i * -1) : i)),
+                (transform.position.x + (local_facingLeft ? (i * -1) : i)),
                 (transform.position.y + 15), transform.position.z), transform.rotation);
             yield return new WaitForSeconds(0.5f);
         }
@@ -144,27 +140,9 @@ public class FinalBoss : MonoBehaviour
         canAttack = true;
     }
 
-    void OnCollisionEnter2D(Collision2D collider)
-    {
-        if (collider.gameObject.tag == "PlayerAttack")
-        {
-            if (health > 0)
-            {
-                health -= 1;
-                StartCoroutine(Flicker());
-            }
-            else StartCoroutine(Die());
-        }
-
-        if (collider.gameObject.tag == "Player")
-        {
-            player.Hurt();
-            hurtPlayer = true;
-            StartCoroutine(Cooldown());
-        }
-    }
-
-    void OnCollisionStay2D(Collision2D collider)
+    void OnCollisionEnter2D(Collision2D collider) => Collided(collider);
+    void OnCollisionStay2D(Collision2D collider) => Collided(collider);
+    void Collided(Collision2D collider)
     {
         if (collider.gameObject.tag == "PlayerAttack")
         {
@@ -190,6 +168,8 @@ public class FinalBoss : MonoBehaviour
         hurtPlayer = false;
     }
 
+    public void AttackCollider(int activated) => attackCollider.enabled = activated == 1;
+
     IEnumerator Flicker()
     {
         sprite.material = whiteMaterial;
@@ -207,14 +187,17 @@ public class FinalBoss : MonoBehaviour
 
     IEnumerator Die()
     {
-        dying = true;
+        audioSource.Stop();
+        dying = locked = true;
         velocity = 0;
-        colli.enabled = false;
+        colli.enabled = player.colli.enabled = false;
         anim.SetTrigger("death");
-        player.attacking = player.crouching = false;
         vcam.m_Follow = vcam.m_LookAt = transform;
 
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(4.7f);
+        fade.hidden = true;
+
+        yield return new WaitForSeconds(0.3f);
         SceneManager.LoadScene(0);
     }
 }

@@ -15,6 +15,7 @@ public class EnemyWalk : MonoBehaviour
     public Bounds Bounds => _collider.bounds;
     internal PlayerControl player => GameObject.FindWithTag("Player").GetComponent<PlayerControl>();
     internal bool rendering => GetComponent<Renderer>().isVisible;
+    internal bool willHurtEnemy => player.Bounds.min.y >= Bounds.max.y;
 
     void Awake() => initialTransform = transform.position;
     void OnEnable() { transform.position = initialTransform; freeze = false; }
@@ -30,37 +31,29 @@ public class EnemyWalk : MonoBehaviour
         animator.SetFloat("velocityX", speed);
     }
 
-    void OnCollisionEnter2D(Collision2D _collider)
+    void OnCollisionEnter2D(Collision2D collider) => Collided(collider);
+    void OnCollisionStay2D(Collision2D collider) => Collided(collider);
+    void Collided(Collision2D collider)
     {
-        var willHurtEnemy = player.Bounds.min.y >= Bounds.max.y;
-
-        if (_collider.gameObject.tag == "Player")
+        if (collider.gameObject.tag == "Player")
         {
-            if (willHurtEnemy)
-            {
-                player.Bounce();
-                Freeze();
-            }
+            if (willHurtEnemy) player.Bounce();
             else
             {
                 player.Hurt();
                 animator.SetTrigger("attacked");
-                Freeze();
             }
+            Freeze();
         }
     }
 
-    void OnTriggerEnter2D(Collider2D _collider)
-    {
-        if (_collider.gameObject.tag == "Path") speed = speed * -1;
-    }
+    void OnTriggerEnter2D(Collider2D collider) => speed = collider.gameObject.tag == "Path" ? speed * -1 : speed;
 
     public void Freeze()
     {
-        freeze = true;
+        if (!freeze) freeze = true;
         StartCoroutine(Unfreeze());
     }
-
     public IEnumerator Unfreeze()
     {
         yield return new WaitForSeconds(1.5f);

@@ -10,6 +10,7 @@ public class PlayerControl : MonoBehaviour
     internal Rigidbody2D rb => GetComponent<Rigidbody2D>();
     internal SpriteRenderer sprite => GetComponent<SpriteRenderer>();
     internal Animator anim => GetComponent<Animator>();
+    internal Animator lifeAnim => GameObject.FindWithTag("LifeUI").GetComponent<Animator>();
 
     public bool controlEnabled = true, canAttack, canCrouch = true, winning, respawning;
 
@@ -169,5 +170,6 @@ public class PlayerControl : MonoBehaviour
         anim.SetBool("grounded", grounded);
         anim.SetFloat("velocityX", Mathf.Abs(rb.velocity.x));
         anim.SetFloat("velocityY", rb.velocity.y);
+        lifeAnim.SetInteger("vida", health);
     }
 }

@@ -30,45 +30,35 @@ namespace Platformer.UI
 
         bool showMainCanvas = false;
         internal PlayerControl player => GameObject.FindWithTag("Player").GetComponent<PlayerControl>();
-        internal GameObject gameCore => GameObject.FindWithTag("GameCore");
-        internal AudioLowPassFilter filter => gameCore.GetComponent<AudioLowPassFilter>();
-        
-        void OnEnable() => _ToggleMainMenu(showMainCanvas);
+        internal AudioLowPassFilter filter => GetComponent<AudioLowPassFilter>();
+        internal AudioSource audioSource => GetComponent<AudioSource>();
 
-        /// <summary>
-        /// Turn the main menu on or off.
-        /// </summary>
-        /// <param name="show"></param>
-        public void ToggleMainMenu(bool show) { if (this.showMainCanvas != show) _ToggleMainMenu(show); }
-
-        void _ToggleMainMenu(bool show)
+        void OnEnable() => StartCoroutine(StartMusic());
+        IEnumerator StartMusic()
         {
-            if (show)
-            {
-                filter.enabled = true;
-                Time.timeScale = 0;
-                mainMenu.gameObject.SetActive(true);
-                foreach (var i in gamePlayCanvasii) i.gameObject.SetActive(false);
-                player.controlEnabled = false;
-            }
-            else
-            {
-                filter.enabled = false;
-                Time.timeScale = 1;
-                mainMenu.gameObject.SetActive(false);
-                foreach (var i in gamePlayCanvasii) i.gameObject.SetActive(true);
-                StartCoroutine(UnlockPlayer());
-            }
-            this.showMainCanvas = show;
+            yield return new WaitForSecondsRealtime(0.5f);
+            audioSource.Play();
         }
 
-        void Update() { if (Input.GetButtonDown("Menu")) ToggleMainMenu(show: !showMainCanvas); }
-
+        public void ToggleMenu(bool show)
+        {
+            if (showMainCanvas != show)
+            {
+                filter.enabled = show;
+                Time.timeScale = show ? 0 : 1;
+                mainMenu.gameObject.SetActive(show);
+                foreach (var i in gamePlayCanvasii) i.gameObject.SetActive(!show);
+                if (show) player.controlEnabled = false;
+                else StartCoroutine(UnlockPlayer());
+                showMainCanvas = show;
+            }
+        }
         IEnumerator UnlockPlayer()
         {
             yield return new WaitForSeconds(0.01f);
             player.controlEnabled = true;
         }
 
+        void Update() { if (Input.GetButtonDown("Menu")) ToggleMenu(!showMainCanvas); }
     }
 }

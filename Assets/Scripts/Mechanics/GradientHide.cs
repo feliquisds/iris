@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,7 +10,7 @@ public class GradientHide : MonoBehaviour
     public bool hidden;
     internal float fadeAmount;
     public bool startsVisible = true;
-    public float fadeSpeed = 5;
+    public float fadeSpeed = 5, fadeInGoal = 1, fadeOutGoal = 0;
     internal bool usingSprite => TryGetComponent(out SpriteRenderer sprite);
     internal bool usingImage => TryGetComponent(out Image img);
     internal Color objColor => usingSprite ? GetComponent<SpriteRenderer>().color : usingImage ? GetComponent<Image>().color : GetComponent<Tilemap>().color;
@@ -17,47 +18,25 @@ public class GradientHide : MonoBehaviour
 
     private void Awake()
     {
-        if (startsVisible) hidden = true;
-        else
-        {
-            hidden = false;
-            if (usingSprite) GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 0);
-            else if (usingImage) GetComponent<Image>().color = new Color(1, 1, 1, 0);
-            else GetComponent<Tilemap>().color = new Color(1, 1, 1, 0);
-        }
+        hidden = startsVisible;
+        if (usingSprite) GetComponent<SpriteRenderer>().color = new Color(objColor.r, objColor.g, objColor.b, Convert.ToInt32(hidden));
+        else if (usingImage) GetComponent<Image>().color = new Color(objColor.r, objColor.g, objColor.b, Convert.ToInt32(hidden));
+        else GetComponent<Tilemap>().color = new Color(objColor.r, objColor.g, objColor.b, Convert.ToInt32(hidden));
     }
 
-    private void OnTriggerEnter2D(Collider2D _collider)
+    private void OnTriggerEnter2D(Collider2D collider) => Triggered(collider, true);
+    private void OnTriggerExit2D(Collider2D collider) => Triggered(collider, false);
+    void Triggered(Collider2D collider, bool entered)
     {
-        if (_collider.gameObject.tag == "Player") hidden = startsVisible ? false : true;
-    }
-    private void OnTriggerExit2D(Collider2D _collider)
-    {
-        if (_collider.gameObject.tag == "Player") hidden = startsVisible ? true : false;
+        if (collider.gameObject.tag == "Player") hidden = startsVisible ? !entered : entered;
     }
 
-    void Update()
+    void Update() => Fade(hidden);
+    void Fade(bool fadeIn)
     {
-        if (hidden) FadeIn();
-        else FadeOut();
-    }
-    void FadeIn()
-    {
-        if (objColor.a < 1)
+        if ((fadeIn && objColor.a < fadeInGoal) || (!fadeIn && objColor.a > fadeOutGoal))
         {
-            fadeAmount = objColor.a + (fadeSpeed * Time.unscaledDeltaTime);
-            newColor = new Color(objColor.r, objColor.g, objColor.b, fadeAmount);
-
-            if (usingSprite) GetComponent<SpriteRenderer>().color = newColor;
-            else if (usingImage) GetComponent<Image>().color = newColor;
-            else GetComponent<Tilemap>().color = newColor;
-        }
-    }
-    void FadeOut()
-    {
-        if (objColor.a > 0)
-        {
-            fadeAmount = objColor.a - (fadeSpeed * Time.unscaledDeltaTime);
+            fadeAmount = objColor.a + ((fadeSpeed * Time.unscaledDeltaTime) * (fadeIn ? 1 : -1));
             newColor = new Color(objColor.r, objColor.g, objColor.b, fadeAmount);
 
             if (usingSprite) GetComponent<SpriteRenderer>().color = newColor;

@@ -13,7 +13,7 @@ public class EnemyShootArch : MonoBehaviour
     internal Animator animator => GetComponent<Animator>();
     internal SpriteRenderer sprite => GetComponent<SpriteRenderer>();
 
-    void Awake() { speeds[0] = firstSpeed; speeds[1] = secondSpeed; speeds[2] = thirdSpeed; }
+    void Awake() => speeds = new float[] {firstSpeed, secondSpeed, thirdSpeed};
     void OnTriggerEnter2D(Collider2D _collider) { if (_collider.gameObject.tag == "Player") animator.SetBool("attack", true); }
     void OnTriggerExit2D(Collider2D _collider) { if (_collider.gameObject.tag == "Player") animator.SetBool("attack", false); }
 

@@ -50,22 +50,19 @@ public class InsectWave : MonoBehaviour
         vcam.m_Follow = vcam.m_LookAt = cameraPoint.transform;
         goalCam = 5f;
         chasing = true;
-        StartCoroutine(StartInsectSpawn());
+        StartCoroutine(CanSpawnObjects(true));
     }
 
-    IEnumerator StartInsectSpawn()
+    IEnumerator CanSpawnObjects(bool start)
     {
-        yield return new WaitForSeconds(1f);
-        stopSpawnInsect = stopSpawnDebris = false;
-        canSpawnInsect = canSpawnDebris = true;
-    }
-
-    void StopInsectSpawn()
-    {
-        stopSpawnInsect = stopSpawnDebris = true;
-        canSpawnInsect = canSpawnDebris = false;
-        GameObject[] insects = GameObject.FindGameObjectsWithTag("InsectWave_Insect");
-        foreach (GameObject insect in insects) Destroy(insect);
+        yield return new WaitForSeconds(start ? 1f : 0f);
+        stopSpawnInsect = stopSpawnDebris = !start;
+        canSpawnInsect = canSpawnDebris = start;
+        if (!start)
+        {
+            GameObject[] insects = GameObject.FindGameObjectsWithTag("InsectWave_Insect");
+            foreach (GameObject insect in insects) Destroy(insect);
+        }
     }
 
     IEnumerator InsectSpawn()
@@ -105,7 +102,7 @@ public class InsectWave : MonoBehaviour
             vcam.m_Lens.OrthographicSize = goalCam = 3.5f;
             cameraPoint.GetComponent<AudioSource>().mute = true;
             chasing = false;
-            StopInsectSpawn();
+            StartCoroutine(CanSpawnObjects(false));
         }
     }
 
