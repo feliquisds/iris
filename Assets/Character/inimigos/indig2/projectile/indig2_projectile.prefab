@@ -147,6 +147,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77a789de5181f8b4bb75e589efdfcfc1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fadesOut: 1
   fadeSpeed: 1
   audioVolume: 0.4
   hitGround: {fileID: 8300000, guid: 82e59f3db02fbac4bb6648a2d2b28d0b, type: 3}

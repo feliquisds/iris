@@ -9,7 +9,8 @@ public class SimpleProjectile : MonoBehaviour
     internal SpriteRenderer sprite => GetComponent<SpriteRenderer>();
     private Color spriteColor => sprite.color;
     private float fadeAmount;
-    private bool fadeOut = false;
+    private int childCount => transform.childCount;
+    private bool fadeOut = false, hasCollided = false;
     public bool fromPlayer = false, fromFinalBoss = false, meteor = false, ignoreCollision = false;
     internal Collider2D collisionToIgnore => GameObject.FindWithTag("Enemy").GetComponent<FinalBoss>().attackCollider;
 
@@ -24,6 +25,7 @@ public class SimpleProjectile : MonoBehaviour
         sprite.flipX = (rb.velocity.x < 0) ? true : false;
         if (meteor) rb.velocity = new Vector2(0, -10);
         if (fadeOut) FadeOut();
+        if (hasCollided) Disappear();
     }
 
     void OnCollisionEnter2D(Collision2D collision)
@@ -31,14 +33,18 @@ public class SimpleProjectile : MonoBehaviour
         if (!fromPlayer && collision.gameObject.tag == "Player")
         {
             GameObject.FindWithTag("Player").GetComponent<PlayerControl>().Hurt();
-            Destroy(gameObject);
+            rb.simulated = sprite.enabled = false;
+            hasCollided = true;
         }
 
         if ((fromFinalBoss && meteor && collision.gameObject.tag == "Ground") ||
             (!fromFinalBoss && (collision.gameObject.tag == "PlayerAttack" || collision.gameObject.tag == "Ground")) ||
             (fromPlayer && collision.gameObject.tag == "Enemy") ||
             (collision.gameObject.tag == "Limits"))
-            Destroy(gameObject);
+        {
+            rb.simulated = sprite.enabled = false;
+            hasCollided = true;
+        }
     }
 
     IEnumerator Initiate()
@@ -56,6 +62,11 @@ public class SimpleProjectile : MonoBehaviour
         fadeAmount = spriteColor.a - (3.5f * Time.deltaTime);
         sprite.color = new Color(spriteColor.r, spriteColor.g, spriteColor.b, fadeAmount);
 
-        if (spriteColor.a <= 0) Destroy(gameObject);
+        if (spriteColor.a <= 0)
+        {
+            rb.simulated = sprite.enabled = false;
+            hasCollided = true;
+        }
     }
+    void Disappear() { if (childCount < 1) Destroy(gameObject); }
 }

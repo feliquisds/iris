@@ -42762,7 +42762,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 107.73231, y: 3.3405645}
+  m_Offset: {x: 107.73231, y: 2.2955303}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -42773,7 +42773,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 17.912857, y: 1.1474233}
+  m_Size: {x: 17.912857, y: 3.2374916}
   m_EdgeRadius: 0
 --- !u!4 &419576588
 Transform:
@@ -42803,7 +42803,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -330.20355, y: 6.5095825}
+  m_Offset: {x: -330.20355, y: 5.975542}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -42814,7 +42814,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 93.91211, y: 2.4029083}
+  m_Size: {x: 93.91211, y: 3.4709892}
   m_EdgeRadius: 0
 --- !u!61 &419576590
 BoxCollider2D:
@@ -43954,6 +43954,8 @@ MonoBehaviour:
   hidden: 0
   startsVisible: 1
   fadeSpeed: 5
+  fadeInGoal: 1
+  fadeOutGoal: 0
 --- !u!114 &457073902
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -69287,6 +69289,8 @@ MonoBehaviour:
   hidden: 0
   startsVisible: 1
   fadeSpeed: 5
+  fadeInGoal: 1
+  fadeOutGoal: 0
 --- !u!19719996 &2098600426
 TilemapCollider2D:
   m_ObjectHideFlags: 0
@@ -71998,6 +72002,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_SpriteTilingProperty.newSize.y
       value: 1.27
+      objectReference: {fileID: 0}
+    - target: {fileID: 5232945124294601412, guid: 87ddbf835e71cab4b925f8e03428af9c,
+        type: 3}
+      propertyPath: firstSpeed
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5232945124294601412, guid: 87ddbf835e71cab4b925f8e03428af9c,
+        type: 3}
+      propertyPath: secondSpeed
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 5950723006925185023, guid: 87ddbf835e71cab4b925f8e03428af9c,
         type: 3}

@@ -36,6 +36,16 @@ namespace Platformer.UI
         {
             if (events.currentSelectedGameObject == null) UpdateSelection();
             if (!mainMenu && locked) player.controlEnabled = player.canCrouch = false;
+
+            if (Cursor.visible)
+            {
+                if (Input.anyKey)
+                {
+                    if (!Input.GetKey(KeyCode.Mouse0) && !Input.GetKey(KeyCode.Mouse1) && !Input.GetKey(KeyCode.Mouse2))
+                    Cursor.visible = false;
+                }
+            }
+            else if (Input.GetAxis("Mouse X") != 0 || Input.GetAxis("Mouse Y") != 0) Cursor.visible = true;
         }
 
         void UpdateSelection()

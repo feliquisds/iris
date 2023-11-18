@@ -171,3 +171,4 @@ MonoBehaviour:
   fromPlayer: 0
   fromFinalBoss: 0
   meteor: 0
+  ignoreCollision: 0

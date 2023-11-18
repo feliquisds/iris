@@ -19,7 +19,7 @@ public class InsectWave : MonoBehaviour
     public GameObject insect1, insect2, insect3;
     public GameObject[] debris;
 
-    void Start()
+    void Awake()
     {
         if (isDeathZone) initialDeathTransform = newDeathTransform = transform.position;
         else
