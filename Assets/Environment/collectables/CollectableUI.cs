@@ -23,7 +23,7 @@ public class CollectableUI : MonoBehaviour
         if (isArmadillo)
         {
             armadilloCount += 1;
-            newTransform = transform.TransformPoint(gameCore.position) - new Vector3(200f * movement, 0, 0);
+            newTransform = transform.localPosition - new Vector3(200f * movement, 0, 0);
             move = true;
         }
         else
@@ -38,7 +38,7 @@ public class CollectableUI : MonoBehaviour
     {
         if (move && isArmadillo)
         {
-            transform.position = Vector3.MoveTowards(transform.position, newTransform, 700f * Time.deltaTime);
+            transform.localPosition = Vector3.MoveTowards(transform.localPosition, newTransform, 700f * Time.deltaTime);
             if (transform.position == newTransform) move = false;
         }
     }

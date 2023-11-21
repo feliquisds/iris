@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class InsectWave_Insect : MonoBehaviour
 {
@@ -12,9 +13,10 @@ public class InsectWave_Insect : MonoBehaviour
         if (!isCanvas)
         {
             if (TryGetComponent<Animator>(out Animator anim) && color != "") anim.SetTrigger(color);
-            GetComponent<Rigidbody2D>().velocity = new Vector2(325f, 300f);
-            transform.position = new Vector3(0f, Random.Range(200f, 650f), 0f);
+            GetComponent<Rigidbody2D>().velocity = new Vector2(3, 5);
+            transform.localPosition = new Vector3(transform.localPosition.x, Random.Range(-200, 450), transform.localPosition.z);
         }
+        else GetComponent<Canvas>().worldCamera = GameObject.FindWithTag("MainCamera").GetComponent<Camera>();
         StartCoroutine(AutoDestruct());
     }
 

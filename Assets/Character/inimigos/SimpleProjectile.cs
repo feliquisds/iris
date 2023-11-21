@@ -39,7 +39,7 @@ public class SimpleProjectile : MonoBehaviour
 
         if ((fromFinalBoss && meteor && collision.gameObject.tag == "Ground") ||
             (!fromFinalBoss && (collision.gameObject.tag == "PlayerAttack" || collision.gameObject.tag == "Ground")) ||
-            (fromPlayer && collision.gameObject.tag == "Enemy") ||
+            (collision.gameObject.tag == "Enemy") ||
             (collision.gameObject.tag == "Limits"))
         {
             rb.simulated = sprite.enabled = false;

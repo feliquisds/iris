@@ -6,12 +6,10 @@ using Cinemachine;
 public class InsectWave : MonoBehaviour
 {
     internal Vector3 newTransform, initialTransform, newCameraTransform, initialCameraTransform, newDeathTransform, initialDeathTransform;
-    internal float movement => Screen.width / 1366f;
     internal float goalCam = 3.5f;
     internal GameObject wave => GameObject.FindWithTag("InsectWave");
     internal PlayerControl playerScript => GameObject.FindWithTag("Player").GetComponent<PlayerControl>();
     internal bool playerRendering => GameObject.FindWithTag("Player").GetComponent<Renderer>().isVisible;
-    public bool activated => wave.transform.position != initialTransform;
     public bool isDeathZone;
     internal bool chasing, canSpawnInsect, canSpawnDebris, stopSpawnInsect = false, stopSpawnDebris = false;
     public CinemachineVirtualCamera vcam => GameObject.FindWithTag("CameraHandler").GetComponent<CinemachineVirtualCamera>();
@@ -24,14 +22,14 @@ public class InsectWave : MonoBehaviour
         if (isDeathZone) initialDeathTransform = newDeathTransform = transform.position;
         else
         {
-            initialTransform = newTransform = wave.transform.position;
+            initialTransform = newTransform = wave.transform.localPosition;
             initialCameraTransform = newCameraTransform = cameraPoint.transform.position;
         }
     }
 
     void OnTriggerEnter2D(Collider2D _collider)
     {
-        if (_collider.gameObject.tag == "Player" && !activated && !isDeathZone) StartChase();
+        if (_collider.gameObject.tag == "Player" && !chasing && !isDeathZone) StartChase();
         if (_collider.gameObject.tag == "Player" && isDeathZone) StartCoroutine(StartDeathZone());
     }
 
@@ -39,14 +37,14 @@ public class InsectWave : MonoBehaviour
     {
         yield return new WaitForSeconds(2f);
         GetComponent<DeathZone>().active = true;
-        newDeathTransform = transform.position + new Vector3(74f, 0, 0);
+        newDeathTransform = transform.position + new Vector3(74, 0, 0);
     }
 
     void StartChase()
     {
         cameraPoint.GetComponent<AudioSource>().mute = false;
-        newTransform = wave.transform.position + new Vector3(800f * movement, 0, 0);
-        newCameraTransform = cameraPoint.transform.position + new Vector3(85f, 0, 0);
+        newTransform = wave.transform.localPosition + new Vector3(815, 0, 0);
+        newCameraTransform = cameraPoint.transform.position + new Vector3(85, 0, 0);
         vcam.m_Follow = vcam.m_LookAt = cameraPoint.transform;
         goalCam = 5f;
         chasing = true;
@@ -55,7 +53,7 @@ public class InsectWave : MonoBehaviour
 
     IEnumerator CanSpawnObjects(bool start)
     {
-        yield return new WaitForSeconds(start ? 1f : 0f);
+        yield return new WaitForSeconds(start ? 1 : 0);
         stopSpawnInsect = stopSpawnDebris = !start;
         canSpawnInsect = canSpawnDebris = start;
         if (!start)
@@ -96,7 +94,7 @@ public class InsectWave : MonoBehaviour
         else
         {
             vcam.m_Follow = vcam.m_LookAt = GameObject.FindWithTag("PlayerCameraPoint").transform;
-            wave.transform.position = newTransform = initialTransform;
+            wave.transform.localPosition = newTransform = initialTransform;
             cameraPoint.transform.position = newCameraTransform = initialCameraTransform;
 
             vcam.m_Lens.OrthographicSize = goalCam = 3.5f;
@@ -111,7 +109,7 @@ public class InsectWave : MonoBehaviour
         if (isDeathZone) transform.position = Vector3.MoveTowards(transform.position, newDeathTransform, 4.5f * Time.deltaTime);
         else
         {
-            wave.transform.position = Vector3.MoveTowards(wave.transform.position, newTransform, 350f * Time.deltaTime);
+            wave.transform.localPosition = Vector3.MoveTowards(wave.transform.localPosition, newTransform, 350 * Time.deltaTime);
             cameraPoint.transform.position = Vector3.MoveTowards(cameraPoint.transform.position, newCameraTransform, 4.5f * Time.deltaTime);
 
             if (vcam.m_Lens.OrthographicSize < goalCam) vcam.m_Lens.OrthographicSize += 0.1f;

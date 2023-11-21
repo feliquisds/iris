@@ -9,7 +9,7 @@ public class GradientHide : MonoBehaviour
 {
     public bool hidden;
     internal float fadeAmount;
-    public bool startsVisible = true;
+    public bool startsVisible = true, unscaledTime = false;
     public float fadeSpeed = 5, fadeInGoal = 1, fadeOutGoal = 0;
     internal bool usingSprite => TryGetComponent(out SpriteRenderer sprite);
     internal bool usingImage => TryGetComponent(out Image img);
@@ -36,7 +36,7 @@ public class GradientHide : MonoBehaviour
     {
         if ((fadeIn && objColor.a < fadeInGoal) || (!fadeIn && objColor.a > fadeOutGoal))
         {
-            fadeAmount = objColor.a + ((fadeSpeed * Time.unscaledDeltaTime) * (fadeIn ? 1 : -1));
+            fadeAmount = objColor.a + ((fadeSpeed * (unscaledTime ? Time.unscaledDeltaTime : Time.deltaTime)) * (fadeIn ? 1 : -1));
             newColor = new Color(objColor.r, objColor.g, objColor.b, fadeAmount);
 
             if (usingSprite) GetComponent<SpriteRenderer>().color = newColor;

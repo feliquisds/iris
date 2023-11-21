@@ -4,6 +4,7 @@ using Platformer.Mechanics;
 using Platformer.UI;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Rendering;
 
 namespace Platformer.UI
 {
@@ -30,6 +31,7 @@ namespace Platformer.UI
 
         bool showMainCanvas = false;
         internal PlayerControl player => GameObject.FindWithTag("Player").GetComponent<PlayerControl>();
+        internal Volume volume => GameObject.FindWithTag("MainCamera").GetComponent<Volume>();
         internal AudioLowPassFilter filter => GetComponent<AudioLowPassFilter>();
         internal AudioSource audioSource => GetComponent<AudioSource>();
 
@@ -44,6 +46,7 @@ namespace Platformer.UI
         {
             if (showMainCanvas != show)
             {
+                volume.enabled = show;
                 filter.enabled = show;
                 Time.timeScale = show ? 0 : 1;
                 mainMenu.gameObject.SetActive(show);
