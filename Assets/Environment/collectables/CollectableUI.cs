@@ -9,9 +9,7 @@ public class CollectableUI : MonoBehaviour
 {
     public GameObject collectables => GameObject.FindWithTag("Collectables");
     internal int collectableCount => collectables.transform.childCount;
-    internal Transform gameCore => GameObject.FindWithTag("GameCore").transform;
     internal Image img => GetComponent<Image>();
-    internal float movement => Screen.width / 1920f;
     internal int collectableIndicator = 0, armadilloCount = 0;
     public TMP_Text textCount;
     public bool isArmadillo;
@@ -23,7 +21,7 @@ public class CollectableUI : MonoBehaviour
         if (isArmadillo)
         {
             armadilloCount += 1;
-            newTransform = transform.localPosition - new Vector3(200f * movement, 0, 0);
+            newTransform = transform.localPosition - new Vector3(200, 0, 0);
             move = true;
         }
         else
@@ -38,7 +36,7 @@ public class CollectableUI : MonoBehaviour
     {
         if (move && isArmadillo)
         {
-            transform.localPosition = Vector3.MoveTowards(transform.localPosition, newTransform, 700f * Time.deltaTime);
+            transform.localPosition = Vector3.MoveTowards(transform.localPosition, newTransform, 700 * Time.deltaTime);
             if (transform.position == newTransform) move = false;
         }
     }

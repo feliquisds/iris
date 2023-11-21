@@ -1,14 +1,15 @@
 using UnityEngine;
 using System.Collections;
 using UnityEngine.SceneManagement;
+using Platformer.UI;
 
 public class VictoryZone : MonoBehaviour
 {
-
     public bool walk;
     internal bool hasSprite => TryGetComponent<SpriteRenderer>(out SpriteRenderer _sprite);
     internal PlayerControl player => GameObject.FindWithTag("Player").GetComponent<PlayerControl>();
-    internal GradientHide fade => GameObject.FindWithTag("Fade").GetComponent<GradientHide>();
+    internal SubUIController subUIController => GameObject.FindWithTag("GameEvents").GetComponent<SubUIController>();
+    public GameObject insectWave;
 
     void OnTriggerEnter2D(Collider2D collider)
     {
@@ -30,9 +31,7 @@ public class VictoryZone : MonoBehaviour
     private IEnumerator WaitForSceneLoad()
     {
         yield return new WaitForSeconds(1.7f);
-        fade.hidden = true;
-
-        yield return new WaitForSeconds(0.3f);
-        SceneManager.LoadScene((SceneManager.GetActiveScene().buildIndex) + 1);
+        if (insectWave != null) insectWave.GetComponent<InsectWave>().sceneEnding = true;
+        StartCoroutine(subUIController.Transition(true, (SceneManager.GetActiveScene().buildIndex) + 1, 0.3f));
     }
 }

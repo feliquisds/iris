@@ -10,10 +10,11 @@ public class InsectWave : MonoBehaviour
     internal GameObject wave => GameObject.FindWithTag("InsectWave");
     internal PlayerControl playerScript => GameObject.FindWithTag("Player").GetComponent<PlayerControl>();
     internal bool playerRendering => GameObject.FindWithTag("Player").GetComponent<Renderer>().isVisible;
-    public bool isDeathZone;
+    public bool isDeathZone, sceneEnding;
     internal bool chasing, canSpawnInsect, canSpawnDebris, stopSpawnInsect = false, stopSpawnDebris = false;
     public CinemachineVirtualCamera vcam => GameObject.FindWithTag("CameraHandler").GetComponent<CinemachineVirtualCamera>();
     internal GameObject cameraPoint => GameObject.FindWithTag("CustomCamera");
+    internal AudioSource insectSound => cameraPoint.GetComponent<AudioSource>();
     public GameObject insect1, insect2, insect3;
     public GameObject[] debris;
 
@@ -42,7 +43,7 @@ public class InsectWave : MonoBehaviour
 
     void StartChase()
     {
-        cameraPoint.GetComponent<AudioSource>().mute = false;
+        insectSound.mute = false;
         newTransform = wave.transform.localPosition + new Vector3(815, 0, 0);
         newCameraTransform = cameraPoint.transform.position + new Vector3(85, 0, 0);
         vcam.m_Follow = vcam.m_LookAt = cameraPoint.transform;
@@ -98,7 +99,7 @@ public class InsectWave : MonoBehaviour
             cameraPoint.transform.position = newCameraTransform = initialCameraTransform;
 
             vcam.m_Lens.OrthographicSize = goalCam = 3.5f;
-            cameraPoint.GetComponent<AudioSource>().mute = true;
+            insectSound.mute = true;
             chasing = false;
             StartCoroutine(CanSpawnObjects(false));
         }
@@ -120,5 +121,6 @@ public class InsectWave : MonoBehaviour
             if (canSpawnDebris && !stopSpawnDebris) StartCoroutine(DebrisSpawn());
         }
         if (playerScript.respawning) Reset();
+        if (sceneEnding && insectSound.volume > 0) insectSound.volume -= (2f * Time.unscaledDeltaTime);
     }
 }

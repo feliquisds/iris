@@ -9,6 +9,7 @@ public class EnemyHealth : MonoBehaviour
     internal int initialHealth;
     public Material defaultMaterial, whiteMaterial;
     public GameObject explosion;
+    public Vector3 explosionOffset;
     public bool isBlue, isPurple;
     internal Collider2D _collider => GetComponent<Collider2D>();
     public Bounds Bounds => _collider.bounds;
@@ -16,7 +17,8 @@ public class EnemyHealth : MonoBehaviour
     internal bool hasEnemyWalk => TryGetComponent<EnemyWalk>(out EnemyWalk enemy);
 
     void Awake() => initialHealth = health;
-    void OnEnable() => health = initialHealth;
+    void Respawn() => health = initialHealth;
+    void Update() { if (player.respawning) Respawn(); }
     
     void OnCollisionEnter2D(Collision2D collider) => Collided(collider);
     void OnCollisionStay2D(Collision2D collider) => Collided(collider);
@@ -44,7 +46,7 @@ public class EnemyHealth : MonoBehaviour
 
     void Explode()
     {
-        GameObject smoke = Instantiate(explosion, transform.position, transform.rotation);
+        GameObject smoke = Instantiate(explosion, transform.position + explosionOffset, transform.rotation);
         if (isBlue) smoke.GetComponent<Animator>().SetTrigger("blue");
         if (isPurple) smoke.GetComponent<Animator>().SetTrigger("purple");
 

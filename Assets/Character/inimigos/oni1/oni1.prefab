@@ -187,5 +187,6 @@ MonoBehaviour:
   whiteMaterial: {fileID: 2100000, guid: f95147a9bab9fe649b8070170fa7ebd2, type: 3}
   explosion: {fileID: 3871089567827708539, guid: 178a4daa55b498542b97628bb376dde7,
     type: 3}
+  explosionOffset: {x: 0.03, y: -0.165, z: 0}
   isBlue: 1
   isPurple: 0

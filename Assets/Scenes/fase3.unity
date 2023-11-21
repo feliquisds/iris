@@ -6904,7 +6904,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -67.871506, y: -1.8744087}
+  m_Offset: {x: -67.871506, y: 0.87090874}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -6915,7 +6915,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 93.87947, y: 4.317033}
+  m_Size: {x: 93.87947, y: 2.6223917}
   m_EdgeRadius: 0
 --- !u!4 &419576588
 Transform:
@@ -6971,7 +6971,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -414.16486, y: -0.93773675}
+  m_Offset: {x: -414.16486, y: 5.267512}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -6982,7 +6982,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 63.76538, y: 2.5878692}
+  m_Size: {x: 63.76538, y: 4.006213}
   m_EdgeRadius: 0
 --- !u!61 &419576591
 BoxCollider2D:
@@ -6997,7 +6997,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -290.5067, y: -1.676688}
+  m_Offset: {x: -290.5067, y: 0.8523054}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -7008,7 +7008,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 46.110474, y: 3.7654357}
+  m_Size: {x: 46.110474, y: 2.3428774}
   m_EdgeRadius: 0
 --- !u!1 &419921867
 GameObject:
@@ -8585,7 +8585,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -41.303864, y: 4.230131, z: -10}
+  m_LocalPosition: {x: -41.30082, y: 4.230131, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -32537,6 +32537,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   walk: 1
+  mainUIController: {fileID: 1939178436}
+  insectWave: {fileID: 0}
 --- !u!61 &1080265461
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -37602,6 +37604,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 574588786}
     m_Modifications:
+    - target: {fileID: 2559972416828911714, guid: 79cee718345682043af8899fc738a202,
+        type: 3}
+      propertyPath: spawnXOffset
+      value: -0.77
+      objectReference: {fileID: 0}
     - target: {fileID: 2618277279224399172, guid: 79cee718345682043af8899fc738a202,
         type: 3}
       propertyPath: m_FlipX
@@ -37636,6 +37643,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Offset.y
       value: -0.08504486
+      objectReference: {fileID: 0}
+    - target: {fileID: 8705852469841488840, guid: 79cee718345682043af8899fc738a202,
+        type: 3}
+      propertyPath: explosionOffset.x
+      value: -0.5
       objectReference: {fileID: 0}
     - target: {fileID: 8941233596507893911, guid: 79cee718345682043af8899fc738a202,
         type: 3}

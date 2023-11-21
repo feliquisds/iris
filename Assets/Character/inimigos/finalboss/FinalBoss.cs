@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using Cinemachine;
 using UnityEngine.UI;
+using Platformer.UI;
 
 public class FinalBoss : MonoBehaviour
 {
@@ -29,6 +30,7 @@ public class FinalBoss : MonoBehaviour
     public Collider2D attackCollider;
     public float spawnXOffset, spawnYOffset, waveSpeed;
     public AudioClip step, death, attack1, attack2;
+    internal SubUIController subUIController => GameObject.FindWithTag("GameEvents").GetComponent<SubUIController>();
 
     void Awake() => StartCoroutine(StartFight());
     IEnumerator StartFight()
@@ -195,9 +197,6 @@ public class FinalBoss : MonoBehaviour
         vcam.m_Follow = vcam.m_LookAt = transform;
 
         yield return new WaitForSeconds(4.7f);
-        fade.hidden = true;
-
-        yield return new WaitForSeconds(0.3f);
-        SceneManager.LoadScene(0);
+        StartCoroutine(subUIController.Transition(true, 0, 0.3f));
     }
 }

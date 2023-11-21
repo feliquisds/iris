@@ -13,11 +13,10 @@ namespace Platformer.UI
         public GameObject[] panels;
         internal GameObject eventsObject => GameObject.FindWithTag("GameEvents");
         internal EventSystem events => eventsObject.GetComponent<EventSystem>();
+        internal SubUIController subUIController => eventsObject.GetComponent<SubUIController>();
         internal GameObject gameCoreObject => GameObject.FindWithTag("GameCore");
         internal MetaGameController gameCore => gameCoreObject.GetComponent<MetaGameController>();
-        internal AudioSource audioSource => gameCoreObject.GetComponent<AudioSource>();
-        internal GradientHide fade => GameObject.FindWithTag("Fade").GetComponent<GradientHide>();
-        internal bool musicFadeOut = false, lastFullscreenValue;
+        internal bool lastFullscreenValue;
 
         void OnEnable()
         {
@@ -25,14 +24,9 @@ namespace Platformer.UI
             if (!isMainMenu) SetActivePanel(0);
             else
             {
-                StartCoroutine(StartMusic());
+                StartCoroutine(subUIController.StartMusic());
                 gameCoreObject.transform.GetChild(2).gameObject.SetActive(Debug.isDebugBuild);
             }
-        }
-        IEnumerator StartMusic()
-        {
-            yield return new WaitForSecondsRealtime(0.5f);
-            audioSource.Play();
         }
 
         public void SetActivePanel(int index)
@@ -42,21 +36,13 @@ namespace Platformer.UI
             events.SetSelectedGameObject(null);
         }
         public void Unpause() => gameCore.ToggleMenu(false);
-        public void LoadScene(int scene) => StartCoroutine(Transition(true, scene, 0.3f));
+        public void LoadScene(int scene) => StartCoroutine(subUIController.Transition(true, scene, 0.3f));
         public void ToggleFullScreen(Toggle toggle) => Screen.fullScreen = toggle.isOn;
         public void Github() => Application.OpenURL("https://github.com/feliquisds/iris");
-        public void Quit() => StartCoroutine(Transition(false, 0, 0.6f));
+        public void Quit() => StartCoroutine(subUIController.Transition(false, 0, 0.6f));
 
-        IEnumerator Transition(bool sceneTransition, int scene, float time)
-        {
-            fade.hidden = musicFadeOut = true;
-            yield return new WaitForSecondsRealtime(time);
-            if (sceneTransition) SceneManager.LoadScene(scene);
-            else Application.Quit();
-        }
         void Update()
         {
-            if (musicFadeOut && audioSource.volume > 0) audioSource.volume -= (2f * Time.unscaledDeltaTime);
             if (!isMainMenu) this.gameObject.transform.GetChild(1).gameObject.SetActive(panels[0].activeSelf);
             if (panels[1].activeSelf && lastFullscreenValue != Screen.fullScreen)
             {

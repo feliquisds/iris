@@ -18,11 +18,12 @@ public class EnemyWalk : MonoBehaviour
     internal bool willHurtEnemy => player.Bounds.min.y >= Bounds.max.y;
 
     void Awake() => initialTransform = transform.position;
-    void OnEnable() { transform.position = initialTransform; freeze = false; }
+    void Respawn() { transform.position = initialTransform; freeze = false; }
 
     void FixedUpdate() => rb.velocity = freeze ? Vector2.zero : new Vector2(speed, rb.velocity.y);
     void Update()
     {
+        if (player.respawning) Respawn();
         sprite.flipX = speed > 0 ? false : true;
         attack = player.transform.position.x > transform.position.x ? !sprite.flipX : sprite.flipX;
 

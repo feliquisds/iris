@@ -41999,12 +41999,12 @@ PrefabInstance:
     - target: {fileID: 5024514998079206183, guid: 4e234906e8166544e8d0c25d97c71b95,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 86.95064
+      value: 87.14
       objectReference: {fileID: 0}
     - target: {fileID: 5024514998079206183, guid: 4e234906e8166544e8d0c25d97c71b95,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.2376103
+      value: -2.46
       objectReference: {fileID: 0}
     - target: {fileID: 5024514998079206183, guid: 4e234906e8166544e8d0c25d97c71b95,
         type: 3}
@@ -43431,7 +43431,7 @@ PrefabInstance:
     - target: {fileID: 7816055837405048642, guid: 374f2ad62646b764787b06e6e88114f0,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -7.2
+      value: -7.18
       objectReference: {fileID: 0}
     - target: {fileID: 7816055837405048642, guid: 374f2ad62646b764787b06e6e88114f0,
         type: 3}
@@ -47264,6 +47264,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isDeathZone: 1
+  sceneEnding: 0
   insect1: {fileID: 0}
   insect2: {fileID: 0}
   insect3: {fileID: 0}
@@ -49772,6 +49773,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1824045667, guid: 7d60c822c3f1b408ea7a00ecdb5e047a, type: 3}
+      propertyPath: m_Size.y
+      value: 0.4289114
+      objectReference: {fileID: 0}
+    - target: {fileID: 1824045667, guid: 7d60c822c3f1b408ea7a00ecdb5e047a, type: 3}
+      propertyPath: m_Offset.y
+      value: -0.118878335
+      objectReference: {fileID: 0}
     - target: {fileID: 1208144871472054, guid: 7d60c822c3f1b408ea7a00ecdb5e047a, type: 3}
       propertyPath: m_Name
       value: player
@@ -50675,6 +50684,11 @@ PrefabInstance:
       propertyPath: m_FlipX
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4314184503988341380, guid: 374f2ad62646b764787b06e6e88114f0,
+        type: 3}
+      propertyPath: explosionOffset.x
+      value: 0.25
+      objectReference: {fileID: 0}
     - target: {fileID: 7816055837405048642, guid: 374f2ad62646b764787b06e6e88114f0,
         type: 3}
       propertyPath: m_RootOrder
@@ -50688,7 +50702,7 @@ PrefabInstance:
     - target: {fileID: 7816055837405048642, guid: 374f2ad62646b764787b06e6e88114f0,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.14
+      value: 3.05
       objectReference: {fileID: 0}
     - target: {fileID: 7816055837405048642, guid: 374f2ad62646b764787b06e6e88114f0,
         type: 3}
@@ -51516,6 +51530,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   walk: 1
+  insectWave: {fileID: 1900367215}
 --- !u!61 &946845778
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -52942,6 +52957,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1062490077}
   - component: {fileID: 1062490076}
+  - component: {fileID: 1062490078}
   m_Layer: 0
   m_Name: "filhote escorpi\xE3o_0 (2)"
   m_TagString: Untagged
@@ -53016,6 +53032,27 @@ Transform:
   m_Father: {fileID: 1058627747}
   m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &1062490078
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1062490075}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 7a2c48e4482b1774fa19c5c2ff2651b0, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1001 &1068353245
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -67193,6 +67230,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isDeathZone: 0
+  sceneEnding: 0
   insect1: {fileID: 2378318944856763179, guid: 21051a3cf7c2dad41acd1fe2f5bddff0, type: 3}
   insect2: {fileID: 2378318944856763179, guid: cbc248ee4c23a3947919a3d98f2638c8, type: 3}
   insect3: {fileID: 0}
@@ -72368,7 +72406,7 @@ PrefabInstance:
     - target: {fileID: 7816055837405048642, guid: 374f2ad62646b764787b06e6e88114f0,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.44
+      value: 0.46
       objectReference: {fileID: 0}
     - target: {fileID: 7816055837405048642, guid: 374f2ad62646b764787b06e6e88114f0,
         type: 3}

@@ -28,7 +28,7 @@ public class PlayerControl : MonoBehaviour
 
     internal AudioSource audioSource => GetComponent<AudioSource>();
     public AudioClip jumpSound, hurtSound, deathSound;
-    public float audioVolume = 1f;
+    public float audioVolume = 1;
 
     public ContactFilter2D groundFilter, slopeFilter, invertedSlopeFilter;
     public Bounds Bounds => colli.bounds;
@@ -40,15 +40,15 @@ public class PlayerControl : MonoBehaviour
             targetVelocity = Mathf.MoveTowards(move, move * maxSpeed, (acceleration * 100) * Time.deltaTime);
             rb.velocity = new Vector2(targetVelocity, rb.velocity.y);
         }
-        if (winning) rb.velocity = new Vector2(5f, 0f);
-        if (rb.velocity.y < -10f) rb.velocity = new Vector2(rb.velocity.x, -10f);
+        if (winning) rb.velocity = new Vector2(5, 0);
+        if (rb.velocity.y < -10) rb.velocity = new Vector2(rb.velocity.x, -10);
     }
 
     void Update()
     {
         if (controlEnabled)
         {
-            move = (attacking || crouching) ? 0f : Input.GetAxis("Horizontal");
+            move = ((attacking || crouching) && grounded) ? 0 : Input.GetAxis("Horizontal");
             if (Input.GetButtonDown("Jump") && canJump)
             {
                 audioSource.PlayOneShot(jumpSound, audioVolume);
@@ -75,7 +75,7 @@ public class PlayerControl : MonoBehaviour
         UpdateAnimator();
     }
 
-    public void Bounce() => rb.velocity = new Vector2(rb.velocity.x, 9f);
+    public void Bounce() => rb.velocity = new Vector2(rb.velocity.x, 9);
 
     void AttackToggle() { canJump = controlEnabled = attacking ? false : true; rb.velocity = Vector2.zero; }
     void AttackFallDisable() { controlEnabled = true; attacking = false; }
@@ -83,7 +83,7 @@ public class PlayerControl : MonoBehaviour
     {
         GameObject p = Instantiate(projectile, transform.position + new Vector3(
             (sprite.flipX ? (shootXOffset * -1) : shootXOffset), shootYOffset, transform.position.z), transform.rotation);
-        p.GetComponent<Rigidbody2D>().velocity = new Vector2((sprite.flipX ? -5f : 5f), 0f);
+        p.GetComponent<Rigidbody2D>().velocity = new Vector2((sprite.flipX ? -5 : 5), 0);
     }
 
     public void Hurt()
@@ -96,7 +96,7 @@ public class PlayerControl : MonoBehaviour
                 audioSource.PlayOneShot(hurtSound, audioVolume);
                 health -= 1;
                 anim.SetTrigger("hurting");
-                rb.velocity = new Vector2((sprite.flipX ? 3f : -3f), 3f);
+                rb.velocity = new Vector2((sprite.flipX ? 3 : -3), 3);
                 StartCoroutine(HurtRecover());
             }
             else StartCoroutine(Die());
@@ -142,7 +142,7 @@ public class PlayerControl : MonoBehaviour
         rb.simulated = true;
         dead = sprite.flipX = attacking = false;
         rb.velocity = Vector2.zero;
-        move = 0f;
+        move = 0;
         model.virtualCamera.m_Follow = model.virtualCamera.m_LookAt = model.playercamerapoint;
 
         yield return new WaitForSeconds(0.75f);
