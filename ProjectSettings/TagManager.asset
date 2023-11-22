@@ -23,6 +23,7 @@ TagManager:
   - Collectables
   - Limits
   - LifeUI
+  - PlayerTrigger
   layers:
   - Default
   - TransparentFX

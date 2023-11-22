@@ -20,4 +20,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/finalboss.unity
     guid: ac6246ad4bdd25740834aa7490e5cf67
+  - enabled: 1
+    path: Assets/Scenes/cutscene1.unity
+    guid: b89c8951f049e5643a8f5043eb3ad9b7
   m_configObjects: {}

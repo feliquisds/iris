@@ -93,7 +93,7 @@ public class FinalBoss : MonoBehaviour
     void OnTriggerEnter2D(Collider2D collider) => Triggered(collider, false);
     void Triggered(Collider2D collider, bool stay)
     {
-        if (collider.gameObject.tag == "Player" && !attacking && canAttack && !player.dead)
+        if (collider.gameObject.tag == "PlayerTrigger" && !attacking && canAttack && !player.dead)
         {
             if (stay) StartCoroutine(AttackDelay(Random.Range(3.5f, 4.5f)));
             else Attack();
