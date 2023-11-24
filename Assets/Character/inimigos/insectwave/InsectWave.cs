@@ -15,7 +15,7 @@ public class InsectWave : MonoBehaviour
     public CinemachineVirtualCamera vcam => GameObject.FindWithTag("CameraHandler").GetComponent<CinemachineVirtualCamera>();
     internal GameObject cameraPoint => GameObject.FindWithTag("CustomCamera");
     internal AudioSource insectSound => cameraPoint.GetComponent<AudioSource>();
-    public GameObject insect1, insect2, insect3;
+    public GameObject insect1, insect2;
     public GameObject[] debris;
 
     void Awake()
@@ -113,7 +113,7 @@ public class InsectWave : MonoBehaviour
             wave.transform.localPosition = Vector3.MoveTowards(wave.transform.localPosition, newTransform, 350 * Time.deltaTime);
             cameraPoint.transform.position = Vector3.MoveTowards(cameraPoint.transform.position, newCameraTransform, 4.5f * Time.deltaTime);
 
-            if (vcam.m_Lens.OrthographicSize < goalCam) vcam.m_Lens.OrthographicSize += 0.1f;
+            if (vcam.m_Lens.OrthographicSize < goalCam && Time.timeScale != 0) vcam.m_Lens.OrthographicSize += 0.01f;
 
             if (!playerRendering && chasing) StartCoroutine(playerScript.Die());
 

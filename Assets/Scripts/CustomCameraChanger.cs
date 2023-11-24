@@ -5,7 +5,16 @@ using UnityEngine;
 public class CustomCameraChanger : MonoBehaviour
 {
     internal MoveCamera cam => GameObject.FindWithTag("PlayerCameraPoint").GetComponent<MoveCamera>();
-    void OnTriggerEnter2D(Collider2D collider) => cam.usingCustomPoint = collider.gameObject.tag == "Player";
-    void OnTriggerStay2D(Collider2D collider) => cam.usingCustomPoint = collider.gameObject.tag == "Player";
-    void OnTriggerExit2D(Collider2D collider) => cam.usingCustomPoint = !(collider.gameObject.tag == "Player");
+    public bool changeOnlyWhenGrounded;
+    void OnTriggerEnter2D(Collider2D collider) => Triggered(collider, true);
+    void OnTriggerStay2D(Collider2D collider) => Triggered(collider, true);
+    void OnTriggerExit2D(Collider2D collider) => Triggered(collider, false);
+    void Triggered(Collider2D collider, bool enable)
+    {
+        if (collider.gameObject.tag == "Player")
+        {
+            cam.usingCustomPoint = enable;
+            if (!changeOnlyWhenGrounded) cam.changeOnlyWhenGrounded = !enable ? true : false;
+        }
+    }
 }

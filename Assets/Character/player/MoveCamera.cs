@@ -11,7 +11,7 @@ public class MoveCamera : MonoBehaviour
     internal bool playerFacingLeft => player.GetComponent<SpriteRenderer>().flipX;
     internal bool playerGrounded => player.GetComponent<PlayerControl>().grounded;
     PlatformerModel model = Simulation.GetModel<PlatformerModel>();
-    public bool finalBoss = false, usingCustomPoint = false;
+    public bool finalBoss = false, usingCustomPoint = false, changeOnlyWhenGrounded = true;
     public Vector3 customPoint;
     internal Vector3 invertedCustomPoint => new Vector3(customPoint.x * -1, customPoint.y, customPoint.z);
     internal float bossCamera => (player.transform.position.x + boss.transform.position.x) / 2;
@@ -20,9 +20,9 @@ public class MoveCamera : MonoBehaviour
     {
         if (!finalBoss)
         {
-            if ((playerFacingLeft) && (playerGrounded))
+            if (playerFacingLeft && ((playerGrounded && changeOnlyWhenGrounded) || (!changeOnlyWhenGrounded)))
                 transform.position = player.transform.position + (usingCustomPoint ? invertedCustomPoint : new Vector3(-1f, 0.5f, 0f));
-            else if ((!playerFacingLeft) && (playerGrounded))
+            else if (!playerFacingLeft && ((playerGrounded && changeOnlyWhenGrounded) || (!changeOnlyWhenGrounded)))
                 transform.position = player.transform.position + (usingCustomPoint ? customPoint : new Vector3(1f, 0.5f, 0f));
         }
         else transform.position = new Vector3(bossCamera, transform.position.y, transform.position.z);

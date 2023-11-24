@@ -8,6 +8,7 @@ public class SimpleProjectile : MonoBehaviour
     internal Rigidbody2D rb => GetComponent<Rigidbody2D>();
     internal SpriteRenderer sprite => GetComponent<SpriteRenderer>();
     private Color spriteColor => sprite.color;
+    private TrailRenderer trail;
     private float fadeAmount;
     private int childCount => transform.childCount;
     private bool fadeOut = false, hasCollided = false;
@@ -16,6 +17,7 @@ public class SimpleProjectile : MonoBehaviour
 
     void Awake()
     {
+        if (childCount > 0) trail = this.gameObject.transform.GetChild(0).gameObject.GetComponent<TrailRenderer>();
         if (ignoreCollision) Physics2D.IgnoreCollision(colli, collisionToIgnore, true);
         if (meteor) transform.Rotate(0, 0, 45, Space.Self);
         StartCoroutine(Initiate());
@@ -61,6 +63,7 @@ public class SimpleProjectile : MonoBehaviour
     {
         fadeAmount = spriteColor.a - (3.5f * Time.deltaTime);
         sprite.color = new Color(spriteColor.r, spriteColor.g, spriteColor.b, fadeAmount);
+        if (childCount > 0) trail.widthMultiplier = trail.widthMultiplier <= 0 ? 0 : trail.widthMultiplier - (3.5f * Time.deltaTime);
 
         if (spriteColor.a <= 0)
         {
@@ -68,5 +71,14 @@ public class SimpleProjectile : MonoBehaviour
             hasCollided = true;
         }
     }
-    void Disappear() { if (childCount < 1) Destroy(gameObject); }
+    void Disappear()
+    {
+        if (childCount < 1) Destroy(gameObject);
+        else
+        {
+            trail.startWidth = trail.startWidth <= 0 ? 0 : trail.startWidth - (3.5f * Time.deltaTime);
+            trail.endWidth = trail.endWidth <= 0 ? 0 : trail.endWidth - (3.5f * Time.deltaTime);
+            trail.widthMultiplier = trail.widthMultiplier <= 0 ? 0 : trail.widthMultiplier - (3.5f * Time.deltaTime);
+        }
+    }
 }

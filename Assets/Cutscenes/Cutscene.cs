@@ -7,11 +7,6 @@ using UnityEngine.SceneManagement;
 public class Cutscene : MonoBehaviour
 {
     internal VideoPlayer video => GetComponent<VideoPlayer>();
-    internal float videoTime;
-    void Start()
-    {
-        videoTime = (float)video.length - 2f;
-        Invoke("VideoEnded", videoTime);
-    }
-    void VideoEnded() => SceneManager.LoadScene(1);   
+    void Start() => video.loopPointReached += EndReached;
+    void EndReached(VideoPlayer vp) => SceneManager.LoadScene(1);
 }

@@ -6904,7 +6904,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -67.871506, y: 0.87090874}
+  m_Offset: {x: -67.871506, y: 0.36099648}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -6915,7 +6915,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 93.87947, y: 2.6223917}
+  m_Size: {x: 93.87947, y: 1.6025672}
   m_EdgeRadius: 0
 --- !u!4 &419576588
 Transform:
@@ -6945,7 +6945,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 49.95532, y: -1.6579764}
+  m_Offset: {x: 49.95532, y: -1.4600499}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -6956,7 +6956,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 49.424294, y: 3.8028588}
+  m_Size: {x: 49.424294, y: 4.198712}
   m_EdgeRadius: 0
 --- !u!61 &419576590
 BoxCollider2D:
@@ -6971,7 +6971,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -414.16486, y: 5.267512}
+  m_Offset: {x: -414.16486, y: 3.41962}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -6982,7 +6982,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 63.76538, y: 4.006213}
+  m_Size: {x: 63.76538, y: 4.840745}
   m_EdgeRadius: 0
 --- !u!61 &419576591
 BoxCollider2D:
@@ -8585,7 +8585,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -41.30082, y: 4.230131, z: -10}
+  m_LocalPosition: {x: -41.303864, y: 4.230131, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -13906,7 +13906,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 4
+  m_SortingOrder: 5
   m_TargetDisplay: 0
 --- !u!1 &794462477
 GameObject:
@@ -32537,7 +32537,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   walk: 1
-  mainUIController: {fileID: 1939178436}
   insectWave: {fileID: 0}
 --- !u!61 &1080265461
 BoxCollider2D:
@@ -39768,7 +39767,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 3
+  m_SortingOrder: 4
   m_TargetDisplay: 0
 --- !u!1 &1527557546
 GameObject:
@@ -45651,7 +45650,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -1
+  m_SortingOrder: -2
   m_Sprite: {fileID: 21300000, guid: acb30d4bc68e2d0428d6aa12bb816512, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

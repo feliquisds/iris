@@ -582,7 +582,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 3
+  m_SortingOrder: 4
   m_TargetDisplay: 0
 --- !u!1001 &388902754
 PrefabInstance:
@@ -810,7 +810,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 4
+  m_SortingOrder: 5
   m_TargetDisplay: 0
 --- !u!1 &419576585
 GameObject:
@@ -3744,6 +3744,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   finalBoss: 1
+  usingCustomPoint: 0
+  customPoint: {x: 0, y: 0, z: 0}
 --- !u!4 &1705645038
 Transform:
   m_ObjectHideFlags: 0

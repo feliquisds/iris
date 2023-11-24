@@ -43,6 +43,12 @@ namespace Platformer.UI
 
             Cursor.visible = Cursor.visible && Input.anyKey && !mouseClick ? false : mouseMove || mouseClick ? true : Cursor.visible;
             if (musicFadeOut && audioSource.volume > 0) audioSource.volume -= (2 * Time.unscaledDeltaTime);
+
+            if (Input.GetButtonDown("Cancel"))
+            {
+                if (!mainMenu && !UIController.panels[0].activeSelf) UIController.Unpause();
+                else UIController.SetActivePanel(0);
+            }
         }
 
         void UpdateSelection()

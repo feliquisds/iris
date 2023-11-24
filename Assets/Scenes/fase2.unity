@@ -56587,7 +56587,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 4
+  m_SortingOrder: 5
   m_TargetDisplay: 0
 --- !u!1 &342991372
 GameObject:
@@ -57688,13 +57688,14 @@ GameObject:
   m_Component:
   - component: {fileID: 414438378}
   - component: {fileID: 414438380}
+  - component: {fileID: 414438381}
   - component: {fileID: 414438379}
   m_Layer: 3
   m_Name: customCamera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &414438378
 Transform:
@@ -57723,6 +57724,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f7651d9b2b7294449e80666dd2bd881, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  changeOnlyWhenGrounded: 0
 --- !u!61 &414438380
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -57748,6 +57750,32 @@ BoxCollider2D:
   m_AutoTiling: 0
   serializedVersion: 2
   m_Size: {x: 4.7508545, y: 23.177038}
+  m_EdgeRadius: 0
+--- !u!61 &414438381
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 414438377}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -59.34191, y: 2.0355306}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 8.348419, y: 11.12786}
   m_EdgeRadius: 0
 --- !u!1 &415079480
 GameObject:
@@ -79986,7 +80014,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 3
+  m_SortingOrder: 4
   m_TargetDisplay: 0
 --- !u!1 &1748408288
 GameObject:

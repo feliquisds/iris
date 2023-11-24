@@ -70,7 +70,7 @@ public class FinalBoss : MonoBehaviour
             if (vcam.m_Lens.OrthographicSize > 3.5f) vcam.m_Lens.OrthographicSize -= 0.05f;
         }
 
-        if (!entering && !dying)
+        if (!entering && !dying && Time.timeScale != 0)
         {
             if (distance < 15)
             {
