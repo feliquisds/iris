@@ -1852,6 +1852,7 @@ Transform:
   - {fileID: 419576588}
   - {fileID: 946845776}
   - {fileID: 414438378}
+  - {fileID: 1469502949}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -57518,7 +57519,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fallbackButton: {fileID: 716133491}
+  cutsceneText: {fileID: 0}
   UIControllerObject: {fileID: 716133492}
+  nextScene: 0
 --- !u!1 &400822335
 GameObject:
   m_ObjectHideFlags: 0
@@ -57688,7 +57691,6 @@ GameObject:
   m_Component:
   - component: {fileID: 414438378}
   - component: {fileID: 414438380}
-  - component: {fileID: 414438381}
   - component: {fileID: 414438379}
   m_Layer: 3
   m_Name: customCamera
@@ -57725,6 +57727,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   changeOnlyWhenGrounded: 0
+  useFixedCoordinate: 1
 --- !u!61 &414438380
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -57750,32 +57753,6 @@ BoxCollider2D:
   m_AutoTiling: 0
   serializedVersion: 2
   m_Size: {x: 4.7508545, y: 23.177038}
-  m_EdgeRadius: 0
---- !u!61 &414438381
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 414438377}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: -59.34191, y: 2.0355306}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 8.348419, y: 11.12786}
   m_EdgeRadius: 0
 --- !u!1 &415079480
 GameObject:
@@ -62557,7 +62534,6 @@ MonoBehaviour:
   sceneEnding: 0
   insect1: {fileID: 0}
   insect2: {fileID: 0}
-  insect3: {fileID: 0}
   debris: []
 --- !u!61 &683992568
 BoxCollider2D:
@@ -65133,6 +65109,16 @@ PrefabInstance:
         type: 3}
       propertyPath: customPoint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6240617518810029737, guid: 7d60c822c3f1b408ea7a00ecdb5e047a,
+        type: 3}
+      propertyPath: customFixedPoint.x
+      value: 146.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6240617518810029737, guid: 7d60c822c3f1b408ea7a00ecdb5e047a,
+        type: 3}
+      propertyPath: customFixedPoint.y
+      value: -3.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7d60c822c3f1b408ea7a00ecdb5e047a, type: 3}
@@ -74394,6 +74380,79 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1464841046}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1469502948
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1469502949}
+  - component: {fileID: 1469502951}
+  - component: {fileID: 1469502950}
+  m_Layer: 3
+  m_Name: customCamera
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 2147483647
+  m_IsActive: 1
+--- !u!4 &1469502949
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1469502948}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 146.6, y: 8.5, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 28626159}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1469502950
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1469502948}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f7651d9b2b7294449e80666dd2bd881, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  changeOnlyWhenGrounded: 0
+  useFixedCoordinate: 0
+--- !u!61 &1469502951
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1469502948}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -59.34191, y: 2.0355306}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 8.348419, y: 11.12786}
+  m_EdgeRadius: 0
 --- !u!1 &1477995380
 GameObject:
   m_ObjectHideFlags: 0
@@ -82538,7 +82597,6 @@ MonoBehaviour:
   sceneEnding: 0
   insect1: {fileID: 2378318944856763179, guid: 21051a3cf7c2dad41acd1fe2f5bddff0, type: 3}
   insect2: {fileID: 2378318944856763179, guid: cbc248ee4c23a3947919a3d98f2638c8, type: 3}
-  insect3: {fileID: 0}
   debris:
   - {fileID: 2378318944856763179, guid: 98c7469fe02e91b43b2f8ed6f1fbecbe, type: 3}
   - {fileID: 2378318944856763179, guid: 932a14e94a201d742933ac4261834881, type: 3}
