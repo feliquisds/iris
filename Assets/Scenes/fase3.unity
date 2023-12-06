@@ -8585,7 +8585,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -41.303864, y: 4.230131, z: -10}
+  m_LocalPosition: {x: -41.30082, y: 4.230131, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -29650,6 +29650,11 @@ PrefabInstance:
       propertyPath: m_SortingOrder
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 2252844199276205471, guid: 7d60c822c3f1b408ea7a00ecdb5e047a,
+        type: 3}
+      propertyPath: UI
+      value: 
+      objectReference: {fileID: 1522987117}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7d60c822c3f1b408ea7a00ecdb5e047a, type: 3}
 --- !u!1 &845631448
@@ -49854,7 +49859,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fallbackButton: {fileID: 1939178437}
+  cutsceneText: {fileID: 0}
   UIControllerObject: {fileID: 1939178438}
+  nextScene: 0
 --- !u!224 &2054992040
 RectTransform:
   m_ObjectHideFlags: 0

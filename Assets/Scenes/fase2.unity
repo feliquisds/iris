@@ -57727,7 +57727,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   changeOnlyWhenGrounded: 0
-  useFixedCoordinate: 1
+  useFixedCoordinateX: 1
+  useFixedCoordinateY: 0
 --- !u!61 &414438380
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -65095,6 +65096,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2252844199276205471, guid: 7d60c822c3f1b408ea7a00ecdb5e047a,
+        type: 3}
+      propertyPath: UI
+      value: 
+      objectReference: {fileID: 1746708993}
     - target: {fileID: 6240617518810029737, guid: 7d60c822c3f1b408ea7a00ecdb5e047a,
         type: 3}
       propertyPath: customPoint.x
@@ -65118,6 +65124,16 @@ PrefabInstance:
     - target: {fileID: 6240617518810029737, guid: 7d60c822c3f1b408ea7a00ecdb5e047a,
         type: 3}
       propertyPath: customFixedPoint.y
+      value: -3.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6240617518810029737, guid: 7d60c822c3f1b408ea7a00ecdb5e047a,
+        type: 3}
+      propertyPath: customFixedPointX.x
+      value: 146.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6240617518810029737, guid: 7d60c822c3f1b408ea7a00ecdb5e047a,
+        type: 3}
+      propertyPath: customFixedPointX.y
       value: -3.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -74426,7 +74442,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   changeOnlyWhenGrounded: 0
-  useFixedCoordinate: 0
+  useFixedCoordinateX: 0
+  useFixedCoordinateY: 0
 --- !u!61 &1469502951
 BoxCollider2D:
   m_ObjectHideFlags: 0
