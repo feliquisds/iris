@@ -26,6 +26,7 @@ public class Collectable : MonoBehaviour
             {
                 audioSource.Play();
                 GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 0);
+                GetComponent<Collider2D>().enabled = false;
                 collected = true;
             }
             else Destroy(gameObject);
