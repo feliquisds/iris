@@ -6,7 +6,9 @@ using UnityEngine.SceneManagement;
 public class Collectable : MonoBehaviour
 {
     public bool isArmadillo;
+    internal bool collected;
     public int level => SceneManager.GetActiveScene().buildIndex;
+    internal AudioSource audioSource => GetComponent<AudioSource>();
     public EdgeCollider2D playerEdgeCollider => GameObject.FindWithTag("Player").GetComponent<EdgeCollider2D>();
     internal CollectableUI collectableUI => GameObject.FindWithTag(isArmadillo ? "ArmadilloUI" : "CollectableUI").GetComponent<CollectableUI>();
 
@@ -20,8 +22,16 @@ public class Collectable : MonoBehaviour
     {
         if (_collider.gameObject.tag == "Player")
         {
-            Destroy(gameObject);
+            if (isArmadillo)
+            {
+                audioSource.Play();
+                GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 0);
+                collected = true;
+            }
+            else Destroy(gameObject);
             collectableUI.AddCount();
         }
     }
+
+    void Update() { if (collected && !audioSource.isPlaying) Destroy(gameObject); }
 }

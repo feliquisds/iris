@@ -126,7 +126,7 @@ namespace Platformer.UI
         public IEnumerator Transition(bool sceneTransition, int scene, float time)
         {
             fade.hidden = musicFadeOut = true;
-            yield return new WaitForSecondsRealtime(time);
+            yield return new WaitForSecondsRealtime(scene == 5 ? 1 : time);
             if (sceneTransition) SceneManager.LoadScene(scene);
             else Application.Quit();
         }

@@ -5,7 +5,7 @@ using Cinemachine;
 
 public class EasterEgg : MonoBehaviour
 {
-    public GameObject background, roomPositionObject, outsidePositionObject, UI;
+    public GameObject background, roomPositionObject, outsidePositionObject, UI, members;
     public bool isOutsidePortal;
     internal GameObject player => GameObject.FindWithTag("Player");
     internal PlayerControl playerScript => player.GetComponent<PlayerControl>();
@@ -13,6 +13,15 @@ public class EasterEgg : MonoBehaviour
     public CinemachineVirtualCamera vcam => GameObject.FindWithTag("CameraHandler").GetComponent<CinemachineVirtualCamera>();
     internal GradientHide fade => GameObject.FindWithTag("Fade").GetComponent<GradientHide>();
     internal CinemachineTransposer camDamping => vcam.GetCinemachineComponent<CinemachineTransposer>();
+
+    void Awake()
+    {
+        if (members != null)
+        {
+            for (int i = 1; i < members.transform.childCount + 1; i++)
+            members.transform.GetChild(i - 1).gameObject.GetComponent<Animator>().SetTrigger((string)("member" + i));
+        }
+    }
 
     void OnTriggerEnter2D(Collider2D _collider)
     {

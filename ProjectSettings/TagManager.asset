@@ -24,6 +24,7 @@ TagManager:
   - Limits
   - LifeUI
   - PlayerTrigger
+  - Tracker
   layers:
   - Default
   - TransparentFX

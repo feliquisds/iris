@@ -25,6 +25,7 @@ public class FinalBoss : MonoBehaviour
     internal float distance => Vector3.Distance(playerPosition.position, transform.position);
     public CinemachineVirtualCamera vcam => GameObject.FindWithTag("CameraHandler").GetComponent<CinemachineVirtualCamera>();
     internal GradientHide fade => GameObject.FindWithTag("Fade").GetComponent<GradientHide>();
+    internal Tracker tracker => GameObject.FindWithTag("Tracker").GetComponent<Tracker>();
     public Bounds Bounds => colli.bounds;
     public GameObject playerHealth, wave, meteor;
     public Collider2D attackCollider;
@@ -192,11 +193,11 @@ public class FinalBoss : MonoBehaviour
         audioSource.Stop();
         dying = locked = true;
         velocity = 0;
-        colli.enabled = player.colli.enabled = false;
+        colli.enabled = player.colli.enabled = player.canBeHurt = false;
         anim.SetTrigger("death");
         vcam.m_Follow = vcam.m_LookAt = transform;
 
         yield return new WaitForSeconds(4.7f);
-        StartCoroutine(subUIController.Transition(true, 0, 0.3f));
+        StartCoroutine(subUIController.Transition(true, tracker.shouldPlayCutscene ? 6 : 0, 0.3f));
     }
 }

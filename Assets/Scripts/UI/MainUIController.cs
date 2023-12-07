@@ -15,6 +15,7 @@ namespace Platformer.UI
         internal EventSystem events => eventsObject.GetComponent<EventSystem>();
         internal SubUIController subUIController => eventsObject.GetComponent<SubUIController>();
         internal GameObject gameCoreObject => GameObject.FindWithTag("GameCore");
+        internal Tracker tracker => GameObject.FindWithTag("Tracker").GetComponent<Tracker>();
         internal MetaGameController gameCore => gameCoreObject.GetComponent<MetaGameController>();
         internal bool lastFullscreenValue;
 
@@ -37,6 +38,7 @@ namespace Platformer.UI
         }
         public void Unpause() => gameCore.ToggleMenu(false);
         public void LoadScene(int scene) => StartCoroutine(subUIController.Transition(true, scene, 0.3f));
+        public void EnableCutscene(int enabled) => tracker.shouldPlayCutscene = enabled == 1;
         public void ToggleFullScreen(Toggle toggle) => Screen.fullScreen = toggle.isOn;
         public void Github() => Application.OpenURL("https://github.com/feliquisds/iris");
         public void Quit() => StartCoroutine(subUIController.Transition(false, 0, 0.6f));
