@@ -18,13 +18,13 @@ Elaborado por Armadillo Studios
         <td width=145><a href="https://instagram.com/feliquisds"><img src="https://github.com/feliquisds/iris/assets/93457386/5bcafff4-8c61-4f9c-9fae-378e707dd4a6"/></a></td>
     </tr>
     <tr>
-        <td width=145><p align=center><b>André Santos Oliveira</b></p></td>
-        <td width=145><p align=center><b>Antony Rocha Silva</b></p></td>
-        <td width=145><p align=center><b>Diego Nunes de Carvalho Rezende</b></p></td>
-        <td width=145><p align=center><b>Icaro Zitelli Medeiros</b></p></td>
-        <td width=145><p align=center><b>Lucas Almeida Bel Correa</b></p></td>
-        <td width=145><p align=center><b>Matheus Fontana Santos</b></p></td>
-        <td width=145><p align=center><b>Félix</b></p></td>
+        <td width=145><p align=center><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;André&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></p></td>
+        <td width=145><p align=center><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Antony&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></p></td>
+        <td width=145><p align=center><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Diego&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></p></td>
+        <td width=145><p align=center><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Icaro&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></p></td>
+        <td width=145><p align=center><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Lucas&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></p></td>
+        <td width=145><p align=center><b>&nbsp;&nbsp;&nbsp;&nbsp;Matheus&nbsp;&nbsp;&nbsp;&nbsp;</b></p></td>
+        <td width=145><p align=center><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Félix&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></p></td>
     </tr>
     <tr>
         <td width=145><p align=center>Artista</p></td>
@@ -32,7 +32,7 @@ Elaborado por Armadillo Studios
         <td width=145><p align=center>Redator</p></td>
         <td width=145><p align=center>Testador</p></td>
         <td width=145><p align=center>Produtor</p></td>
-        <td width=145><p align=center>Compositor/</br>Sound designer</p></td>
+        <td width=145><p align=center>Compositor</p></td>
         <td width=145><p align=center>Programador</p></td>
     </tr>
 </table>
