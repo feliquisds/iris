@@ -34,10 +34,10 @@ namespace Platformer.UI
             Time.timeScale = 1;
             if (!cutscene)
             {
-                fade.hidden = true;
+                fade.opaque = true;
                 yield return new WaitForSeconds(0.5f);
 
-                fade.hidden = false;
+                fade.opaque = false;
                 yield return new WaitForSeconds(0.3f);
 
                 locked = false;
@@ -125,7 +125,7 @@ namespace Platformer.UI
         }
         public IEnumerator Transition(bool sceneTransition, int scene, float time)
         {
-            fade.hidden = musicFadeOut = true;
+            fade.opaque = musicFadeOut = true;
             yield return new WaitForSecondsRealtime(scene == 5 ? 1 : time);
             if (sceneTransition) SceneManager.LoadScene(scene);
             else Application.Quit();

@@ -7,7 +7,7 @@ using UnityEngine.UI;
 
 public class GradientHide : MonoBehaviour
 {
-    public bool hidden;
+    public bool opaque;
     internal float fadeAmount;
     public bool startsVisible = true, unscaledTime = false;
     public float fadeSpeed = 5, fadeInGoal = 1, fadeOutGoal = 0;
@@ -21,20 +21,20 @@ public class GradientHide : MonoBehaviour
 
     private void Awake()
     {
-        hidden = startsVisible;
-        if (usingSprite) sprite.color = new Color(objColor.r, objColor.g, objColor.b, Convert.ToInt32(hidden));
-        else if (usingImage) img.color = new Color(objColor.r, objColor.g, objColor.b, Convert.ToInt32(hidden));
-        else tiles.color = new Color(objColor.r, objColor.g, objColor.b, Convert.ToInt32(hidden));
+        opaque = startsVisible;
+        if (usingSprite) sprite.color = new Color(objColor.r, objColor.g, objColor.b, Convert.ToInt32(opaque));
+        else if (usingImage) img.color = new Color(objColor.r, objColor.g, objColor.b, Convert.ToInt32(opaque));
+        else tiles.color = new Color(objColor.r, objColor.g, objColor.b, Convert.ToInt32(opaque));
     }
 
     private void OnTriggerEnter2D(Collider2D collider) => Triggered(collider, true);
     private void OnTriggerExit2D(Collider2D collider) => Triggered(collider, false);
     void Triggered(Collider2D collider, bool entered)
     {
-        if (collider.gameObject.tag == "Player") hidden = startsVisible ? !entered : entered;
+        if (collider.gameObject.tag == "Player") opaque = startsVisible ? !entered : entered;
     }
 
-    void Update() => Fade(hidden);
+    void Update() => Fade(opaque);
     void Fade(bool fadeIn)
     {
         if ((fadeIn && objColor.a < fadeInGoal) || (!fadeIn && objColor.a > fadeOutGoal))

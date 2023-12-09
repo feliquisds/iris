@@ -26,6 +26,7 @@ public class Miscellaneous : MonoBehaviour
                 smoke.GetComponent<AudioSource>().mute = true;
                 smoke.GetComponent<Animator>().SetTrigger("purple");
                 animator.SetTrigger("change");
+                GetComponent<Collider2D>().enabled = false;
             }
         }
     }

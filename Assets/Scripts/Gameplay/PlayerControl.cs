@@ -24,7 +24,7 @@ public class PlayerControl : MonoBehaviour
     public float maxSpeed = 5f, acceleration = 5f, jumpStrength = 8.5f, shootXOffset, shootYOffset;
 
     public GameObject projectile;
-    private bool canJump;
+    private float canJump = 0.1f;
     public bool attacking, crouching, dead = false, canBeHurt = true;
 
     internal AudioSource audioSource => GetComponent<AudioSource>();
@@ -50,7 +50,7 @@ public class PlayerControl : MonoBehaviour
         if (controlEnabled)
         {
             move = ((attacking || crouching) && grounded) ? 0 : Input.GetAxis("Horizontal");
-            if (Input.GetButtonDown("Jump") && canJump)
+            if (Input.GetButton("Jump") && canJump > 0)
             {
                 audioSource.PlayOneShot(jumpSound, audioVolume);
                 rb.velocity = new Vector2(rb.velocity.x, jumpStrength);
@@ -62,12 +62,16 @@ public class PlayerControl : MonoBehaviour
             crouching = (Input.GetButton("Crouch")) ? true : false;
             attacking = (canAttack && Input.GetButton("Attack")) ? true : false;
         }
-
-        canJump = grounded ? (attacking ? false : true) : false;
+        
+        if (Input.GetButtonDown("Jump") || rb.velocity.y > 0.1f && !onSlope || attacking || respawning) canJump = -1;
+        else if (!grounded) canJump -= Time.deltaTime;
+        else canJump = 0.1f;
 
         sprite.flipX = move > 0 ? false : move < 0 ? true : sprite.flipX;
 
         if (dead && grounded) rb.simulated = false;
+
+        if (rb.velocity.x == 0 && rb.velocity.y == 0 && attacking) controlEnabled = false;
 
         rb.gravityScale = (onSlope && move == 0) ? 0 : 2;
 
@@ -78,7 +82,7 @@ public class PlayerControl : MonoBehaviour
 
     public void Bounce() => rb.velocity = new Vector2(rb.velocity.x, 9);
 
-    void AttackToggle() { canJump = controlEnabled = attacking ? false : true; rb.velocity = Vector2.zero; }
+    void AttackToggle() { controlEnabled = attacking ? false : true; rb.velocity = Vector2.zero; }
     void AttackFallDisable() { controlEnabled = true; attacking = false; }
     void Shoot()
     {
@@ -108,6 +112,7 @@ public class PlayerControl : MonoBehaviour
     {
         yield return new WaitForSeconds(0.5f);
         controlEnabled = true;
+        canJump = 0.1f;
 
         yield return new WaitForSeconds(0.5f);
         canBeHurt = true;
@@ -147,6 +152,12 @@ public class PlayerControl : MonoBehaviour
         model.virtualCamera.m_Follow = model.virtualCamera.m_LookAt = model.playercamerapoint;
 
         yield return new WaitForSeconds(0.75f);
+        if (canAttack)
+        {
+            canAttack = false;
+            yield return new WaitForSeconds(0.05f);
+            canAttack = true;
+        }
         controlEnabled = true;
         respawning = false;
 
@@ -165,7 +176,7 @@ public class PlayerControl : MonoBehaviour
     private void UpdateAnimator()
     {
         anim.SetBool("dead", dead);
-        anim.SetBool("canjump", canJump);
+        anim.SetBool("canjump", canJump == 0.1f);
         anim.SetBool("attack", attacking);
         anim.SetBool("crouch", crouching);
         anim.SetBool("grounded", grounded);

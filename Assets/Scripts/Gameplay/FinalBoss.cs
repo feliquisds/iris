@@ -36,14 +36,13 @@ public class FinalBoss : MonoBehaviour
     void Awake() => StartCoroutine(StartFight());
     IEnumerator StartFight()
     {
-        playerHealth.GetComponent<Image>().color = new Color(1f, 1f, 1f, 0f);
         vcam.m_Follow = vcam.m_LookAt = startPos;
 
         yield return new WaitForSeconds(5);
         var fightCamera = GameObject.FindWithTag("CustomCamera").transform;
         vcam.m_Follow = vcam.m_LookAt = fightCamera;
         entering = false;
-        playerHealth.GetComponent<Image>().color = new Color(1f, 1f, 1f, 1f);
+        playerHealth.GetComponent<GradientHide>().opaque = true;
         locked = false;
 
         yield return new WaitForSeconds(0.05f);
@@ -188,12 +187,16 @@ public class FinalBoss : MonoBehaviour
         audioSource.PlayOneShot(sound, 1);
     }
 
+    void ShowItem() => transform.GetChild(0).gameObject.SetActive(true);
+
     IEnumerator Die()
     {
+        playerHealth.GetComponent<GradientHide>().opaque = false;
         audioSource.Stop();
         dying = locked = true;
         velocity = 0;
         colli.enabled = player.colli.enabled = player.canBeHurt = false;
+        player.rb.velocity = Vector2.zero;
         anim.SetTrigger("death");
         vcam.m_Follow = vcam.m_LookAt = transform;
 

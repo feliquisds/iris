@@ -10,15 +10,25 @@ namespace Platformer.UI
     public class MainUIController : MonoBehaviour
     {
         public bool isMainMenu => eventsObject.GetComponent<SubUIController>().mainMenu;
+        public GameObject trackerObj;
         public GameObject[] panels;
         internal GameObject eventsObject => GameObject.FindWithTag("GameEvents");
         internal EventSystem events => eventsObject.GetComponent<EventSystem>();
         internal SubUIController subUIController => eventsObject.GetComponent<SubUIController>();
         internal GameObject gameCoreObject => GameObject.FindWithTag("GameCore");
-        internal Tracker tracker => GameObject.FindWithTag("Tracker").GetComponent<Tracker>();
+        internal Tracker tracker;
         internal MetaGameController gameCore => gameCoreObject.GetComponent<MetaGameController>();
         internal bool lastFullscreenValue;
 
+        void Start()
+        {
+            if (isMainMenu && GameObject.FindWithTag("Tracker") == null)
+            {
+                GameObject newTracker = Instantiate(trackerObj, transform.position, transform.rotation);
+                tracker = newTracker.GetComponent<Tracker>();
+            }
+            else tracker = GameObject.FindWithTag("Tracker").GetComponent<Tracker>();
+        }
         void OnEnable()
         {
             lastFullscreenValue = !Screen.fullScreen;

@@ -33,7 +33,7 @@ public class EasterEgg : MonoBehaviour
         playerScript.controlEnabled = false;
         player.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
         StartCoroutine(ChangeCameraDamping(0, 0, 0));
-        fade.hidden = true;
+        fade.opaque = true;
         yield return new WaitForSeconds(0.4f);
 
         player.transform.position = isOutsidePortal ? roomPositionObject.transform.position : outsidePositionObject.transform.position;
@@ -42,7 +42,7 @@ public class EasterEgg : MonoBehaviour
         yield return new WaitForSeconds(0.1f);
 
         StartCoroutine(ChangeCameraDamping(2, 1, 1));
-        fade.hidden = false;
+        fade.opaque = false;
         yield return new WaitForSeconds(0.4f);
 
         playerScript.controlEnabled = true;

@@ -57323,7 +57323,6 @@ GameObject:
   - component: {fileID: 396739941}
   - component: {fileID: 396739944}
   - component: {fileID: 396739943}
-  - component: {fileID: 396739945}
   - component: {fileID: 396739946}
   m_Layer: 0
   m_Name: game_events
@@ -57382,28 +57381,6 @@ MonoBehaviour:
   m_FirstSelected: {fileID: 0}
   m_sendNavigationEvents: 1
   m_DragThreshold: 10
---- !u!114 &396739945
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 396739940}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c1d0b2851b8437e4f99690d67de05134, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  resolutionChangedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  allowFullscreen: 1
-  aspectRatioWidth: 16
-  aspectRatioHeight: 9
-  minWidthPixel: 854
-  minHeightPixel: 480
-  maxWidthPixel: 3840
-  maxHeightPixel: 2160
 --- !u!114 &396739946
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -83545,7 +83522,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72fdccc362cbf364a82c325374c43e61, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hidden: 0
+  opaque: 0
   startsVisible: 1
   unscaledTime: 1
   fadeSpeed: 5
@@ -85625,7 +85602,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72fdccc362cbf364a82c325374c43e61, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hidden: 0
+  opaque: 0
   startsVisible: 1
   unscaledTime: 0
   fadeSpeed: 5
