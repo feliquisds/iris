@@ -9,13 +9,14 @@ public class VictoryZone : MonoBehaviour
     internal bool hasSprite => TryGetComponent<SpriteRenderer>(out SpriteRenderer _sprite);
     internal PlayerControl player => GameObject.FindWithTag("Player").GetComponent<PlayerControl>();
     internal SubUIController subUIController => GameObject.FindWithTag("GameEvents").GetComponent<SubUIController>();
+    internal MetaGameController gameController => GameObject.FindWithTag("GameCore").GetComponent<MetaGameController>();
     public GameObject insectWave;
 
     void OnTriggerEnter2D(Collider2D collider)
     {
         if (collider.gameObject.tag == "Player")
         {
-            player.controlEnabled = player.canBeHurt = false;
+            player.controlEnabled = player.canCrouch = player.canBeHurt = gameController.canPause = false;
             StartCoroutine(WaitForSceneLoad());
             if (hasSprite) GetComponent<SpriteRenderer>().enabled = false;
 

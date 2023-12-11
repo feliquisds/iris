@@ -23,9 +23,10 @@ namespace Platformer.UI
         internal GradientHide fade => GameObject.FindWithTag("Fade").GetComponent<GradientHide>();
         internal AudioSource audioSource => GameObject.FindWithTag("GameCore").GetComponent<AudioSource>();
         internal GameObject activePanel;
-        internal bool locked = true, musicFadeOut = false;
+        internal bool locked = true, musicFadeOut = false, transitioning = false;
         internal bool mouseClick => Input.GetKey(KeyCode.Mouse0) || Input.GetKey(KeyCode.Mouse1) || Input.GetKey(KeyCode.Mouse2);
         internal bool mouseMove => Input.GetAxis("Mouse X") != 0 || Input.GetAxis("Mouse Y") != 0;
+        internal MetaGameController gameController => GameObject.FindWithTag("GameCore").GetComponent<MetaGameController>();
 
         void Start() { if (cutscene) video.loopPointReached += EndReached; }
         void Awake() => StartCoroutine(FadeStart());
@@ -41,7 +42,7 @@ namespace Platformer.UI
                 yield return new WaitForSeconds(0.3f);
 
                 locked = false;
-                if (!mainMenu) player.controlEnabled = player.canCrouch = true;
+                if (!mainMenu) player.controlEnabled = player.canCrouch = gameController.canPause = true;
                 else Time.timeScale = 0;
             }
             else
@@ -56,9 +57,9 @@ namespace Platformer.UI
             if (!cutscene)
             {
                 if (events.currentSelectedGameObject == null) UpdateSelection();
-                if (!mainMenu && locked) player.controlEnabled = player.canCrouch = false;
+                if (!mainMenu && locked) player.controlEnabled = player.canCrouch = gameController.canPause = false;
 
-                if (Input.GetButtonDown("Cancel"))
+                if (Input.GetButtonDown("Cancel") && !transitioning)
                 {
                     if (!mainMenu && !UIController.panels[0].activeSelf) UIController.Unpause();
                     else UIController.SetActivePanel(0);
@@ -125,7 +126,9 @@ namespace Platformer.UI
         }
         public IEnumerator Transition(bool sceneTransition, int scene, float time)
         {
+            transitioning = true;
             fade.opaque = musicFadeOut = true;
+            if (gameController != null) gameController.canPause = false;
             yield return new WaitForSecondsRealtime(scene == 5 ? 1 : time);
             if (sceneTransition) SceneManager.LoadScene(scene);
             else Application.Quit();

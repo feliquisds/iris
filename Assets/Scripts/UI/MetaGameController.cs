@@ -34,6 +34,7 @@ namespace Platformer.UI
         internal Volume volume => GameObject.FindWithTag("MainCamera").GetComponent<Volume>();
         internal AudioLowPassFilter filter => GetComponent<AudioLowPassFilter>();
         internal AudioSource audioSource => GetComponent<AudioSource>();
+        public bool canPause = true;
 
         void OnEnable() => StartCoroutine(StartMusic());
         IEnumerator StartMusic()
@@ -62,6 +63,6 @@ namespace Platformer.UI
             player.controlEnabled = true;
         }
 
-        void Update() { if (Input.GetButtonDown("Menu")) ToggleMenu(!showMainCanvas); }
+        void Update() { if (Input.GetButtonDown("Menu") && canPause) ToggleMenu(!showMainCanvas); }
     }
 }

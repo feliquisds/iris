@@ -32,6 +32,7 @@ public class FinalBoss : MonoBehaviour
     public float spawnXOffset, spawnYOffset, waveSpeed;
     public AudioClip step, death, attack1, attack2;
     internal SubUIController subUIController => GameObject.FindWithTag("GameEvents").GetComponent<SubUIController>();
+    internal MetaGameController gameController => GameObject.FindWithTag("GameCore").GetComponent<MetaGameController>();
 
     void Awake() => StartCoroutine(StartFight());
     IEnumerator StartFight()
@@ -46,7 +47,7 @@ public class FinalBoss : MonoBehaviour
         locked = false;
 
         yield return new WaitForSeconds(0.05f);
-        player.controlEnabled = player.canCrouch = true;
+        player.controlEnabled = player.canCrouch = gameController.canPause = true;
     }
 
     void FixedUpdate() => rb.velocity = new Vector2(velocity, 0f);
@@ -84,7 +85,7 @@ public class FinalBoss : MonoBehaviour
             }
         }
 
-        if (locked) player.controlEnabled = player.canCrouch = player.attacking = player.crouching = entering || dying ? false : true;
+        if (locked) gameController.canPause = player.controlEnabled = player.canCrouch = player.attacking = player.crouching = entering || dying ? false : true;
 
         anim.SetFloat("velocityX", Mathf.Abs(velocity));
     }

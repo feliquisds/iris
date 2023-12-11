@@ -33446,7 +33446,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 8ac3344653963e34fab6e3252183e1e1, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.75
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -45650,6 +45650,7 @@ MonoBehaviour:
   mainMenu: {fileID: 76351755}
   gamePlayCanvasii: []
   gameController: {fileID: 1754240607}
+  canPause: 1
 --- !u!82 &1754240611
 AudioSource:
   m_ObjectHideFlags: 0
