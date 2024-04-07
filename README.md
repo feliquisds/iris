@@ -1,38 +1,60 @@
-# Íris, uma Jornada Atemporal
+<p align="center">
+    <img alt="Íris, uma Jornada Atemporal" title="Íris, uma Jornada Atemporal" src="https://github.com/feliquisds/iris/blob/main/Assets/Interface/main_menu/menu_logo.png?raw=true" width="700em">
+</p>
+<br>
 
-Trabalho de Conclusão de Curso - 2023  
-3ºA ETEC FV - Técnico em Programação de Jogos Digitais
+<h1 align="center">
+    Técnico em Programação de Jogos Digitais
+    <br>
+    <br>
+    <img alt="Etec Ferraz de Vasconcelos" title="Etec Ferraz de Vasconcelos" src="https://github.com/feliquisds/iris/assets/93457386/c4694870-5edd-4d8b-8147-9e2196ad7738" height="100em">
+    <br>
+    <br>
+    Trabalho de Conclusão de Curso
+    <br>
+    2023
+    <br>
+    &nbsp;&nbsp;
+</h1>
+<br>
+<br>
 
-Elaborado por Armadillo Studios
+Desenvolvido na engine Unity, **"Íris, uma Jornada Atemporal"** é um jogo 2D de plataforma com foco em seu enredo e visual vibrante.
 
-## Desenvolvedores:
+O jogo possui três fases, cada uma em um local e tempo diferente no mundo. Buscando demonstrar diversas culturas, os mapas exploram cores e arquiteturas únicas, porém mantendo cores fortes e chamativas, junto com tipos de *level design* adequados para cada ambiente.
 
-<table align=center>
-    <tr>
-        <td width=125><a href="https://instagram.com/andreoliveira_art"><img src="https://github.com/feliquisds/iris/assets/93457386/56e6f63f-2031-4eed-a633-ce4b4a1d8429"/></a></td>
-        <td width=125><a href="https://instagram.com/antony.rocha.13"><img src="https://github.com/feliquisds/iris/assets/93457386/8b14bed2-840b-446e-9f46-250d243a6e3d"/></a></td>
-        <td width=125><a href="https://instagram.com/uf4keee"><img src="https://github.com/feliquisds/iris/assets/93457386/f4ff68ca-d5fb-42c7-b2c8-dc94466ee17d"/></a></td>
-        <td width=125><a href="https://instagram.com/icaro_zitelli_"><img src="https://github.com/feliquisds/iris/assets/93457386/e68008dc-e4f4-4e03-a398-0394786f6548"/></a></td>
-        <td width=125><a href="https://instagram.com/luk_theking"><img src="https://github.com/feliquisds/iris/assets/93457386/9c611c78-5074-49d7-83dd-996f3d657e4f"/></a></td>
-        <td width=125><a href="https://instagram.com/fontana017"><img src="https://github.com/feliquisds/iris/assets/93457386/927e9e50-ed0d-4751-8eac-947a1a7e430a"/></a></td>
-        <td width=125><a href="https://instagram.com/feliquisds"><img src="https://github.com/feliquisds/iris/assets/93457386/5bcafff4-8c61-4f9c-9fae-378e707dd4a6"/></a></td>
-    </tr>
-    <tr>
-        <td width=125><p align=center><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;André&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></p></td>
-        <td width=125><p align=center><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Antony&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></p></td>
-        <td width=125><p align=center><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Diego&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></p></td>
-        <td width=125><p align=center><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Icaro&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></p></td>
-        <td width=125><p align=center><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Lucas&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></p></td>
-        <td width=125><p align=center><b>&nbsp;&nbsp;&nbsp;&nbsp;Matheus&nbsp;&nbsp;&nbsp;&nbsp;</b></p></td>
-        <td width=125><p align=center><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Félix&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></p></td>
-    </tr>
-    <tr>
-        <td width=125><p align=center>Artista</p></td>
-        <td width=125><p align=center>Designer</p></td>
-        <td width=125><p align=center>Redator</p></td>
-        <td width=125><p align=center>Testador</p></td>
-        <td width=125><p align=center>Produtor</p></td>
-        <td width=125><p align=center>Compositor</p></td>
-        <td width=125><p align=center>Programador</p></td>
-    </tr>
-</table>
+Com uma *gameplay* satisfatória – implantando mecânicas como *coyote time*, uma habilidade de disparo da protagonista e dois tipos de coletáveis –, o jogo oferece uma grande quantidade de rejogabilidade, seja para obter todos os coletáveis ou chegar ao fim o mais rápido possível.
+
+<br>
+<p align="center">
+    <img alt="Íris, a protagonista" title="Íris, a protagonista" src="https://github.com/feliquisds/iris/assets/93457386/fcee7f71-a1b1-4d68-b737-7a9647c1a2a3" height="125em">
+</p>
+
+# &nbsp;&nbsp;
+<br>
+<br>
+
+<div align="center">
+    <h3>Desenvolvido por</h3>
+    <img alt="Armadillo Studios, a empresa" title="Armadillo Studios, a empresa" src="https://github.com/feliquisds/iris/assets/93457386/41ca6ab8-ce62-4c31-b021-463c22d11e59" width="200">
+</div>
+
+<p align="center">
+    <a href="https://instagram.com/andreoliveira_art"><img alt="André, o artista" title="André, o artista" src="https://github.com/feliquisds/iris/assets/93457386/42cfbf68-7b93-4edb-94e5-2bfd87b47443" height="125em"/></a>
+    <a href="https://instagram.com/antony.rocha.13"><img alt="Antony, o designer" title="Antony, o designer" src="https://github.com/feliquisds/iris/assets/93457386/47a42980-180e-43aa-a931-77a57fa3c533" height="125em"/></a>
+    &nbsp;&nbsp;
+    <a href="https://instagram.com/uf4keee"><img alt="Diego, o redator" title="Diego, o redator" src="https://github.com/feliquisds/iris/assets/93457386/9948f9ff-98af-456f-b20a-5fb356c06a09" height="125em"/></a>
+    &nbsp;&nbsp;
+    <a href="https://instagram.com/luk_theking"><img alt="Lucas, o produtor" title="Lucas, o produtor" src="https://github.com/feliquisds/iris/assets/93457386/9c45bfeb-d0d4-4cee-9dd3-8d48037e8092" height="125em"/></a>
+    &nbsp;&nbsp;
+    <a href="https://instagram.com/feliquisds"><img alt="Félix, o programador" title="Félix, o programador" src="https://github.com/feliquisds/iris/assets/93457386/3e5ef9f0-9f0d-49ba-b097-9edad6e54920" height="125em"/></a>
+    <a href="https://instagram.com/fontana017"><img alt="Matheus, o compositor e sound designer" title="Matheus, o compositor e sound designer" src="https://github.com/feliquisds/iris/assets/93457386/fa81fb7b-0662-4a3d-a64b-20410e53c1ba" height="125em"/></a>
+    &nbsp;&nbsp;
+    <a href="https://instagram.com/icaro_zitelli_"><img alt="Ícaro, o testador" title="Ícaro, o testador" src="https://github.com/feliquisds/iris/assets/93457386/fd7e801d-dbc0-4381-aa2a-abc1294c377c" height="125em"/></a>
+</p>
+
+
+
+
+
+
