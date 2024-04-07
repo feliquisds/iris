@@ -7,7 +7,11 @@
     Técnico em Programação de Jogos Digitais
     <br>
     <br>
-    <img alt="Etec Ferraz de Vasconcelos" title="Etec Ferraz de Vasconcelos" src="https://github.com/feliquisds/iris/assets/93457386/c4694870-5edd-4d8b-8147-9e2196ad7738" height="100em">
+    <picture>
+      <source media="(prefers-color-scheme: dark)" srcset="https://github.com/feliquisds/iris/assets/93457386/c51a21a9-2532-4d7b-9952-4629bd409544">
+      <source media="(prefers-color-scheme: light)" srcset="https://github.com/feliquisds/iris/assets/93457386/c4694870-5edd-4d8b-8147-9e2196ad7738">
+      <img alt="Etec Ferraz de Vasconcelos" title="Etec Ferraz de Vasconcelos" src="https://github.com/feliquisds/iris/assets/93457386/c4694870-5edd-4d8b-8147-9e2196ad7738" height="100em">
+    </picture>
     <br>
     <br>
     Trabalho de Conclusão de Curso
@@ -36,7 +40,11 @@ Com uma *gameplay* satisfatória – implantando mecânicas como *coyote time*, 
 
 <div align="center">
     <h3>Desenvolvido por</h3>
-    <img alt="Armadillo Studios, a empresa" title="Armadillo Studios, a empresa" src="https://github.com/feliquisds/iris/assets/93457386/41ca6ab8-ce62-4c31-b021-463c22d11e59" width="200">
+    <picture>
+      <source media="(prefers-color-scheme: dark)" srcset="https://github.com/feliquisds/iris/assets/93457386/34b48a2e-d0b9-42b4-b8ab-8bf78b86eb58">
+      <source media="(prefers-color-scheme: light)" srcset="https://github.com/feliquisds/iris/assets/93457386/947d94aa-cd37-41f4-9048-de64cfeb196a">
+      <img alt="Armadillo Studios, a empresa" title="Armadillo Studios, a empresa" src="https://github.com/feliquisds/iris/assets/93457386/34b48a2e-d0b9-42b4-b8ab-8bf78b86eb58" width="200">
+    </picture>
 </div>
 
 <p align="center">
